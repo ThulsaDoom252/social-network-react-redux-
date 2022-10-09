@@ -94,6 +94,12 @@ meter {
     grid-template-columns: 20% auto;
 }
 
+.container-logout {
+    max-width: 1000px;
+    min-height: 800px;
+    margin: 0 auto;
+}
+
 .header {
     grid-area: h;
     background-color: red;
@@ -132,6 +138,13 @@ meter {
     position: relative;
     grid-area: c;
     background-color: yellow;
+}
+
+.section-content-logout {
+    position: relative;
+    background-color: yellow;
+    max-width: 100%;
+    min-height: 600px;
 }
 
 /*FOOTER*/

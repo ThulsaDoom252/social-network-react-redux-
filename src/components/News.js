@@ -1,4 +1,5 @@
 import React from 'react';
+import authHoc from "./HOC/authHoc";
 
 function News(props) {
     return (
@@ -6,4 +7,4 @@ function News(props) {
     );
 }
 
-export default News;
+export default authHoc(News);

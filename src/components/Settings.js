@@ -1,4 +1,5 @@
 import React from 'react';
+import authHoc from "./HOC/authHoc";
 
 function Settings(props) {
     return (
@@ -6,4 +7,4 @@ function Settings(props) {
     );
 }
 
-export default Settings;
+export default authHoc(Settings);

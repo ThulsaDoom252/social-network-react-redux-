@@ -1,9 +1,10 @@
 import React from 'react';
+import authHoc from "./HOC/authHoc";
 
 function Users(props) {
     return (
-        <div></div>
+        <div>Users</div>
     );
 }
 
-export default Users;
+export default authHoc(Users);

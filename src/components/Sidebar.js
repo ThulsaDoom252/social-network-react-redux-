@@ -1,10 +1,11 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
 import logo from "./common/logo.png"
+import {connect} from "react-redux";
 
 function Sidebar(props) {
     return (
-        <div className={"sidebar"}>
+        <div hidden={!props.auth} className={"sidebar"}>
             <img className={"sidebar-logo"} src={logo} alt='logo'/>
             <NavLink className={navData => navData.isActive ? "sidebar-item-active" : "sidebar-item"}
                      to={"/profile"}>Profile</NavLink>
@@ -18,4 +19,10 @@ function Sidebar(props) {
     );
 }
 
-export default Sidebar;
+const mapStateToProps = (state) => {
+    return {
+        auth: state.auth.isLogged,
+    }
+}
+
+export default connect (mapStateToProps)(Sidebar);
