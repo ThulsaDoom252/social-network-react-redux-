@@ -57,7 +57,7 @@ let appReducer = (state = initialState, action) => {
     }
 }
 
-//THUNK
+//THUNKS
 export const initializeTC = () => (dispatch) => {
     let promise = dispatch(loginTC())
     Promise.all([promise]).then(() => {

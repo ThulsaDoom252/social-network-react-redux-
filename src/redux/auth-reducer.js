@@ -93,7 +93,6 @@ export const loginTC = () => (dispatch) => {
     })
 }
 
-
 export const getCaptchaTC = () => {
     return async (dispatch) => {
         const response = await loginApi.getCaptcha()
@@ -118,7 +117,6 @@ export const mainLoginTC = (email, password, rememberMe, antiBotSymbols, key) =>
         }
     }
 }
-
 
 export const logOutTC = () => {
     return async (dispatch) => {

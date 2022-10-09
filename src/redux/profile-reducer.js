@@ -10,7 +10,6 @@ import {
     SET_USER_PROFILE, STATUS_ERROR
 } from "./types";
 
-
 //ACTIONS
 export const dataReceivedAC = (success) => ({type: DATA_RECEIVED, success})
 export const statusErrorAC = (error) => ({type: STATUS_ERROR, error})
@@ -204,7 +203,6 @@ export const currentUserDataTC = (userId) => async (dispatch) => {
         dispatch(dataReceivedAC(true))
     )
 }
-
 
 export const setAvatarTC = (userId) => async (dispatch) => {
     const data = await profileApi.getCurrentUser(userId)
