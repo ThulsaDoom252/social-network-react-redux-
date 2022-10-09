@@ -10,6 +10,8 @@ import {
     SET_USER_PROFILE, STATUS_ERROR
 } from "./types";
 
+
+//ACTIONS
 export const dataReceivedAC = (success) => ({type: DATA_RECEIVED, success})
 export const statusErrorAC = (error) => ({type: STATUS_ERROR, error})
 export const resultAC = (result) => ({type: SET_RESULT, result})
@@ -37,6 +39,7 @@ export const currentUserDataAC = (name, about, applicant, description, github, v
         link
     })
 
+//STATE
 const initialState = {
     posts: [
         {message: 'Hi, how are ayou?', likesCount: 15},
@@ -66,6 +69,7 @@ const initialState = {
     statusError: null
 }
 
+//REDUCER
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case CURRENT_PROFILE: {
@@ -158,8 +162,7 @@ const profileReducer = (state = initialState, action) => {
     }
 }
 
-//---------------------------------------------------------------------------THUNKS
-
+//THUNKS
 export const setUserTC = (userId) => {
     return async (dispatch) => {
         try {
