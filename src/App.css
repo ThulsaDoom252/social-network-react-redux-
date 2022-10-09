@@ -82,4 +82,45 @@ meter {
     -webkit-user-drag: element;
 }
 
+.container {
+    max-width: 1000px;
+    min-height: 800px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-areas:
+     "h h"
+     "s c";
+    grid-template-rows: 8% auto;
+    grid-template-columns: 20% auto;
+}
+
+.header {
+    grid-area: h;
+    background-color: red;
+}
+
+.sidebar {
+    grid-area: s;
+    background-color: orange;
+}
+
+.section-content {
+    position: relative;
+    grid-area: c;
+    background-color: yellow;
+}
+
+.footer {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    bottom: 0;
+    background-color: black;
+    color: white;;
+}
+
+
+
+
 
