@@ -1,13 +1,10 @@
-import * as axios from "axios";
-
-let apiKey = localStorage.getItem("apiKey".toString())
-window.apiKey = apiKey
+import axios from "axios";
 
 export const instance = axios.create({
     withCredentials: true,
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
     headers: {
-        "API-KEY": apiKey
+        "API-KEY": "blahblah"
     }
 })
 
