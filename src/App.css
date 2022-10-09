@@ -115,10 +115,42 @@ meter {
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
     bottom: 0;
     background-color: black;
     color: white;;
 }
+
+.footer-container  {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 200px;
+}
+
+.footer-container::before {
+    content: 'Connect with me:';
+    margin-right: 3%;
+}
+
+.footer-instagram-icon:hover {
+    color: #ff9900;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.footer-facebook-icon:hover {
+    color: #2727f8;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.footer-telegram-icon:hover {
+    color: #5454f3;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
 
 
 
