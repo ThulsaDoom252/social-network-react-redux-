@@ -97,6 +97,7 @@ meter {
 .container-logout {
     max-width: 1000px;
     min-height: 800px;
+    max-height: fit-content;
     margin: 0 auto;
 }
 
@@ -105,6 +106,22 @@ meter {
     background-color: red;
 }
 
+/*INITIALIZING*/
+.initializing-image {
+    display: flex;
+    position: relative;
+    bottom: 2.5rem;
+    align-items: center;
+    margin: 0 auto;
+    width: 30%;
+    height: 100vh;
+}
+
+.initializing-image img {
+    border-radius: 200px;
+}
+
+/*SIDEBAR*/
 .sidebar {
     grid-area: s;
     background-color: red;
@@ -145,6 +162,178 @@ meter {
     background-color: yellow;
     max-width: 100%;
     min-height: 600px;
+    max-height: fit-content;
+}
+
+/*************************LOGIN PAGE*********************/
+.logout-container-content {
+    margin: 0 auto;
+    max-width: 1118px;
+    min-height: 852px;
+    border-top: solid;
+    border-right: solid;
+    border-color: darkorange;
+    border-radius: 10px;
+    background-color: #dbc7c5;
+}
+
+.login-page-block {
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5ae58;
+    max-width: 400px;
+    min-width: 200px;
+    box-shadow: inset 6px 6px 6px #c48b45, inset -6px -6px 6px #d19549;
+
+}
+
+.login-page-logo {
+    width: 250px;
+    margin: auto;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.login-page-title {
+    font-family: Teko;
+}
+
+.login-page-animation {
+    background-image: url(https://thumbs.gfycat.com/AccuratePeacefulGraywolf-size_restricted.gif);
+    background-size: cover;
+    color: transparent;
+    -webkit-background-clip: text;
+    font-family: Fascinate;
+}
+
+.login-page-inputs-block {
+    width: 210px;
+    text-align: center;
+}
+
+.login-page-inputs-block div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+}
+
+.login-page-inputs-block label {
+    position: relative;
+    top: 10.5px;
+    letter-spacing: 1px;
+}
+
+.login-page-input-fields {
+    width: 180px;
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    font-family: Teko;
+    letter-spacing: 1px;
+    font-size: 14px;
+    background-color: #f5ae58;
+    padding: 10px;
+    border-radius: 50px;
+    box-shadow: inset 6px 6px 6px #c48b45, inset -6px -6px 6px #d19549;
+    outline: none;
+    border: none;
+}
+
+.login-page-login-input:focus, .login-page-password-input:focus, .login-page-key-input:focus {
+    transition: 0.5s;
+    box-shadow: inset 6px 6px 6px #c48b45, inset -6px -6px 6px #f5e642;
+}
+
+.login-page-captcha-block {
+    color: black;
+}
+
+.login-page-captcha-image {
+    border-radius: 20px;
+}
+
+.login-page-captcha-input {
+    background-color: #f5ae58;
+    font-size: 14px;
+    box-shadow: inset 6px 6px 6px #c48b45, inset -6px -6px 6px #d19549;
+    margin-top: 20px;
+    letter-spacing: 1px;
+    width: 180px;
+    margin-left: 105px;
+    display: block;
+    padding: 10px;
+    /*height: 10px;*/
+    border-radius: 50px;
+    outline: none;
+    border: none;
+    text-align: center;
+}
+
+.login-page-key-error-container {
+    width: 200px;
+    margin: 0 auto;
+}
+
+.login-page-errors {
+    margin-left: 16%;
+    color: red;
+}
+
+.login-page-remember-checkBox {
+    font-family: Teko;
+    letter-spacing: 1px;
+}
+
+.login-page-login-button {
+    color: gray;
+    background: coral;
+    height: 40px;
+    width: 150px;
+    font-weight: 900;
+    border-radius: 20px;
+    transition: 0.5s;
+    margin-top: 21px;
+}
+
+.login-page-login-button:hover {
+    transition: 0.3s;
+    color: orange;
+    background: yellow;
+}
+
+.login-page-login-button:disabled {
+    background-color: black;
+    color: white;
+}
+
+.login-page-auth-error {
+    margin-top: 150px;
+}
+
+.signUpBlock {
+    letter-spacing: 1px;
+}
+
+.login-page-signUp-button {
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.login-page-signUp-button:hover {
+    transition: 2ms;
+    color: #f5e642;
+    cursor: pointer;
+}
+
+.login-about-block {
+    margin: 0 auto;
+    width: 200px;
+    text-align: center;
 }
 
 /*FOOTER*/

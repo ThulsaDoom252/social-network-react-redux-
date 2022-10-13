@@ -1,5 +1,6 @@
 import React from 'react';
 import authHoc from "./HOC/authHoc";
+import {connect} from "react-redux";
 
 function Settings(props) {
     return (
@@ -7,4 +8,10 @@ function Settings(props) {
     );
 }
 
-export default authHoc(Settings);
+const mapStateToProps = (state) => {
+    return {
+        auth: state.auth.isLogged
+    }
+}
+
+export default connect (mapStateToProps)(authHoc(Settings));

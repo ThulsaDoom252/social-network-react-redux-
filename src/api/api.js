@@ -1,10 +1,12 @@
 import axios from "axios";
 
+const apiKey = localStorage.getItem("apiKey".toString())
+
 export const instance = axios.create({
     withCredentials: true,
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
     headers: {
-        "API-KEY": "blahblah"
+        "API-KEY": apiKey
     }
 })
 
@@ -21,7 +23,7 @@ export const apiCaller = {
     setUsers: (userId) => {
         return profileApi.setUsersProfile(userId)
     },
-    unFollow: (userId) => {
+    unfollow: (userId) => {
         return (
             instance.delete(`follow/` + userId)
                 .then(response => {
