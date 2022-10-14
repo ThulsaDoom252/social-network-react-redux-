@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fascinate&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&display=swap');
+
 /***
     The new CSS reset - version 1.7.3 (last updated 7.8.2022)
     GitHub page: https://github.com/elad2412/the-new-css-reset
@@ -101,11 +106,6 @@ meter {
     margin: 0 auto;
 }
 
-.header {
-    grid-area: h;
-    background-color: red;
-}
-
 /*INITIALIZING*/
 .initializing-image {
     display: flex;
@@ -119,6 +119,113 @@ meter {
 
 .initializing-image img {
     border-radius: 200px;
+}
+
+/*Header*/
+.header-container {
+    grid-area: h;
+    border-radius: 10px;
+    display: flex;
+    border-top: solid;
+    border-right: solid;
+    border-color: darkorange;
+    background-color: #bf112b;
+    text-align: center;
+    align-items: center;
+    font-size: x-large;
+    letter-spacing: 10px;
+    max-width: 1118px;
+    min-width: 100px;
+    min-height: 50px;
+    justify-content: space-between;
+}
+
+.header-burger-navbar {
+    display: none;
+    height: 30px;
+    z-index: 1;
+}
+
+.header-burger-navbar-button {
+    width: 150px;
+}
+
+.header-burger-navbar-block {
+    background: rgba(159, 40, 40, .7);
+    border-radius: 10px;
+    margin: 0 auto;
+    font-size: 0.625rem;
+    width: 150px;
+}
+
+.burger-item {
+    color: orange;
+    text-decoration: none;
+}
+
+.burger-item:hover {
+    text-decoration: underline;
+}
+
+.burger-item-active {
+    display: block;
+    color: gold;
+    text-decoration: underline;
+}
+
+.header-slogan-block, .header-slogan-block-logout {
+    color: yellow;
+    font-family: Teko;
+    margin: 0 auto;
+    font-style: italic;
+}
+
+.header-slogan, .header-slogan-logout {
+    color: orange;
+    font-size: 1.25rem;
+}
+
+.header-current-user-block {
+    display: flex;
+    align-items: normal;
+}
+
+.header-current-user-avatar {
+    margin: 0 auto;
+    width: 25%;
+    border-radius: 50px;
+}
+
+.header-current-user-name-block {
+    margin: 0 auto;
+    letter-spacing: 0;
+    font-size: 0.938rem;
+    color: yellow;
+    text-decoration: none;
+}
+
+.header-current-user-name {
+    color: orange;
+}
+
+.header-current-user-name:hover {
+    transition: 0.5s;
+    color: yellow;
+}
+
+.header-logout-button {
+    display: flex;
+    align-items: center;
+    color: orange;
+    font-size: 1rem;
+    border-style: none;
+    background-color: transparent;
+}
+
+.header-logout-button:hover {
+    transition: 0.5s;
+    color: yellow;
+    cursor: pointer;
 }
 
 /*SIDEBAR*/
@@ -161,25 +268,17 @@ meter {
     position: relative;
     background-color: yellow;
     max-width: 100%;
-    min-height: 600px;
+    min-height: 700px;
     max-height: fit-content;
+    padding-top: 5%;
 }
 
 /*************************LOGIN PAGE*********************/
-.logout-container-content {
-    margin: 0 auto;
-    max-width: 1118px;
-    min-height: 852px;
-    border-top: solid;
-    border-right: solid;
-    border-color: darkorange;
-    border-radius: 10px;
-    background-color: #dbc7c5;
-}
-
 .login-page-block {
-    margin: 0 auto;
     text-align: center;
+    margin: 0 auto;
+    position: relative;
+    top: 10%;
     border-radius: 20px;
     display: flex;
     justify-content: center;
@@ -188,7 +287,6 @@ meter {
     max-width: 400px;
     min-width: 200px;
     box-shadow: inset 6px 6px 6px #c48b45, inset -6px -6px 6px #d19549;
-
 }
 
 .login-page-logo {
@@ -390,12 +488,20 @@ meter {
         min-height: 4%;
     }
 
+    .header-container {
+        padding: 0 !important;
+    }
+
     .section-content {
         max-width: 100%;
         min-height: 800px;
     }
     .sidebar {
         display: none;
+    }
+
+    .header-burger-navbar {
+        display: block;
     }
 }
 
