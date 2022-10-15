@@ -85,7 +85,7 @@ export const unFollowTC = (userid) => {
     }
 }
 
-export const getUsers = (thisPage, pageSize) => {
+export const getUsersTC = (thisPage, pageSize) => {
     return async (dispatch) => {
         dispatch(fetchingRelay(true))
         const data = await apiCaller.getUsers(thisPage, pageSize)

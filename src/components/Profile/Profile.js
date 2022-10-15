@@ -1,19 +1,34 @@
-import React from 'react';
-import authHoc from "../HOC/authHoc";
+import React, {useEffect} from "react";
+import {compose} from "redux";
 import {connect} from "react-redux";
+import authHoc from "../HOC/authHoc";
+import withRouter from "../HOC/withRouter";
+import {currentUserDataTC, getStatusTC, setUserTC, updateStatusTC} from "../../redux/profile-reducer";
 
-function Profile(props) {
-    return (
-        <div>
-            Profile
-        </div>
-    );
+const Profile = (props) => {
+    return <div>Profile</div>
+
 }
 
-const mapStateToProps = (state) => {
+
+let mapStateToProps = (state) => {
     return {
-        auth: state.auth.isLogged
+        profile: state.profilePage.profile,
+        auth: state.auth.isLogged,
+        Id: state.auth.id,
+        email: state.auth.email,
+        login: state.auth.login,
+        status: state.profilePage.status,
+        notFound: state.profilePage.notFound,
+        statusError: state.profilePage.statusError,
+        nightMode: state.app.nightMode,
+        nightModeColors: state.app.nightModeColors
     }
 }
 
-export default connect (mapStateToProps)(authHoc(Profile));
+export default compose(connect(mapStateToProps, {
+    setUserTC,
+    getStatusTC,
+    updateStatusTC,
+    currentUserDataTC
+}), authHoc, withRouter)(Profile)

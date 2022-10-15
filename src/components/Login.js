@@ -5,7 +5,6 @@ import Logo from "./common/logo.png"
 import {connect} from "react-redux";
 import {getCaptchaTC, loginFetchAC, mainLoginTC} from "../redux/auth-reducer";
 import {Link, Navigate} from "react-router-dom";
-import About from "./common/About";
 import {FaKey, FaLock, FaUser} from "react-icons/fa";
 import {specialChars} from "@testing-library/user-event";
 import {BsInfoLg} from "react-icons/bs";
@@ -106,7 +105,6 @@ const LoginPage = (props) => {
                                                   to="//social-network.samuraijs.com/signUp"
                                                   target="_blank">Sign up</Link></div>
                     </div>
-                    <About/>
                 </div>
             </div>
         </form>

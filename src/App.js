@@ -7,11 +7,14 @@ import Footer from "./components/Footer";
 import {BrowserRouter, Routes, Router, Route} from "react-router-dom";
 import Settings from "./components/Settings";
 import News from "./components/News";
-import Users from "./components/Users";
 import Login from "./components/Login";
 import {connect} from "react-redux";
 import Initialize from "./components/Initialize";
 import {initializeTC} from "./redux/app-reducer";
+import Greetings from "./components/Greetings";
+import NotFound from "./components/common/NotFound";
+import Users from "./components/Users";
+import Messages from "./components/Messages/Messages";
 
 function App(props) {
     useEffect(() => {
@@ -29,11 +32,15 @@ function App(props) {
                     <Sidebar/>
                     <section className={props.auth ? "section-content" : "section-content-logout"}>
                         <Routes>
+                            <Route path='' element={<Greetings/>}/>
                             <Route path={"/profile"} element={<Profile/>}/>
+                            <Route path={"/messages"} element={<Messages/>}/>
                             <Route path={"/users"} element={<Users/>}/>
                             <Route path={"/news"} element={<News/>}/>
                             <Route path={"/settings"} element={<Settings/>}/>
                             <Route path={"/login"} element={<Login/>}/>
+                            <Route path={"*"} element={<NotFound/>}/>
+                            <Route path={"/profile/*"} element={<NotFound/>}/>
                         </Routes>
                         <Footer/>
                     </section>

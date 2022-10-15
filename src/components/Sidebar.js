@@ -10,6 +10,8 @@ function Sidebar(props) {
             <NavLink className={navData => navData.isActive ? "sidebar-item-active" : "sidebar-item"}
                      to={"/profile"}>Profile</NavLink>
             <NavLink className={navData => navData.isActive ? "sidebar-item-active" : "sidebar-item"}
+                     to={"/messages"}>Messages</NavLink>
+            <NavLink className={navData => navData.isActive ? "sidebar-item-active" : "sidebar-item"}
                      to={"/users"}>Users</NavLink>
             <NavLink className={navData => navData.isActive ? "sidebar-item-active" : "sidebar-item"}
                      to={"/news"}>News</NavLink>

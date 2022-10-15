@@ -3,7 +3,7 @@ import construction from "./construction.gif"
 
 function UnderConstruction(props) {
     return (
-        <div>
+        <div className={"under-construction-container"}>
             <img src= {construction} alt="under-construction"/>
         </div>
     );

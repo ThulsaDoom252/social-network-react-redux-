@@ -16,7 +16,7 @@ const initialState = {
         {content: 'HI'},
         {content: 'Hey'},
         {content: 'Whats ap?'},
-        {content: 'I love you'},
+        {content: 'I like you'},
         {content: 'Lets go f or a ride'}
 
     ],

@@ -9,7 +9,7 @@ export const nightModeAC = (relay) => ({type: NIGHTMODE_RELAY, relay})
 //INITIAL STATE
 let initialState = {
     initialized: false,
-    underConstruction: true,
+    underConstruction: false,
     nightMode: false,
     nightModeColors: {
         "sidebar/header-background": "#0B18DCFF",
