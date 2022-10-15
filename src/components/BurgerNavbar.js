@@ -23,6 +23,9 @@ const BurgerNavbar = () => {
                 <NavLink to={`/profile`}
                          onClick={hideNavBar}
                          className={navData => navData.isActive ? "burger-item-active" : "burger-item"}>Profile</NavLink>
+                <NavLink to={`/messages`}
+                         onClick={hideNavBar}
+                         className={navData => navData.isActive ? "burger-item-active" : "burger-item"}>Messages</NavLink>
                 <NavLink to="/users"
                          onClick={hideNavBar}
                          className={navData => navData.isActive ? "burger-item-active" : "burger-item"}> Users </NavLink>

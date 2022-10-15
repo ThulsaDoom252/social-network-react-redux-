@@ -5,7 +5,7 @@ import Sidebar from "./components/Sidebar";
 import Profile from "./components/Profile/Profile";
 import Footer from "./components/Footer";
 import {BrowserRouter, Routes, Router, Route} from "react-router-dom";
-import Settings from "./components/Settings";
+import Settings from "./components/Settings/Settings";
 import News from "./components/News";
 import Login from "./components/Login";
 import {connect} from "react-redux";
