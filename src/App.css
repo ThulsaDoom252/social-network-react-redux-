@@ -703,6 +703,26 @@ meter {
     width: 40%;
 }
 
+
+/*USERS*/
+
+.users-page-container {
+    text-align: center;
+}
+
+.users-page-block {
+    background-color: orange;
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20%;
+    text-align: center;
+}
+
+.users-page-user-info-block {
+    margin: 10%;
+    position: relative;
+    left: 40%;
+}
+
 /*SETTINGS-SWITCH*/
 .switch-body {
     display: flex;
