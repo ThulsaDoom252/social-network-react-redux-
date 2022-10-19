@@ -1,15 +1,36 @@
 import React, {useEffect} from "react";
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import {compose} from "redux";
 import {connect} from "react-redux";
 import authHoc from "../HOC/authHoc";
 import withRouter from "../HOC/withRouter";
-import {currentUserDataTC, getStatusTC, setUserTC, updateStatusTC} from "../../redux/profile-reducer";
+import {currentUserDataTC,  getStatusTC, setUserTC, updateStatusTC} from "../../redux/profile-reducer";
 
 const Profile = (props) => {
-    return <div>Profile</div>
+    useEffect(() => {
+        let userId = props.router.params.userId
+        if (!userId) {
+            userId = `${props.Id}`
+        }
+        props.setUserTC(userId)
+        props.getStatusTC(userId)
+        props.currentUserDataTC(props.Id)
+    }, [])
+
+
+    useEffect(() => {
+        let userId = props.router.params.userId
+        props.getStatusTC(userId)
+        props.setUserTC(userId)
+    }, [props.router.params.userId])
+
+    return (
+        <div>
+            <ProfileInfo  {...props} updateStatus={props.updateStatusTC}  userId={props.router.params.userId}/>
+        </div>
+    )
 
 }
-
 
 let mapStateToProps = (state) => {
     return {

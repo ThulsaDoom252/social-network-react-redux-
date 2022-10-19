@@ -99,6 +99,7 @@ meter {
     grid-template-rows: 8% auto;
     grid-template-columns: 15% auto;
 }
+
 .container-logout {
     max-width: 1000px;
     min-height: 800px;
@@ -180,7 +181,7 @@ meter {
     color: orange;
 }
 
-.header-burger-navbar:active{
+.header-burger-navbar:active {
     color: yellow;
 }
 
@@ -530,7 +531,7 @@ meter {
     color: white;;
 }
 
-.footer-container  {
+.footer-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -560,6 +561,73 @@ meter {
     cursor: pointer;
 }
 
+/*PROFILE*/
+.profile-page-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile-page-userId-wrapper {
+    width: 50%;
+    text-align: center;
+    margin: 0 auto;
+    background-color: orange;
+}
+
+.profile-page-userId-wrapper h2 {
+    font-size: 2vmax;
+}
+
+.profile-page-user-block {
+    display: flex;
+    margin: 10% auto auto auto;
+    width: 80%;
+    background-color: #d19549;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-page-left-part {
+    width: 50%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+.profile-page-right-part {
+    width: 50%;
+    text-align: center;
+}
+
+.profile-page-avatar {
+    max-width: 40%;
+}
+
+.profile-page-personal-info-block {
+    background-color: #2727f8;
+}
+
+.profile-page-job-info-block {
+    background-color: green;
+}
+
+.profile-page-contacts-info-block {
+    background-color: red;
+}
+
+/*STATUS*/
+
+.status-container {
+    display: flex;
+    justify-content: center;
+}
+
+.status {
+    background-color: #5454f3;
+    width: 50%;
+    word-wrap: break-word;
+}
 
 /*BREAKPOINTS*/
 @media (max-width: 800px) {
@@ -580,6 +648,7 @@ meter {
         max-width: 100%;
         min-height: 720px;
     }
+
     .sidebar {
         display: none;
     }
@@ -635,11 +704,11 @@ meter {
 }
 
 /*SETTINGS-SWITCH*/
-.switch-body{
+.switch-body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top:1em;
+    padding-top: 1em;
 }
 
 .switch {
@@ -766,16 +835,17 @@ meter {
 }
 
 
-@media(max-width: 528px) {
+@media (max-width: 528px) {
     .header-slogan-block {
         letter-spacing: 0.2rem;
     }
 }
 
-@media(max-width: 439px) {
+@media (max-width: 439px) {
     .header-current-user-block {
         display: block;
     }
+
     .header-current-user-label, .header-current-user-name {
         display: none;
     }
@@ -791,7 +861,7 @@ meter {
     }
 }
 
-@media(max-width: 327px) {
+@media (max-width: 327px) {
     .header-current-user-avatar {
         margin: auto auto auto -30%;
     }

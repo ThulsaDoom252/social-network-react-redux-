@@ -33,7 +33,7 @@ function App(props) {
                     <section className={props.auth ? "section-content" : "section-content-logout"}>
                         <Routes>
                             <Route path='' element={<Greetings/>}/>
-                            <Route path={"/profile"} element={<Profile/>}/>
+                            <Route path={`/profile/:userId`} element={<Profile/>}/>
                             <Route path={"/messages"} element={<Messages/>}/>
                             <Route path={"/users"} element={<Users/>}/>
                             <Route path={"/news"} element={<News/>}/>

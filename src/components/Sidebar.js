@@ -4,11 +4,12 @@ import logo from "./common/logo.png"
 import {connect} from "react-redux";
 
 function Sidebar(props) {
+    const current = props.currentUser
     return (
         <div hidden={!props.auth} className={"sidebar"}>
             <img className={"sidebar-logo"} src={logo} alt='logo'/>
             <NavLink className={navData => navData.isActive ? "sidebar-item-active" : "sidebar-item"}
-                     to={"/profile"}>Profile</NavLink>
+                     to={`/profile/${current}`}>Profile</NavLink>
             <NavLink className={navData => navData.isActive ? "sidebar-item-active" : "sidebar-item"}
                      to={"/messages"}>Messages</NavLink>
             <NavLink className={navData => navData.isActive ? "sidebar-item-active" : "sidebar-item"}
@@ -24,6 +25,7 @@ function Sidebar(props) {
 const mapStateToProps = (state) => {
     return {
         auth: state.auth.isLogged,
+        currentUser: state.auth.id,
     }
 }
 
