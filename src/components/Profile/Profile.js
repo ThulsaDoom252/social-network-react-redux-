@@ -4,7 +4,7 @@ import {compose} from "redux";
 import {connect} from "react-redux";
 import authHoc from "../HOC/authHoc";
 import withRouter from "../HOC/withRouter";
-import {currentUserDataTC,  getStatusTC, setUserTC, updateStatusTC} from "../../redux/profile-reducer";
+import {currentUserDataTC, getStatusTC, setUserTC, updateProfileTC, updateStatusTC} from "../../redux/profile-reducer";
 
 const Profile = (props) => {
     useEffect(() => {
@@ -12,11 +12,11 @@ const Profile = (props) => {
         if (!userId) {
             userId = `${props.Id}`
         }
+        let u2 = Object.values(props.router.params)
         props.setUserTC(userId)
         props.getStatusTC(userId)
         props.currentUserDataTC(props.Id)
     }, [])
-
 
     useEffect(() => {
         let userId = props.router.params.userId
@@ -26,7 +26,7 @@ const Profile = (props) => {
 
     return (
         <div>
-            <ProfileInfo  {...props} updateStatus={props.updateStatusTC}  userId={props.router.params.userId}/>
+            <ProfileInfo  {...props} updateStatus={props.updateStatusTC} userId={props.router.params.userId}/>
         </div>
     )
 
@@ -39,9 +39,7 @@ let mapStateToProps = (state) => {
         Id: state.auth.id,
         email: state.auth.email,
         login: state.auth.login,
-        status: state.profilePage.status,
         notFound: state.profilePage.notFound,
-        statusError: state.profilePage.statusError,
         nightMode: state.app.nightMode,
         nightModeColors: state.app.nightModeColors
     }

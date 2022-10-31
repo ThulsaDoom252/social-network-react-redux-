@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const apiKey = localStorage.getItem("apiKey".toString())
+let apiKey = localStorage.getItem("apiKey".toString())
+window.apiKey = apiKey
 
 export const instance = axios.create({
     withCredentials: true,
@@ -10,7 +11,7 @@ export const instance = axios.create({
     }
 })
 
-//USERS
+//---------------------------------------------------------------------------USERS API
 export const apiCaller = {
     getUsers: (currentPage, pageSize, fetching, setUsers) => {
         return (
@@ -23,7 +24,7 @@ export const apiCaller = {
     setUsers: (userId) => {
         return profileApi.setUsersProfile(userId)
     },
-    unfollow: (userId) => {
+    unFollow: (userId) => {
         return (
             instance.delete(`follow/` + userId)
                 .then(response => {
@@ -41,19 +42,13 @@ export const apiCaller = {
     }
 }
 
-
-//AUTH
-
-
+//---------------------------------------------------------------------------AUTH API
 export const login = {
     auth: () => {
         return loginApi.auth()
-
     }
 }
-
-//PROFILE
-
+//---------------------------------------------------------------------------PROFILE API
 export const profileApi = {
     setUsersProfile: (userId) => {
         return (
@@ -92,6 +87,14 @@ export const profileApi = {
         })
     },
 
+    // deletePhoto() {
+    //     return instance.delete('profile/photo/', {
+    //         headers: {
+    //             'Content-Type': 'multipart/form-data'
+    //         }
+    //     })
+    // },
+
     updateProfile(userid, about, applicant, description,
                   name, git, vk, fb, inst, twit,
                   web, youtube, link) {
@@ -107,7 +110,7 @@ export const profileApi = {
 
 }
 
-//LOGIN
+//---------------------------------------------------------------------------LOGIN API
 
 export const loginApi = {
     auth: () => {
@@ -140,3 +143,13 @@ export const loginApi = {
     }
 
 }
+
+
+
+
+
+
+
+
+
+

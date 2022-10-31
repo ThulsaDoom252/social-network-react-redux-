@@ -110,6 +110,7 @@ meter {
 .section-content {
     position: relative;
     grid-area: c;
+    text-align: center;
     background-color: yellow;
 }
 
@@ -573,6 +574,7 @@ meter {
     text-align: center;
     margin: 0 auto;
     background-color: orange;
+    clip-path: polygon(0 2%, 100% 0, 83% 100%, 19% 100%);
 }
 
 .profile-page-userId-wrapper h2 {
@@ -580,11 +582,18 @@ meter {
 }
 
 .profile-page-user-block {
-    display: flex;
     margin: 10% auto auto auto;
+    min-height: 250px;
     width: 80%;
+    padding: 0 5% 0 5%;
     background-color: #d19549;
     justify-content: center;
+    border-radius: 20px;
+    box-shadow: inset 6px 6px 6px #c48b45, inset -6px -6px 6px #d19549;
+}
+
+.profile-page-user-block-container {
+    display: flex;
     align-items: center;
 }
 
@@ -601,22 +610,56 @@ meter {
 }
 
 .profile-page-avatar {
-    max-width: 40%;
+    width: 60%;
+    border-radius: 100px;
 }
 
 .profile-page-personal-info-block {
     background-color: #2727f8;
+    margin-bottom: 10%;
+    border-radius: 30px;
+    border-bottom: solid;
+    max-width: 300px;
+    padding: 3px;
+    text-align: center;
+    overflow-wrap: break-word;
+
 }
 
 .profile-page-job-info-block {
     background-color: green;
+    border-radius: 30px;
+    border-bottom: solid;
+    margin-bottom: 10%;
+    padding: 3px;
+    max-width: 300px;
+    text-align: center;
+    overflow-wrap: break-word;
 }
 
 .profile-page-contacts-info-block {
     background-color: red;
+    max-width: 300px;
+    border-radius: 30px;
+    padding: 3px;
+    text-align: center;
+    border-bottom: solid;
+    overflow-wrap: break-word;
+}
+
+.profile-page-input {
+    background-color: white;
+    border-radius: 20%;
 }
 
 /*STATUS*/
+
+.status-wrapper {
+    position: relative;
+    right: 25%;
+    font-size: 1vmax;
+    width: 100%;
+}
 
 .status-container {
     display: flex;
@@ -624,7 +667,6 @@ meter {
 }
 
 .status {
-    background-color: #5454f3;
     width: 50%;
     word-wrap: break-word;
 }
@@ -704,23 +746,137 @@ meter {
 }
 
 
-/*USERS*/
 
-.users-page-container {
+/***************************************************PAGINATOR****************************************/
+.paginator-block {
     text-align: center;
-}
-
-.users-page-block {
+    margin: 0 auto;
     background-color: orange;
-    display: grid;
-    grid-template-columns: 20% 20% 20% 20%;
-    text-align: center;
+    max-width: 600px;
+    font-style: italic;
+    border-style: solid;
+    border-radius: 10px;
 }
 
-.users-page-user-info-block {
-    margin: 10%;
+.paginator-page-number {
+    padding: 2px;
+}
+
+.paginator-page-number:hover, .paginator-selected-page:hover {
+    cursor: pointer;
+}
+
+.paginator-selected-page {
+    border-style: solid;
+    font-size: 20px;
+    border-width: 1px;
+    border-radius: 50px;
+    border-color: red;
+    background-color: yellow;
+}
+
+.paginator-left-button, .paginator-right-button {
+    font-size: 12px;
+    background-color: orangered;
+    border-radius: 40px;
+}
+
+.paginator-left-button:active, .paginator-right-button:active {
+    background-color: yellow;
+    color: red;
+}
+
+.paginator-left-button:hover, .paginator-right-button:hover {
+    cursor: pointer;
+}
+
+
+/***********************************************USERS*********************************************/
+.users-page-title {
+    letter-spacing: 2px;
+    font-family: Pacifico;
+    font-weight: 10;
+    padding-top: 10px;
+    text-align: center;
+    font-size: 25px;
+}
+
+.users-page-main-users-container {
     position: relative;
-    left: 40%;
+    top: 20px;
+    text-align: center;
+    font-size: 25px;
+    max-width: 800px;
+    min-height: 700px;
+    max-height: 1000000px;
+    margin: 0 auto;
+    border-radius: 100px;;
+    background-color: #f5ae58;
+    text-shadow: #2e2e2e 0 4px 5px;
+    box-shadow: inset 6px 6px 6px #c48b45, inset -6px -6px 6px #d19549;
+}
+
+.users-page-users-grid {
+    display: grid;
+    max-height: fit-content;
+    grid-template-columns: 20% 20% 20% 20%;
+}
+
+.users-page-user-block-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+
+.users-page-user-block {
+    border-radius: 50px;
+    max-width: 120px;
+    position: relative;
+    left: 50%;
+    top: 25%;
+    padding-bottom: 10px;
+}
+
+.users-page-user-block:hover {
+    cursor: pointer;
+    transition: 0.5s;
+    border-style: solid;
+    border-color: gold;
+    border-radius: 40px;
+}
+
+
+.users-page-avatar-small {
+    width: 100%;
+    border-radius: 100px;;
+}
+
+.users-page-user-name {
+    font-style: italic;
+    max-width: 80%;
+    word-wrap: break-word;
+    background-color: yellow;
+    border-radius: 10px;
+    font-size: 18px;
+    margin: 0 auto;
+}
+
+.users-page-user-status {
+    font-style: italic;
+    max-width: 80%;
+    font-size: 16px;
+    word-wrap: break-word;
+    background-color: red;
+    border-radius: 20px;
+    margin: 0 auto;
+}
+
+
+.users-page-follow-button {
+    margin-top: 10px;
+    font-size: 17px;
+    border-radius: 10px;
+    font-family: Teko;
 }
 
 /*SETTINGS-SWITCH*/

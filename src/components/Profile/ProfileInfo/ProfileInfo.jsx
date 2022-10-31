@@ -2,6 +2,8 @@ import React from "react";
 import fetching from "../../common/ModuleFetching.gif"
 import NotFound from "../../common/NotFound";
 import Status from "./Status";
+import ProfileData from "./profileData";
+import ProfileAvatar from "./profileAvatar";
 
 const ProfileInfo = (props) => {
     if (props.notFound) {
@@ -22,32 +24,11 @@ const ProfileInfo = (props) => {
             </div>
             <div className="profile-page-container">
                 <div className={"profile-page-user-block"}>
-                    <div className="profile-page-left-part">
-                        <div className="profile-page-left-part-container">
-                            <img className="profile-page-avatar" src={props.profile.photos.large} alt="large photo"/>
-                            <Status/>
-                        </div>
+                    <div className="profile-page-user-block-container">
+                        <ProfileAvatar profile = {props.profile}/>
+                        <ProfileData userId = {props.userId} profile = {props.profile}/>
                     </div>
-                    <div className="profile-page-right-part">
-                        <div className={"profile-page-personal-info-block"}>
-                            <p>{props.profile.fullName}</p>
-                            <p>{props.profile.aboutMe}</p>
-                        </div>
-                        <div className={"profile-page-job-info-block"}>
-                            <p>{props.profile.lookingForAJob}</p>
-                            <p>{props.profile.lookingForAJobDescription}</p>
-                        </div>
-                        <div className={"profile-page-contacts-info-block"}>
-                            <p>{props.profile.contacts.youtube}</p>
-                            <p>{props.profile.contacts.instagram}</p>
-                            <p>{props.profile.contacts.facebook}</p>
-                            <p>{props.profile.contacts.mainLink}</p>
-                            <p>{props.profile.contacts.github}</p>
-                            <p>{props.profile.contacts.vk}</p>
-                            <p>{props.profile.contacts.website}</p>
-                            <p>{props.profile.contacts.twitter}</p>
-                        </div>
-                    </div>
+                    <Status/>
                 </div>
             </div>
         </div>

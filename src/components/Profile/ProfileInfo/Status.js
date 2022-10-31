@@ -21,7 +21,7 @@ const Status = (props) => {
         }
     }
     return (
-        <div>
+        <div className="status-wrapper">
             <p className="status-label">Status:</p>
             <div className="status-container">
                 {editMode ?

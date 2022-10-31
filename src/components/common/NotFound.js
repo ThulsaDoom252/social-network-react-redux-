@@ -21,4 +21,4 @@ let loginCheck = (state) => {
     }
 }
 
-export default compose(connect(loginCheck, null), authHoc)(NotFoundPage);
+export default compose(connect(loginCheck), authHoc)(NotFoundPage);

@@ -222,7 +222,6 @@ export const updatePhotoTC = (photo) => async (dispatch) => {
 export const updateProfileTC = (userid, about, applicant, description,
                                 name, git, vk, fb, inst, twit,
                                 web, youtube, link) => async (dispatch) => {
-
     const response = await profileApi.updateProfile(userid, about, applicant, description,
         name, git, vk, fb, inst, twit,
         web, youtube, link)
