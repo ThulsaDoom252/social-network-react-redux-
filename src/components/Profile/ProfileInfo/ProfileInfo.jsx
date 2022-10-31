@@ -26,9 +26,9 @@ const ProfileInfo = (props) => {
                 <div className={"profile-page-user-block"}>
                     <div className="profile-page-user-block-container">
                         <ProfileAvatar profile = {props.profile} userId = {props.userId} currentUser = {props.Id}/>
-                        <ProfileData userId = {props.userId} profile = {props.profile}/>
+                        <ProfileData currentUser = {props.Id} profile = {props.profile} userId = {props.userId}/>
                     </div>
-                    <Status/>
+                    <Status userId = {props.userId} currentUser = {props.Id}/>
                 </div>
             </div>
         </div>

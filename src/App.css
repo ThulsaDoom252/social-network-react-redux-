@@ -650,6 +650,7 @@ meter {
 .profile-page-input {
     background-color: white;
     border-radius: 20%;
+    border-color: orange;
 }
 
 /*STATUS*/

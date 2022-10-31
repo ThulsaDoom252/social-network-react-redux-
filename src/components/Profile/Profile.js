@@ -26,7 +26,7 @@ const Profile = (props) => {
 
     return (
         <div>
-            <ProfileInfo  {...props} updateStatus={props.updateStatusTC} userId={props.router.params.userId}/>
+            <ProfileInfo  {...props} userId={props.router.params.userId}/>
         </div>
     )
 
@@ -48,6 +48,5 @@ let mapStateToProps = (state) => {
 export default compose(connect(mapStateToProps, {
     setUserTC,
     getStatusTC,
-    updateStatusTC,
     currentUserDataTC
 }), authHoc, withRouter)(Profile)
