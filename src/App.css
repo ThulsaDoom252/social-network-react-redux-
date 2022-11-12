@@ -563,12 +563,6 @@ meter {
 }
 
 /*PROFILE*/
-.profile-page-container {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
-
 .profile-page-userId-wrapper {
     width: 50%;
     text-align: center;
@@ -584,32 +578,32 @@ meter {
 .profile-page-user-block {
     margin: 10% auto auto auto;
     min-height: 250px;
-    width: 80%;
+    display: block;
     padding: 0 5% 0 5%;
     background-color: #d19549;
-    justify-content: center;
+    width: 80%;
+    max-width: 850px;
+    /*FIX STATUS LENGTH NOT AFFECT WIDTH OF CONTAINER*/
     border-radius: 20px;
     box-shadow: inset 6px 6px 6px #c48b45, inset -6px -6px 6px #d19549;
 }
 
 .profile-page-user-block-container {
     display: flex;
-    align-items: center;
+    /*align-items: center;*/
 }
 
 .profile-page-left-part {
     width: 50%;
-    text-align: center;
-    display: flex;
-    align-items: center;
+    max-width: 400px;
 }
 
 .profile-page-right-part {
     width: 50%;
-    text-align: center;
 }
 
 .profile-page-avatar {
+    margin-top: 4%;
     width: 60%;
     border-radius: 100px;
 }
@@ -653,18 +647,17 @@ meter {
     border-color: orange;
 }
 
-/*STATUS*/
-
+STATUS
 .status-wrapper {
-    position: relative;
-    right: 25%;
     font-size: 1vmax;
-    width: 100%;
+    width: 50%;
 }
 
 .status-container {
     display: flex;
     justify-content: center;
+     width: 100%;
+    word-wrap: break-word;
 }
 
 .status {

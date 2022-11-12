@@ -1,6 +1,8 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {connect} from "react-redux";
 import {updateProfileTC} from "../../../redux/profile-reducer";
+import ProfilePageInput from "./profilePageInput";
+import {BiMessageSquareAdd} from "react-icons/bi";
 
 const ProfileData = (props) => {
     const currentUser = props.currentUser
@@ -12,6 +14,7 @@ const ProfileData = (props) => {
     const [userName, setUserName] = useState(props.profile.fullName)
     const [userAboutInfo, changeAboutInfo] = useState(props.profile.aboutMe)
     const [userJobInfo, changeJobInfo] = useState(props.profile.lookingForAJobDescription)
+    const [isApplicant, setApplicant] = useState(props.profile.lookingForAJob)
     const [youtubeLink, setYoutubeLink] = useState(props.profile.contacts.youtube)
     const [instagramLink, setInstagramLink] = useState(props.profile.contacts.instagram)
     const [facebookLink, setFacebookLink] = useState(props.profile.contacts.facebook)
@@ -20,41 +23,80 @@ const ProfileData = (props) => {
     const [vkLink, setVkLink] = useState(props.profile.contacts.vk)
     const [websiteLink, setWebsiteLink] = useState(props.profile.contacts.website)
     const [twitterLink, setTwitterLink] = useState(props.profile.contacts.twitter)
-    const contactsArray = [youtubeLink, instagramLink, facebookLink, mainLink, githubLink, vkLink, websiteLink, twitterLink]
+    const [nullUserJobInfo, isNullUserJobInfo] = useState(userJobInfo === "" && "not looking for a job")
+    const contactsArray = [
+        props.profile.contacts.youtube,
+        props.profile.contacts.instagram,
+        props.profile.contacts.facebook,
+        props.profile.contacts.mainLink,
+        props.profile.contacts.github,
+        props.profile.contacts.vk,
+        props.profile.contacts.website,
+        props.profile.contacts.twitter
+    ]
+    let notNull = userJobInfo === "" ? "enter job description" : userJobInfo
+    let applicantYes = true
+    let applicantNo = false
+    let applicantRelay = userJobInfo === "" ? applicantNo : applicantYes
+    let aboutInfo = userAboutInfo === "" ? "no Info" : userAboutInfo
+    useEffect(() => {
+        setUserName(props.profile.fullName)
+        changeAboutInfo(props.profile.aboutMe)
+        changeJobInfo(props.profile.lookingForAJobDescription)
+    }, [props.profile.fullName, props.profile.aboutMe, props.profile.lookingForAJobDescription])
+
+    useEffect(() => {
+        setYoutubeLink(contactsArray[0])
+        setInstagramLink(contactsArray[1])
+        setFacebookLink(contactsArray[2])
+        setMainLink(contactsArray[3])
+        setGithubLink(contactsArray[4])
+        setVkLink(contactsArray[5])
+        setWebsiteLink(contactsArray[6])
+        setTwitterLink(contactsArray[7])
+    }, contactsArray)
+
 
     const toggleProfileDataEditMode = (editMode, setEditMode) => {
         if (editMode === false && isCurrentUser === true) {
             setEditMode(true)
         } else {
             setEditMode(false)
-            props.updateProfileTC(currentUser, userAboutInfo, true, userJobInfo, userName, githubLink, vkLink, facebookLink, instagramLink, twitterLink,
+            props.updateProfileTC(currentUser, aboutInfo, applicantRelay, notNull, userName, githubLink, vkLink, facebookLink, instagramLink, twitterLink,
                 websiteLink, youtubeLink, mainLink)
         }
     }
+
+
     return (
         <div className="profile-page-right-part">
             <div className={"profile-page-personal-info-block"}>
                 {nameEditMode ?
-                    <input className="profile-page-input" type={"text"} value={userName}
-                           onChange={(e) => setUserName(e.currentTarget.value)}
-                           autoFocus={true}
-                           onBlur={() => toggleProfileDataEditMode(nameEditMode, setNameEditMode)}/> :
-                    <p onDoubleClick={() => toggleProfileDataEditMode(nameEditMode, setNameEditMode)}>{userName}</p>}
-                {aboutEditMode ? <input
-                        autoFocus={true}
-                        className="profile-page-input" type="text" value={userAboutInfo}
-                        onChange={(e) => changeAboutInfo(e.currentTarget.value)}
-                        onBlur={() => toggleProfileDataEditMode(aboutEditMode, setAboutEditMode)}/> :
-                    <p onDoubleClick={() => toggleProfileDataEditMode(aboutEditMode, setAboutEditMode)}>{userAboutInfo}</p>}
+                    <ProfilePageInput editMode={toggleProfileDataEditMode} state={nameEditMode}
+                                      changeState={setNameEditMode} changeValue={setUserName} value={userName}/>
+                    :
+                    <div>
+                        <p onDoubleClick={() => toggleProfileDataEditMode(nameEditMode, setNameEditMode)}>{userName}</p>
+                    </div>
+
+                }
+                <hr style={{color:"black", backgroundColor: "black", height: 2, width: "50%", margin: "0 auto"}}/>
+                {aboutEditMode ?
+                    <ProfilePageInput editMode={toggleProfileDataEditMode} state={aboutEditMode}
+                                      changeState={setAboutEditMode} changeValue={changeAboutInfo}
+                                      value={userAboutInfo}/>
+                    :
+                    <p onDoubleClick={() => toggleProfileDataEditMode(aboutEditMode, setAboutEditMode)}>{aboutInfo !== "no Info" ? userAboutInfo :
+                        <span><BiMessageSquareAdd/>Tell us about yourself</span>}</p>}
             </div>
             <div className={"profile-page-job-info-block"}>
-                <p>{props.profile.lookingForAJob ? "Applicant" : null}</p>
-                {jobEditMode ? <input className="profile-page-input"
-                                      autoFocus={true}
-                                      onBlur={() => toggleProfileDataEditMode(jobEditMode, setJobEditMode)}
-                                      type="text" value={userJobInfo}
-                                      onChange={(e) => changeJobInfo(e.currentTarget.value)}/> :
-                    <p onDoubleClick={() => toggleProfileDataEditMode(jobEditMode, setJobEditMode)}>{userJobInfo}</p>}
+                {userJobInfo !== "" && <p>Applicant</p>}
+                {jobEditMode ? <ProfilePageInput editMode={toggleProfileDataEditMode} state={jobEditMode}
+                                                 changeState={setJobEditMode} changeValue={changeJobInfo}
+                                                 value={userJobInfo}/>
+                    :
+                    <p onDoubleClick={() => toggleProfileDataEditMode(jobEditMode, setJobEditMode)}>{isApplicant ? userJobInfo : !isApplicant && currentUser ? "Click to add applicant info.." : !isApplicant && !currentUser && "Not looking for a job"}</p>}
+
             </div>
             <div className={"profile-page-contacts-info-block"}
                  onDoubleClick={() => !contactsEditMode && toggleProfileDataEditMode(contactsEditMode, setContactsEditMode)}>

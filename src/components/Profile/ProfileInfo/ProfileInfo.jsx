@@ -18,17 +18,16 @@ const ProfileInfo = (props) => {
         </div>
     }
     return (
-        <div>
+        <div className={"main"}>
             <div className={"profile-page-userId-wrapper"}>
                 <h2>{props.userId}</h2>
             </div>
-            <div className="profile-page-container">
+            <div>
                 <div className={"profile-page-user-block"}>
                     <div className="profile-page-user-block-container">
                         <ProfileAvatar profile = {props.profile} userId = {props.userId} currentUser = {props.Id}/>
                         <ProfileData currentUser = {props.Id} profile = {props.profile} userId = {props.userId}/>
                     </div>
-                    <Status userId = {props.userId} currentUser = {props.Id}/>
                 </div>
             </div>
         </div>

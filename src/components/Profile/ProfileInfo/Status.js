@@ -24,7 +24,7 @@ const Status = (props) => {
     }
     return (
         <div className="status-wrapper">
-            <p className="status-label">Status:</p>
+            <p>Status:</p>
             <p hidden={!lengthError} style={{"color":"red"}}>Status lenght can't exceed 300 characters!</p>
             <div className="status-container">
                 {editMode ?

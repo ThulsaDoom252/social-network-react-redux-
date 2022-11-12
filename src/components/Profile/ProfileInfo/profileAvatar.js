@@ -1,7 +1,8 @@
 import React from 'react';
 import defaultAvatar from "../../common/default-avatar.jfif";
 import {connect} from "react-redux";
-import {updatePhotoTC, updateProfileTC} from "../../../redux/profile-reducer";
+import {updatePhotoTC} from "../../../redux/profile-reducer";
+import Status from "./Status";
 
 function ProfileAvatar(props) {
     const isUserPage = props.currentUser.toString() === props.userId.toString()
@@ -14,7 +15,7 @@ function ProfileAvatar(props) {
     const handleClick = event => isUserPage ? hiddenFileInput.current.click() : null;
     return (
         <div className="profile-page-left-part">
-            <div className="profile-page-left-part-container">
+            <div>
                 <input ref={hiddenFileInput}
                        hidden={true} type={"file"}
                        className={'profile-page-update-photo-hidden-input'}
@@ -23,6 +24,7 @@ function ProfileAvatar(props) {
                      onClick={handleClick}
                      src={props.profile.photos.large ? props.profile.photos.large : defaultAvatar}
                      alt="large photo"/>
+                <Status userId = {props.userId} currentUser = {props.currentUser}/>
             </div>
         </div>
     );
