@@ -1,0 +1,1043 @@
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fascinate&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&display=swap');
+
+/***
+    The new CSS reset - version 1.7.3 (last updated 7.8.2022)
+    GitHub page: https://github.com/elad2412/the-new-css-reset
+***/
+
+/*
+    Remove all the styles of the "User-Agent-Stylesheet", except for the 'display' property
+    - The "symbol *" part is to solve Firefox SVG sprite bug
+ */
+*:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *)) {
+    all: unset;
+    display: revert;
+}
+
+/* Preferred box-sizing value */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Reapply the pointer cursor for anchor tags */
+a, button {
+    cursor: revert;
+}
+
+/* Remove list styles (bullets/numbers) */
+ol, ul, menu {
+    list-style: none;
+}
+
+/* For images to not be able to exceed their container */
+img {
+    max-width: 100%;
+}
+
+/* removes spacing between cells in tables */
+table {
+    border-collapse: collapse;
+}
+
+/* Safari - solving issue when using user-select:none on the <body> text input doesn't working */
+input, textarea {
+    -webkit-user-select: auto;
+}
+
+/* revert the 'white-space' property for textarea elements on Safari */
+textarea {
+    white-space: revert;
+}
+
+/* minimum style to allow to style meter element */
+meter {
+    -webkit-appearance: revert;
+    appearance: revert;
+}
+
+/* reset default text opacity of input placeholder */
+::placeholder {
+    color: unset;
+}
+
+/* fix the feature of 'hidden' attribute.
+   display:revert; revert to element instead of attribute */
+:where([hidden]) {
+    display: none;
+}
+
+/* revert for bug in Chromium browsers
+   - fix for the content editable attribute will work properly.
+   - webkit-user-select: auto; added for Safari in case of using user-select:none on wrapper element*/
+:where([contenteditable]:not([contenteditable="false"])) {
+    -moz-user-modify: read-write;
+    -webkit-user-modify: read-write;
+    overflow-wrap: break-word;
+    -webkit-line-break: after-white-space;
+    -webkit-user-select: auto;
+}
+
+/* apply back the draggable feature - exist only in Chromium and Safari */
+:where([draggable="true"]) {
+    -webkit-user-drag: element;
+}
+
+/*MAIN CONTAINERS*/
+.container {
+    max-width: 1000px;
+    min-height: 800px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-areas:
+     "s h"
+     "s c";
+    grid-template-rows: 8% auto;
+    grid-template-columns: 15% auto;
+}
+
+.container-logout {
+    max-width: 1000px;
+    min-height: 800px;
+    max-height: fit-content;
+    margin: 0 auto;
+}
+
+.section-content {
+    position: relative;
+    grid-area: c;
+    text-align: center;
+    background-color: yellow;
+}
+
+.section-content-logout {
+    position: relative;
+    background-color: yellow;
+    max-width: 100%;
+    min-height: 700px;
+    max-height: fit-content;
+    padding-top: 5%;
+}
+
+/*INITIALIZING*/
+.initializing-image {
+    display: flex;
+    position: relative;
+    bottom: 2.5rem;
+    align-items: center;
+    margin: 0 auto;
+    width: 30%;
+    height: 100vh;
+}
+
+.initializing-image img {
+    border-radius: 200px;
+}
+
+/*NOT FOUND*/
+.not-found-container {
+    max-width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.not-found-container img {
+    border-radius: 200px;
+}
+
+.not-found-text {
+    font-size: 2rem;
+}
+
+/*Header*/
+.header-container {
+    grid-area: h;
+    border-radius: 10px;
+    display: flex;
+    border-top: solid;
+    border-right: solid;
+    border-color: darkorange;
+    background-color: #bf112b;
+    text-align: center;
+    align-items: center;
+    font-size: x-large;
+    letter-spacing: 10px;
+    max-width: 1118px;
+    min-width: 100px;
+    min-height: 50px;
+    justify-content: space-between;
+}
+
+.header-burger-navbar {
+    display: none;
+    height: 30px;
+    z-index: 1;
+    color: orange;
+}
+
+.header-burger-navbar:active {
+    color: yellow;
+}
+
+.header-burger-navbar-button {
+    width: 80px;
+}
+
+.header-burger-navbar-block {
+    background: rgba(159, 40, 40, .7);
+    border-radius: 10px;
+    margin: 0 auto;
+    font-size: 0.625rem;
+    width: 80px;
+    letter-spacing: 0.2rem;
+}
+
+.burger-item {
+    padding: 2%;
+    display: block;
+    color: orange;
+    text-decoration: none;
+}
+
+.burger-item:hover {
+    text-decoration: underline;
+}
+
+.burger-item-active {
+    display: block;
+    color: gold;
+    text-decoration: underline;
+}
+
+.header-slogan-block {
+    color: yellow;
+    font-family: Teko;
+    margin: 0 auto;
+    font-style: italic;
+}
+
+.header-slogan {
+    color: orange;
+    font-size: 1.25rem;
+}
+
+.header-current-user-block {
+    display: flex;
+    align-items: normal;
+}
+
+.header-current-user-avatar {
+    margin: 0 auto;
+    max-width: 25%;
+    border-radius: 50px;
+}
+
+.header-current-user-name-block {
+    margin: 0 auto;
+    letter-spacing: 0;
+    font-size: 0.938rem;
+    color: yellow;
+    text-decoration: none;
+}
+
+.header-current-user-name {
+    color: orange;
+}
+
+.header-current-user-name:hover {
+    transition: 0.5s;
+    color: yellow;
+}
+
+.header-logout-button {
+    display: flex;
+    align-items: center;
+    color: orange;
+    font-size: 1rem;
+    border-style: none;
+    background-color: transparent;
+}
+
+.header-logout-button:hover {
+    transition: 0.5s;
+    color: yellow;
+    cursor: pointer;
+}
+
+/*SIDEBAR*/
+.sidebar {
+    border-radius: 10px;
+    border-left: solid;
+    border-top: solid;
+    border-color: darkorange;
+    grid-area: s;
+    border-right: none;
+    background-color: #ad1010;
+    color: white;
+    text-align: center;
+}
+
+.sidebar-logo {
+    position: relative;
+    width: 99%;
+}
+
+.sidebar-item {
+    display: block;
+    letter-spacing: 2px;
+    padding: 2%;
+    margin-top: 20%;
+    color: orange;
+    text-decoration: none;
+}
+
+.sidebar-item-active {
+    display: block;
+    letter-spacing: 2px;
+    margin-top: 20%;
+    padding: 2%;
+    color: orange;
+    text-decoration: underline;
+}
+
+/*************************LOGIN PAGE*********************/
+.login-page-block {
+    text-align: center;
+    margin: 0 auto;
+    position: relative;
+    top: 10%;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5ae58;
+    max-width: 400px;
+    min-width: 200px;
+    box-shadow: inset 6px 6px 6px #c48b45, inset -6px -6px 6px #d19549;
+}
+
+.login-page-logo {
+    width: 250px;
+    margin: auto;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.login-page-title {
+    font-family: Teko;
+}
+
+.login-page-animation {
+    background-image: url(https://thumbs.gfycat.com/AccuratePeacefulGraywolf-size_restricted.gif);
+    background-size: cover;
+    color: transparent;
+    -webkit-background-clip: text;
+    font-family: Fascinate;
+}
+
+.login-page-inputs-block {
+    width: 210px;
+    text-align: center;
+}
+
+.login-page-inputs-block div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+}
+
+.login-page-inputs-block label {
+    position: relative;
+    top: 10.5px;
+    letter-spacing: 1px;
+}
+
+.login-page-input-fields {
+    width: 180px;
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    font-family: Teko;
+    letter-spacing: 1px;
+    font-size: 14px;
+    background-color: #f5ae58;
+    padding: 10px;
+    border-radius: 50px;
+    box-shadow: inset 6px 6px 6px #c48b45, inset -6px -6px 6px #d19549;
+    outline: none;
+    border: none;
+}
+
+.login-page-login-input:focus, .login-page-password-input:focus, .login-page-key-input:focus {
+    transition: 0.5s;
+    box-shadow: inset 6px 6px 6px #c48b45, inset -6px -6px 6px #f5e642;
+}
+
+.login-page-captcha-block {
+    color: black;
+}
+
+.login-page-captcha-image {
+    border-radius: 20px;
+}
+
+.login-page-captcha-input {
+    background-color: #f5ae58;
+    font-size: 14px;
+    box-shadow: inset 6px 6px 6px #c48b45, inset -6px -6px 6px #d19549;
+    margin-top: 20px;
+    letter-spacing: 1px;
+    width: 180px;
+    margin-left: 105px;
+    display: block;
+    padding: 10px;
+    /*height: 10px;*/
+    border-radius: 50px;
+    outline: none;
+    border: none;
+    text-align: center;
+}
+
+.login-page-key-error-container {
+    width: 200px;
+    margin: 0 auto;
+}
+
+.login-page-errors {
+    margin-left: 16%;
+    color: red;
+}
+
+.login-page-remember-checkBox {
+    font-family: Teko;
+    letter-spacing: 1px;
+}
+
+.login-page-login-button {
+    color: gray;
+    background: coral;
+    height: 40px;
+    width: 150px;
+    font-weight: 900;
+    border-radius: 20px;
+    transition: 0.5s;
+    margin-top: 21px;
+}
+
+.login-page-login-button:hover {
+    transition: 0.3s;
+    color: orange;
+    background: yellow;
+}
+
+.login-page-login-button:disabled {
+    background-color: black;
+    color: white;
+}
+
+.login-page-auth-error {
+    margin-top: 150px;
+}
+
+.signUpBlock {
+    letter-spacing: 1px;
+}
+
+.login-page-signUp-button {
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.login-page-signUp-button:hover {
+    transition: 2ms;
+    color: #f5e642;
+    cursor: pointer;
+}
+
+.login-about-block {
+    margin: 0 auto;
+    width: 200px;
+    text-align: center;
+}
+
+/*UNDER CONSTRUCTION*/
+.under-construction-container {
+    max-width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding-top: 150px;
+}
+
+.under-construction-container img {
+    border-radius: 100%;
+}
+
+/*MESSAGES*/
+.messages-page {
+    background-color: orange;
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+
+.sender-items {
+    padding: 1.4%;
+    border-bottom: solid gray;
+
+}
+
+.content-items {
+    padding: 0.3%;
+    color: red;
+    border-bottom: solid gray;
+}
+
+.message-page-textarea {
+    background-color: darkkhaki;
+    border-radius: 10px;
+}
+
+.message-page-button {
+    background-color: #d19549;
+    padding: 2%;
+    border-radius: 20px;
+    color: gray;
+}
+
+.message-page-button:hover {
+    transition: 0.5s;
+    color: yellow;
+    cursor: pointer;
+}
+
+/*FOOTER*/
+.footer {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+    background-color: black;
+    color: white;;
+}
+
+.footer-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 200px;
+}
+
+.footer-container::before {
+    content: 'Connect with me:';
+    margin-right: 3%;
+}
+
+.footer-instagram-icon:hover {
+    color: #ff9900;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.footer-facebook-icon:hover {
+    color: #2727f8;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.footer-telegram-icon:hover {
+    color: #5454f3;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+/*PROFILE*/
+.profile-page-userId-wrapper {
+    width: 50%;
+    text-align: center;
+    margin: 0 auto;
+    background-color: orange;
+    clip-path: polygon(0 2%, 100% 0, 83% 100%, 19% 100%);
+}
+
+.profile-page-userId-wrapper h2 {
+    font-size: 2vmax;
+}
+
+.profile-page-user-block {
+    margin: 10% auto auto auto;
+    min-height: 250px;
+    display: block;
+    padding: 0 5% 0 5%;
+    background-color: #d19549;
+    width: 80%;
+    max-width: 850px;
+    /*FIX STATUS LENGTH NOT AFFECT WIDTH OF CONTAINER*/
+    border-radius: 20px;
+    box-shadow: inset 6px 6px 6px #c48b45, inset -6px -6px 6px #d19549;
+}
+
+.profile-page-user-block-container {
+    display: flex;
+    /*align-items: center;*/
+}
+
+.profile-page-left-part {
+    width: 50%;
+    max-width: 400px;
+}
+
+.profile-page-right-part {
+    width: 50%;
+}
+
+.profile-page-avatar {
+    margin-top: 4%;
+    width: 60%;
+    border-radius: 100px;
+}
+
+.profile-page-personal-info-block {
+    background-color: #2727f8;
+    margin-bottom: 10%;
+    border-radius: 30px;
+    border-bottom: solid;
+    max-width: 300px;
+    padding: 3px;
+    text-align: center;
+    overflow-wrap: break-word;
+
+}
+
+.profile-page-job-info-block {
+    background-color: green;
+    border-radius: 30px;
+    border-bottom: solid;
+    margin-bottom: 10%;
+    padding: 3px;
+    max-width: 300px;
+    text-align: center;
+    overflow-wrap: break-word;
+}
+
+.profile-page-contacts-info-block {
+    background-color: red;
+    max-width: 300px;
+    border-radius: 30px;
+    padding: 3px;
+    text-align: center;
+    border-bottom: solid;
+    overflow-wrap: break-word;
+}
+
+.profile-page-input {
+    background-color: white;
+    border-radius: 20%;
+    border-color: orange;
+}
+
+STATUS
+.status-wrapper {
+    font-size: 1vmax;
+    width: 50%;
+}
+
+.status-container {
+    display: flex;
+    justify-content: center;
+     width: 100%;
+    word-wrap: break-word;
+}
+
+.status {
+    width: 50%;
+    word-wrap: break-word;
+}
+
+/*BREAKPOINTS*/
+@media (max-width: 800px) {
+    .container {
+        display: block;
+    }
+
+    .header {
+        max-width: 100%;
+        min-height: 4%;
+    }
+
+    .header-container {
+        padding: 0 !important;
+    }
+
+    .section-content {
+        max-width: 100%;
+        min-height: 720px;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .header-burger-navbar {
+        display: block;
+    }
+
+    .header-logout-button {
+        margin-right: 1%;
+    }
+}
+
+/*SETTINGS*/
+.settings-page-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding-top: 80px;
+}
+
+.settings-page-block {
+    text-align: center;
+    background-color: #d19549;
+    width: 75%;
+    min-height: 400px;
+    border-radius: 120px;
+    box-shadow: inset 6px 6px 6px #c48b45, inset -6px -6px 6px #d19549;
+}
+
+.settings-page-title {
+    font-size: 1.9vmax;
+}
+
+.settings-page-options-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.settings-keys-block {
+    padding-left: 10%;
+    text-align: left;
+}
+
+.settings-keys {
+    width: 110%;
+    padding: 5%;
+}
+
+.settings-switches-block {
+    width: 40%;
+}
+
+
+
+/***************************************************PAGINATOR****************************************/
+.paginator-block {
+    text-align: center;
+    margin: 0 auto;
+    background-color: orange;
+    max-width: 600px;
+    font-style: italic;
+    border-style: solid;
+    border-radius: 10px;
+}
+
+.paginator-page-number {
+    padding: 2px;
+}
+
+.paginator-page-number:hover, .paginator-selected-page:hover {
+    cursor: pointer;
+}
+
+.paginator-selected-page {
+    border-style: solid;
+    font-size: 20px;
+    border-width: 1px;
+    border-radius: 50px;
+    border-color: red;
+    background-color: yellow;
+}
+
+.paginator-left-button, .paginator-right-button {
+    font-size: 12px;
+    background-color: orangered;
+    border-radius: 40px;
+}
+
+.paginator-left-button:active, .paginator-right-button:active {
+    background-color: yellow;
+    color: red;
+}
+
+.paginator-left-button:hover, .paginator-right-button:hover {
+    cursor: pointer;
+}
+
+
+/***********************************************USERS*********************************************/
+.users-page-title {
+    letter-spacing: 2px;
+    font-family: Pacifico;
+    font-weight: 10;
+    padding-top: 10px;
+    text-align: center;
+    font-size: 25px;
+}
+
+.users-page-main-users-container {
+    position: relative;
+    top: 20px;
+    text-align: center;
+    font-size: 25px;
+    max-width: 800px;
+    min-height: 700px;
+    max-height: 1000000px;
+    margin: 0 auto;
+    border-radius: 100px;;
+    background-color: #f5ae58;
+    text-shadow: #2e2e2e 0 4px 5px;
+    box-shadow: inset 6px 6px 6px #c48b45, inset -6px -6px 6px #d19549;
+}
+
+.users-page-users-grid {
+    display: grid;
+    max-height: fit-content;
+    grid-template-columns: 20% 20% 20% 20%;
+}
+
+.users-page-user-block-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+
+.users-page-user-block {
+    border-radius: 50px;
+    max-width: 120px;
+    position: relative;
+    left: 50%;
+    top: 25%;
+    padding-bottom: 10px;
+}
+
+.users-page-user-block:hover {
+    cursor: pointer;
+    transition: 0.5s;
+    border-style: solid;
+    border-color: gold;
+    border-radius: 40px;
+}
+
+
+.users-page-avatar-small {
+    width: 100%;
+    border-radius: 100px;;
+}
+
+.users-page-user-name {
+    font-style: italic;
+    max-width: 80%;
+    word-wrap: break-word;
+    background-color: yellow;
+    border-radius: 10px;
+    font-size: 18px;
+    margin: 0 auto;
+}
+
+.users-page-user-status {
+    font-style: italic;
+    max-width: 80%;
+    font-size: 16px;
+    word-wrap: break-word;
+    background-color: red;
+    border-radius: 20px;
+    margin: 0 auto;
+}
+
+
+.users-page-follow-button {
+    margin-top: 10px;
+    font-size: 17px;
+    border-radius: 10px;
+    font-family: Teko;
+}
+
+/*SETTINGS-SWITCH*/
+.switch-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 1em;
+}
+
+.switch {
+    display: inline-block;
+    position: relative;
+    /*
+    SIZE OF SWITCH
+    ==============
+    All sizes are in em - therefore
+    changing the font-size here
+    will change the size of the switch.
+    See .switch-small below as example.
+    */
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    color: #3f3c3c;
+    width: 7em;
+    height: 4em;
+    overflow: hidden;
+    border-bottom: 0.5em solid #ff992b;
+}
+
+.switch-small {
+    font-size: 0.45em; /* Sizes the switch */
+    margin: 1em;
+}
+
+.switch::before {
+    content: "";
+    position: absolute;
+    top: 0.5em;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #999;
+    border: 0.5em solid #ff992b;
+    border-bottom: 0;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.switch-left,
+.switch-right {
+    cursor: pointer;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.5em;
+    width: 3em;
+    transition: 0.2s;
+}
+
+.switch-left {
+    height: 2.4em;
+    width: 2.75em;
+    left: 0.85em;
+    bottom: 0.4em;
+    background-color: #ddd;
+    transform: rotate(15deg) skewX(15deg);
+}
+
+.switch-right {
+    right: 0.5em;
+    bottom: 0;
+    background-color: #bd5757;
+    color: #fff;
+}
+
+.switch-left::before,
+.switch-right::before {
+    content: "";
+    position: absolute;
+    width: 0.4em;
+    height: 2.45em;
+    bottom: -0.45em;
+    background-color: #ccc;
+    transform: skewY(-65deg);
+}
+
+.switch-left::before {
+    left: -0.4em;
+}
+
+.switch-right::before {
+    right: -0.375em;
+    background-color: transparent;
+    transform: skewY(65deg);
+}
+
+.switch-input:checked + .switch-left {
+    background-color: #ff0707;
+    color: #ffd929;
+    bottom: 0px;
+    left: 0.5em;
+    height: 2.5em;
+    width: 3em;
+    transform: rotate(0deg) skewX(0deg);
+}
+
+.switch-input:checked + .switch-left::before {
+    background-color: transparent;
+    width: 3.0833em;
+}
+
+.switch-input:checked + .switch-left + .switch-right {
+    background-color: #ddd;
+    color: #888;
+    bottom: 0.4em;
+    right: 0.8em;
+    height: 2.4em;
+    width: 2.75em;
+    transform: rotate(-15deg) skewX(-15deg);
+}
+
+.switch-input:checked + .switch-left + .switch-right::before {
+    background-color: #ccc;
+}
+
+
+@media (max-width: 528px) {
+    .header-slogan-block {
+        letter-spacing: 0.2rem;
+    }
+}
+
+@media (max-width: 439px) {
+    .header-current-user-block {
+        display: block;
+    }
+
+    .header-current-user-label, .header-current-user-name {
+        display: none;
+    }
+
+    .header-current-user-avatar {
+        margin-right: 20px;
+        border-radius: 50px;
+        max-width: 40px;
+    }
+
+    .settings-page-block {
+        padding: 5%;
+    }
+}
+
+@media (max-width: 327px) {
+    .header-current-user-avatar {
+        margin: auto auto auto -30%;
+    }
+}
+
+
+
+
+
