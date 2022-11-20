@@ -593,19 +593,25 @@ meter {
     /*align-items: center;*/
 }
 
+/*PROFILE-LEFT-PART*/
 .profile-page-left-part {
     width: 50%;
     max-width: 400px;
-}
-
-.profile-page-right-part {
-    width: 50%;
 }
 
 .profile-page-avatar {
     margin-top: 4%;
     width: 60%;
     border-radius: 100px;
+}
+
+/*PROFILE-RIGHT-PART*/
+.profile-page-right-part {
+    width: 50%;
+}
+
+.profile-page-input-error {
+    color: red;
 }
 
 .profile-page-personal-info-block {
@@ -617,7 +623,6 @@ meter {
     padding: 3px;
     text-align: center;
     overflow-wrap: break-word;
-
 }
 
 .profile-page-job-info-block {
@@ -647,16 +652,12 @@ meter {
     border-color: orange;
 }
 
-STATUS
-.status-wrapper {
-    font-size: 1vmax;
-    width: 50%;
-}
 
+/*STATUS*/
 .status-container {
     display: flex;
     justify-content: center;
-     width: 100%;
+    width: 100%;
     word-wrap: break-word;
 }
 
@@ -738,7 +739,6 @@ STATUS
 .settings-switches-block {
     width: 40%;
 }
-
 
 
 /***************************************************PAGINATOR****************************************/
