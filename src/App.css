@@ -110,6 +110,7 @@ meter {
 .section-content {
     position: relative;
     grid-area: c;
+    min-height: 800px;
     text-align: center;
     background-color: yellow;
 }
@@ -118,7 +119,7 @@ meter {
     position: relative;
     background-color: yellow;
     max-width: 100%;
-    min-height: 700px;
+    min-height: 92.6vh;
     max-height: fit-content;
     padding-top: 5%;
 }
@@ -443,9 +444,9 @@ meter {
     color: white;
 }
 
-.login-page-auth-error {
-    margin-top: 150px;
-}
+/*.login-page-auth-error {*/
+/*    margin-top: 150px;*/
+/*}*/
 
 .signUpBlock {
     letter-spacing: 1px;
