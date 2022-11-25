@@ -100,7 +100,7 @@ const LoginPage = (props) => {
                                 type={"submit"}>Login
                         </button>
                     </div>
-                    {props.error && <div className={"login-page-auth-error"}>Wrong Email or password</div>}
+                    {props.error && <div className={"login-page-auth-error login-page-errors"}>Wrong Email or password</div>}
                     <div>Not a member? <div><Link className={"login-page-signUp-button"}
                                                   to="//social-network.samuraijs.com/signUp"
                                                   target="_blank">Sign up</Link></div>

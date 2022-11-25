@@ -110,6 +110,7 @@ meter {
 .section-content {
     position: relative;
     grid-area: c;
+    min-height: 800px;
     text-align: center;
     background-color: yellow;
 }
@@ -118,7 +119,7 @@ meter {
     position: relative;
     background-color: yellow;
     max-width: 100%;
-    min-height: 700px;
+    min-height: 92.6vh;
     max-height: fit-content;
     padding-top: 5%;
 }
@@ -443,9 +444,9 @@ meter {
     color: white;
 }
 
-.login-page-auth-error {
-    margin-top: 150px;
-}
+/*.login-page-auth-error {*/
+/*    margin-top: 150px;*/
+/*}*/
 
 .signUpBlock {
     letter-spacing: 1px;
@@ -593,19 +594,25 @@ meter {
     /*align-items: center;*/
 }
 
+/*PROFILE-LEFT-PART*/
 .profile-page-left-part {
     width: 50%;
     max-width: 400px;
-}
-
-.profile-page-right-part {
-    width: 50%;
 }
 
 .profile-page-avatar {
     margin-top: 4%;
     width: 60%;
     border-radius: 100px;
+}
+
+/*PROFILE-RIGHT-PART*/
+.profile-page-right-part {
+    width: 50%;
+}
+
+.profile-page-input-error {
+    color: red;
 }
 
 .profile-page-personal-info-block {
@@ -617,7 +624,6 @@ meter {
     padding: 3px;
     text-align: center;
     overflow-wrap: break-word;
-
 }
 
 .profile-page-job-info-block {
@@ -632,7 +638,7 @@ meter {
 }
 
 .profile-page-contacts-info-block {
-    background-color: red;
+    background-color: #42b3a6;
     max-width: 300px;
     border-radius: 30px;
     padding: 3px;
@@ -647,21 +653,17 @@ meter {
     border-color: orange;
 }
 
-STATUS
-.status-wrapper {
-    font-size: 1vmax;
-    width: 50%;
-}
 
+/*STATUS*/
 .status-container {
     display: flex;
     justify-content: center;
-     width: 100%;
+    width: 100%;
     word-wrap: break-word;
 }
 
 .status {
-    width: 50%;
+    width: 95%;
     word-wrap: break-word;
 }
 
@@ -738,7 +740,6 @@ STATUS
 .settings-switches-block {
     width: 40%;
 }
-
 
 
 /***************************************************PAGINATOR****************************************/
