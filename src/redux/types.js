@@ -12,6 +12,8 @@ export const SET_MY_DATA = 'SET_MY_DATA'
 export const LOG_STATUS = 'LOG_STATUS'
 export const FAKE = 'FAKE'
 export const DELETE = 'DELETE'
+export const API_KEY = "API_KEY"
+export const PRE_LOG_STATUS = "PRE_LOG_STATUS"
 
 //DIALOGS
 export const ADD_MESSAGE = 'ADD_MESSAGE'

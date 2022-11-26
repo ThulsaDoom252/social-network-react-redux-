@@ -1,4 +1,5 @@
 import axios from "axios";
+import {loginFetchAC} from "../redux/auth-reducer";
 
 let apiKey = localStorage.getItem("apiKey".toString())
 window.apiKey = apiKey
@@ -115,9 +116,9 @@ export const profileApi = {
 export const loginApi = {
     auth: () => {
         return instance.get('auth/me').then(response => {
-            return response.data
-        })
-
+                return response.data
+            }
+        )
     },
 
     getCaptcha: () => {
@@ -141,7 +142,6 @@ export const loginApi = {
             return response.data
         })
     }
-
 }
 
 

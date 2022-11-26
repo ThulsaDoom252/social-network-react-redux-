@@ -1,12 +1,17 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {connect} from "react-redux";
 import {Navigate} from "react-router-dom";
 import SignUpBlock from "./SignUpBlock";
 import SignInBlock from "./SignInBlock";
+import ApiKeyBlock from "./ApiKeyBlock";
 
 const LoginPage = (props) => {
     if (props.auth) return <Navigate to={'/profile'}/>
     let [showSignInBlock, toggleShowSignInBlock] = useState(true)
+    let [showApiBlock, toggleApiBlock] = useState(false)
+    useEffect(() => {
+        toggleApiBlock(props.preLogged)
+    }, [props.preLogged])
     return (
         <div className={"login-page-container"}>
             <div className={"login-page-wallpaper"}>
@@ -33,8 +38,9 @@ const LoginPage = (props) => {
                 </div>
             </div>
             <div className={"login-page-right-part-container"}>
-                {!showSignInBlock && <SignUpBlock/>}
-                {showSignInBlock && <SignInBlock/>}
+                {!showSignInBlock && !showApiBlock && <SignUpBlock/>}
+                {showSignInBlock && !showApiBlock && <SignInBlock/>}
+                {showApiBlock && <ApiKeyBlock/>}
             </div>
         </div>
     )
@@ -43,6 +49,7 @@ const LoginPage = (props) => {
 let mapStateToProps = (state) => {
     return {
         auth: state.auth.isLogged,
+        preLogged: state.auth.preLogged
     }
 }
 

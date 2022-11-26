@@ -91,6 +91,14 @@ meter {
     -webkit-user-drag: element;
 }
 
+/*Make input fields transparent on autofill */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+}
+
 /*MAIN CONTAINERS*/
 .container {
     max-width: 1000px;
@@ -377,13 +385,13 @@ meter {
     cursor: pointer;
 }
 
-/*RIGHT PART SIGNUP*/
+/*SIGNUP BLOCk*/
 .login-page-right-part-container {
     width: 70%;
 }
 
 .login-page-right-part-signUp-block {
-    padding: 12% 0 0 10%;
+    padding: 3% 0 0 10%;
     width: 100%;
     text-align: center;
 }
@@ -391,14 +399,16 @@ meter {
 .login-page-right-part-signUp-label {
     background-image: url("./components/Login/Back-1.png");
     background-repeat: no-repeat;
-    background-size: 30%;
-    background-position-x: 110px;
+    background-size: 50%;
+    background-position-x: 140px;
+    background-position-y: -10px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: green;
+    font-family: "Fira Sans";
     font-size: 2.5rem;
-    height: 100px;
+    height: 250px;
     /*clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);*/
 }
 
@@ -417,10 +427,11 @@ meter {
     letter-spacing: 1px;
 }
 
-.login-page-right-part-signUp-link:hover {
+.login-page-right-part-signUp-link:hover, .login-page-submit-button:hover {
     border: solid #ee803d 4px;
     color: white;
     transition: 0.1s;
+    cursor: pointer;
 }
 
 /*SIGN IN BLOCK*/
@@ -469,8 +480,10 @@ meter {
     margin: auto 350px auto auto;
 }
 
-.login-page-inputs, .login-page-captcha-input {
+.login-page-inputs {
     position: fixed;
+}
+.login-page-inputs, .login-page-captcha-input {
     width: 300px;
     text-align: center;
     font-family: Teko;
@@ -482,6 +495,17 @@ meter {
     border-width: thin;
 }
 
+
+.login-page-captcha-block {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+
+}
+
 .login-page-rememberMe-container {
     font-size: 1rem;
     margin: 40px auto auto auto;
@@ -489,8 +513,16 @@ meter {
     letter-spacing: 1px
 }
 
+.login-page-login-button-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-around;
+}
 
-.login-page-login-button {
+.login-page-login-button, .login-page-submit-button {
     margin: 30px auto auto auto;
     background-color: #3f3c3c;
     color: rgba(255, 255, 255, 0.74);
@@ -501,6 +533,12 @@ meter {
     transition: 0.5s;
 }
 
+.login-page-login-button:disabled {
+    background-color: #ffffff;
+    color: #171515;
+    border: solid black 1px;
+}
+
 .login-page-login-button:hover {
     transition: 0.1s;
     color: #ffffff;
@@ -508,108 +546,30 @@ meter {
     cursor: pointer;
 }
 
-.login-page-login-button:disabled {
-    background-color: black;
-    color: white;
-}
 
-
-.login-page-logo {
-    width: 250px;
-    margin: auto;
-    border-radius: 50%;
-    z-index: 1;
-}
-
-.login-page-title {
-    font-family: Teko;
-}
-
-.login-page-animation {
-    background-image: url(https://thumbs.gfycat.com/AccuratePeacefulGraywolf-size_restricted.gif);
-    background-size: cover;
-    color: transparent;
-    -webkit-background-clip: text;
-    font-family: Fascinate;
-}
-
-.login-page-inputs-block {
-    width: 210px;
-    text-align: center;
-}
-
-.login-page-inputs-block div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    align-content: center;
-}
-
-.login-page-inputs-block label {
-    position: relative;
-    top: 10.5px;
-    letter-spacing: 1px;
-}
-
-.login-page-login-input:focus, .login-page-password-input:focus, .login-page-key-input:focus {
-    transition: 0.5s;
-    box-shadow: inset 6px 6px 6px #c48b45, inset -6px -6px 6px #f5e642;
-}
-
-.login-page-captcha-block {
-    color: black;
-}
-
-.login-page-captcha-image {
-    border-radius: 20px;
-}
-
-/*.login-page-captcha-input {*/
-/*    background-color: #f5ae58;*/
-/*    font-size: 14px;*/
-/*    box-shadow: inset 6px 6px 6px #c48b45, inset -6px -6px 6px #d19549;*/
-/*    margin-top: 20px;*/
-/*    letter-spacing: 1px;*/
-/*    width: 180px;*/
-/*    margin-left: 105px;*/
-/*    display: block;*/
-/*    padding: 10px;*/
-/*    !*height: 10px;*!*/
-/*    border-radius: 50px;*/
-/*    outline: none;*/
-/*    border: none;*/
-/*    text-align: center;*/
-/*}*/
-
-.login-page-key-error-container {
-    width: 200px;
-    margin: 0 auto;
-}
-
-.login-page-errors {
-    margin-left: 16%;
+.login-page-auth-error {
+    top: 80px;
     color: red;
+    position: absolute;
 }
 
-.signUpBlock {
-    letter-spacing: 1px;
-}
-
-.login-page-signUp-button {
-    text-decoration: none;
-    font-size: 18px;
-}
-
-.login-page-signUp-button:hover {
-    transition: 2ms;
-    color: #f5e642;
-    cursor: pointer;
-}
-
-.login-about-block {
-    margin: 0 auto;
-    width: 200px;
+/*API KEY BLOCK*/
+.login-page-apiKey-container {
+    margin-top: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     text-align: center;
+    align-items: center;
+}
+
+.login-page-apiKey-label {
+    font-family: "Fira Sans";
+    font-size: 1.5rem;
+}
+
+.login-page-submit-button {
+   margin-top: 100px;
 }
 
 /*UNDER CONSTRUCTION*/
