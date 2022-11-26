@@ -100,13 +100,6 @@ meter {
     grid-template-columns: 15% auto;
 }
 
-.container-logout {
-    max-width: 1000px;
-    min-height: 800px;
-    max-height: fit-content;
-    margin: 0 auto;
-}
-
 .section-content {
     position: relative;
     grid-area: c;
@@ -115,10 +108,17 @@ meter {
     background-color: yellow;
 }
 
+.container-logout {
+    max-width: 100vw;
+    min-height: 100vh;
+    max-height: fit-content;
+    margin: 0 auto;
+    background-color: #5ee7c1;
+}
+
 .section-content-logout {
     position: relative;
-    background-color: yellow;
-    max-width: 100%;
+    background-color: #5ee7c1;
     min-height: 92.6vh;
     max-height: fit-content;
     padding-top: 5%;
@@ -309,19 +309,136 @@ meter {
 }
 
 /*************************LOGIN PAGE*********************/
-.login-page-block {
-    text-align: center;
+.login-page-container {
     margin: 0 auto;
-    position: relative;
-    top: 10%;
-    border-radius: 20px;
     display: flex;
+    height: 80vh;
+    width: 70%;
+    background-color: white;
+    border-radius: 2%;
+}
+
+/*LEFT PART*/
+.login-page-wallpaper {
+    background: url("https://elitex.systems/blog/wp-content/uploads/2021/04/react-advantage-1024x683.jpg");
+    width: 55%;
+    background-position: center;
+    border-top-left-radius: 2%;
+    border-bottom-left-radius: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-page-left-part {
+    border-radius: 5%;
+    padding: 5%;
+    color: white;
+    width: 70%;
+    height: 75%;
+    background: rgba(173, 255, 191, 0.2);
+}
+
+.login-page-left-part-slogan-block {
+    width: 29%;
+    font-weight: bold;
+    font-size: 0.95rem;
+    border-radius: 10%;
+    text-align: center;
+    padding: 1%;
+    background-color: gray;
+}
+
+.login-page-left-part-line {
+    background-color: white;
+    margin-top: 4%;
+    width: 50px;
+    height: 2px;
+}
+
+.login-page-left-part-content {
+    margin-top: 5%;
+}
+
+.login-page-left-part-content-first-line {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.login-page-left-part-content-second-line {
+    padding: 2% 0 2% 0;
+    font-size: 1.4rem;
+}
+
+.login-page-left-part-content-last-line {
+    padding: 1% 0 0 0;
+}
+
+.login-page-left-part-signUp-block {
+    margin-top: 25%;
+}
+
+.login-page-left-part-content-signIn-button:hover {
+    cursor: pointer;
+}
+
+/*RIGHT PART*/
+.login-page-right-part-container {
+    width: 45%;
+}
+
+/*.login-page-right-part {*/
+/*    text-align: center;*/
+/*    position: relative;*/
+/*    top: 10%;*/
+/*    border-radius: 20px;*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    background-color: #ffffff;*/
+/*    width: 50%;*/
+/*    box-shadow: inset 6px 6px 6px #ffffff, inset -6px -6px 6px #ffffff;*/
+/*}*/
+
+.login-page-right-part-signUp-block {
+    padding: 12% 0 0 10%;
+    width: 100%;
+    text-align: center;
+}
+
+.login-page-right-part-signUp-label {
+    background-image: url("./components/Login/Back-1.png");
+    background-repeat: no-repeat;
+    background-size: 65%;
+    background-position-x: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: green;
+    font-size: 2.5rem;
+    height: 100px;
+    /*clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);*/
+}
+
+.login-page-right-part-signUp-link {
+    margin: 30% 15% auto auto;
+    display: flex;
+    border-radius: 4px;
     justify-content: center;
     align-items: center;
-    background-color: #f5ae58;
-    max-width: 400px;
-    min-width: 200px;
-    box-shadow: inset 6px 6px 6px #c48b45, inset -6px -6px 6px #d19549;
+    background-color: #3f3c3c;
+    width: 80%;
+    height: 50px;
+    color: #d0c8c8;
+    text-align: center;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.login-page-right-part-signUp-link:hover {
+    border: solid #ee803d 4px;
+    color: white;
+    transition: 0.1s;
 }
 
 .login-page-logo {

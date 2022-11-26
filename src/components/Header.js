@@ -19,23 +19,30 @@ const Header = (props) => {
         }, 2000)
     }
     return (
-        <header style={{"padding": props.auth && "4%"}} className={"header-container"}>
-            {props.auth && <BurgerNavbar/>}
-            <div className="header-slogan-block">
-                <p className={"header-slogan-title"}>R.S.S.N</p>
-                <p className="header-slogan">Watch.Learn.Win</p>
-            </div>
-            {props.auth && <div className={"header-current-user-block"}>
-                {props.avatar &&
-                    <img className={"header-current-user-avatar"} src={props.avatar}
-                         alt={"avatar logo"}/>}
-                <div className={"header-current-user-name-block"}>
-                    <p className="header-current-user-label">Welcome</p>
-                    <NavLink to={`/profile/` + props.id} className={"header-current-user-name"}>{props.login}</NavLink>
-                </div>
-            </div>}
-            {props.auth && <button title="logout" className={"header-logout-button"} onClick={logOut}><RiLogoutBoxRLine/></button>}
-        </header>
+        <div>
+            {props.auth &&
+                <header style={{"padding": props.auth && "4%"}} className={"header-container"}>
+                    {props.auth && <BurgerNavbar/>}
+                    <div className="header-slogan-block">
+                        <p className={"header-slogan-title"}>R.S.S.N</p>
+                        <p className="header-slogan">Watch.Learn.Win</p>
+                    </div>
+                    {props.auth && <div className={"header-current-user-block"}>
+                        {props.avatar &&
+                            <img className={"header-current-user-avatar"} src={props.avatar}
+                                 alt={"avatar logo"}/>}
+                        <div className={"header-current-user-name-block"}>
+                            <p className="header-current-user-label">Welcome</p>
+                            <NavLink to={`/profile/` + props.id}
+                                     className={"header-current-user-name"}>{props.login}</NavLink>
+                        </div>
+                    </div>}
+                    {props.auth &&
+                        <button title="logout" className={"header-logout-button"} onClick={logOut}><RiLogoutBoxRLine/>
+                        </button>}
+                </header>
+            }
+        </div>
     )
 }
 

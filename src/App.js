@@ -7,7 +7,7 @@ import Footer from "./components/Footer";
 import {BrowserRouter, Routes, Router, Route} from "react-router-dom";
 import Settings from "./components/Settings/Settings";
 import News from "./components/News";
-import Login from "./components/Login";
+import Login from "./components/Login/Login";
 import {connect} from "react-redux";
 import Initialize from "./components/Initialize";
 import {initializeTC} from "./redux/app-reducer";
@@ -43,7 +43,7 @@ function App(props) {
                             <Route path="*" element={<NotFound/>}/>
                             <Route path="/profile/*" element={<NotFound/>}/>
                         </Routes>
-                        <Footer/>
+                        {/*<Footer/>*/}
                     </section>
                 </div>
             </BrowserRouter>
