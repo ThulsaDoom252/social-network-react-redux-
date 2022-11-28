@@ -1,7 +1,6 @@
 import React from "react";
 import fetching from "../../common/ModuleFetching.gif"
 import NotFound from "../../common/NotFound";
-import Status from "./Status";
 import ProfileData from "./profileData";
 import ProfileAvatar from "./profileAvatar";
 

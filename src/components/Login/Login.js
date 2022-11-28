@@ -1,17 +1,23 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {connect} from "react-redux";
 import {Navigate} from "react-router-dom";
 import SignUpBlock from "./SignUpBlock";
 import SignInBlock from "./SignInBlock";
-import ApiKeyBlock from "./ApiKeyBlock";
 
 const LoginPage = (props) => {
     if (props.auth) return <Navigate to={'/profile'}/>
     let [showSignInBlock, toggleShowSignInBlock] = useState(true)
-    let [showApiBlock, toggleApiBlock] = useState(false)
-    useEffect(() => {
-        toggleApiBlock(props.preLogged)
-    }, [props.preLogged])
+    let [signButtonDisabled, disableSignButton] = useState(false)
+    const switchRelay = () => showSignInBlock ? toggleShowSignInBlock(false) : toggleShowSignInBlock(true)
+    const disableRelay = () => {
+        switchRelay()
+        disableSignButton(true)
+        setTimeout(() => {
+            disableSignButton(false)
+        }, 1000)
+
+    }
+
     return (
         <div className={"login-page-container"}>
             <div className={"login-page-wallpaper"}>
@@ -31,16 +37,17 @@ const LoginPage = (props) => {
                     </div>
                     <div className={"login-page-left-part-signUp-block"}>
                         <p>{showSignInBlock ? "Not a member?" : "Already have an account?"}</p>
-                        <button onClick={() => !showSignInBlock ? toggleShowSignInBlock(true) : toggleShowSignInBlock(false)}
-                                className={"login-page-left-part-content-signIn-button"}>{showSignInBlock ? "Sign Up" : "Sign In"}
+                        <button
+                            disabled={signButtonDisabled}
+                            onClick={disableRelay}
+                            className={"login-page-left-part-content-signIn-button"}>{showSignInBlock ? "Sign Up" : "Sign In"}
                         </button>
                     </div>
                 </div>
             </div>
             <div className={"login-page-right-part-container"}>
-                {!showSignInBlock && !showApiBlock && <SignUpBlock/>}
-                {showSignInBlock && !showApiBlock && <SignInBlock/>}
-                {showApiBlock && <ApiKeyBlock/>}
+                {!showSignInBlock && <SignUpBlock/>}
+                {showSignInBlock && <SignInBlock/>}
             </div>
         </div>
     )

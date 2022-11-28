@@ -1,5 +1,4 @@
 import axios from "axios";
-import {loginFetchAC} from "../redux/auth-reducer";
 
 let apiKey = localStorage.getItem("apiKey".toString())
 window.apiKey = apiKey

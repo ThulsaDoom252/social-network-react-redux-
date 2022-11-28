@@ -1,10 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {useFormik} from "formik";
 import * as Yup from "yup";
-import {specialChars} from "@testing-library/user-event";
 import {connect} from "react-redux";
-import {changeFetch, getCaptchaTC, loginFetchAC, mainLoginTC} from "../../redux/auth-reducer";
-import {FaKey, FaLock, FaUser} from "react-icons/all";
+import {getCaptchaTC, loginFetchAC, mainLoginTC} from "../../redux/auth-reducer";
 import login from "./Login";
 
 const SignInBlock = (props) => {
@@ -17,13 +15,10 @@ const SignInBlock = (props) => {
             password: 'devastator252',
             rememberMe: false,
             antiBotSymbols: '',
-            key: 'ecd08681-6048-43b3-9ce2-877a7dbc2176',
         },
         validationSchema: Yup.object({
             login: Yup.string().max(50, 'login must be shorter than 10 characters').required(),
             password: Yup.string().min(6, 'password must contain at least 6 characters').required(),
-            key: Yup.string().min(36, "key must be at least 36 characters, including letters, numbers & special characters").matches(["a-z"] & [0 - 9] & specialChars, "It's not looking like an api-key!").required(),
-
         }),
         onSubmit: ({login, password, rememberMe, antiBotSymbols}) => {
             props.mainLoginTC(login, password, rememberMe, antiBotSymbols)
@@ -36,6 +31,8 @@ const SignInBlock = (props) => {
     let handleSubmit = formik.handleSubmit
     let touched = formik.touched
     let handleBlur = formik.handleBlur
+    window.ce = props.captchaError
+    window.ca = props.captcha
 
     return (
         <form onSubmit={handleSubmit}>
@@ -46,7 +43,6 @@ const SignInBlock = (props) => {
                     <div className={"login-page-input-container"}>
                         {errors.login && touched.login ?
                             <p className={"login-page-input-error"}>{errors.login}</p> : null}
-                        <label className={"login-page-input-icons"}><FaUser/></label>
                         <input className={"login-page-inputs"}
                                id={"login"}
                                type="text"
@@ -60,7 +56,6 @@ const SignInBlock = (props) => {
                         {touched.password && errors.password ?
                             <p className={"login-page-input-error"}>{errors.password}</p> : null}
                         <p className={"login-page-input-error"}>{errors.password && touched.password}</p>
-                        <label className={"login-page-input-icons"}><FaLock/></label>
                         <input className={"login-page-inputs"}
                                id={"password"}
                                placeholder={"password"}
@@ -96,8 +91,7 @@ const SignInBlock = (props) => {
                             "Please wait....": "Log in"}
                         </button>
                         {props.error &&
-                            <p className={"login-page-auth-error"}>Wrong Email or
-                                password</p>}
+                            <p className={"login-page-auth-error"}>{props.errorMessage}</p>}
                     </div>
                 </div>
             </div>
@@ -112,7 +106,8 @@ let mapStateToProps = (state) => {
         error: state.auth.error,
         apiKey: state.auth.apiKey,
         captcha: state.auth.captcha,
-        loginFetch: state.auth.fetching
+        loginFetch: state.auth.fetching,
+        errorMessage: state.auth.errorMessage
     }
 }
 

@@ -1,4 +1,4 @@
-import {loginTC} from "./auth-reducer";
+import {loginCheckTC, loginTC} from "./auth-reducer";
 import {HIDE_FOOTER, NIGHTMODE_RELAY, SET_INITIALIZATION, SWITCH_CONSTRUCTION} from "./types";
 
 //ACTION CREATORS

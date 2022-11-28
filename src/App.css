@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Fascinate&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 /***
     The new CSS reset - version 1.7.3 (last updated 7.8.2022)
     GitHub page: https://github.com/elad2412/the-new-css-reset
@@ -122,8 +122,11 @@ input:-webkit-autofill:active {
 
 .container-logout {
     background-color: #5ee7c1;
-    padding-top: 80px;
+    width: 100%;
     height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -315,10 +318,33 @@ input:-webkit-autofill:active {
 .login-page-container {
     margin: 0 auto;
     display: flex;
-    height: 80vh;
+    height: 79vh;
     width: 1150px;
     background-color: white;
     border-radius: 2%;
+    animation: loginAppear 1.5s forwards;
+}
+
+@keyframes loginAppear {
+    0% {
+        opacity: 0;
+        margin-bottom: 50px;
+    }
+
+    100% {
+        opacity: 1;
+        margin-bottom: 0;
+    }
+}
+
+@keyframes loginBlockAppear {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 /*LEFT PART*/
@@ -338,8 +364,9 @@ input:-webkit-autofill:active {
     padding: 5%;
     color: white;
     width: 70%;
+    font-family: "Open Sans";
     height: 75%;
-    background: rgb(255, 107, 10, 0.4);
+    background: rgb(255, 107, 10, 0.3);
 }
 
 .login-page-left-part-slogan-block {
@@ -349,7 +376,7 @@ input:-webkit-autofill:active {
     border-radius: 10%;
     text-align: center;
     padding: 1%;
-    background-color: gray;
+    background: rgb(172, 151, 151, 0.3);
 }
 
 .login-page-left-part-line {
@@ -359,41 +386,78 @@ input:-webkit-autofill:active {
     height: 2px;
 }
 
+@media only screen and (max-width: 1149px) {
+    .login-page-wallpaper {
+        display: none;
+    }
+    .login-page-container {
+        margin: 0 auto;
+        display: flex;
+        max-width: 400px !important;
+        min-width: 280px !important;
+        background-color: white;
+        justify-content: center;
+        align-content: center;
+        border-radius: 2%;
+        animation: loginAppear 1.5s forwards;
+    }
+
+    .login-page-right-part-signIn-block {
+        font-family: "Open Sans";
+        padding: 0 7px 0 0 !important;
+        background-position-x: -80px !important;
+        background-size: 450px !important;
+    }
+}
+
 .login-page-left-part-content {
     margin-top: 5%;
 }
 
 .login-page-left-part-content-first-line {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: bold;
 }
 
 .login-page-left-part-content-second-line {
-    padding: 2% 0 2% 0;
-    font-size: 1.4rem;
+    padding: 2% 0 5% 0;
+    font-size: 1.6rem;
 }
 
 .login-page-left-part-content-last-line {
-    padding: 1% 0 0 0;
+    padding: 5% 0 0 0;
 }
 
 .login-page-left-part-signUp-block {
     margin-top: 25%;
 }
 
+.login-page-left-part-content-signIn-button {
+    transition: 0.5s;
+}
+
 .login-page-left-part-content-signIn-button:hover {
     cursor: pointer;
 }
 
-/*SIGNUP BLOCk*/
+.login-page-left-part-content-signIn-button:disabled {
+    transition: 0.5s;
+    color: gray;
+    cursor: wait;
+}
+
+/*RIGHT PART*/
 .login-page-right-part-container {
     width: 70%;
 }
 
+/*SIGNUP BLOCk*/
 .login-page-right-part-signUp-block {
-    padding: 3% 0 0 10%;
+    transition: 2ms;
+    padding: 3% 0 10% 10%;
     width: 100%;
     text-align: center;
+    animation: loginBlockAppear 500ms forwards;
 }
 
 .login-page-right-part-signUp-label {
@@ -409,7 +473,6 @@ input:-webkit-autofill:active {
     font-family: "Fira Sans";
     font-size: 2.5rem;
     height: 250px;
-    /*clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);*/
 }
 
 .login-page-right-part-signUp-link {
@@ -427,6 +490,7 @@ input:-webkit-autofill:active {
     letter-spacing: 1px;
 }
 
+
 .login-page-right-part-signUp-link:hover, .login-page-submit-button:hover {
     border: solid #ee803d 4px;
     color: white;
@@ -436,18 +500,21 @@ input:-webkit-autofill:active {
 
 /*SIGN IN BLOCK*/
 .login-page-right-part-signIn-block {
+    transition: 2ms;
     background-image: url("./components/Login/SignIn-logo.png");
-    background-size: contain;
+    background-size: 420px;
     background-repeat: no-repeat;
-    background-position-x: 95px;
-    background-position-y: 40px;
+    background-position-x: 120px;
+    background-position-y: 24px;
     margin-top: 25px;
-    padding: 50px 0 0 40px;
+    padding: 15px 0 0 40px;
     text-align: center;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    animation: loginBlockAppear 500ms forwards;
+
 }
 
 .login-page-welcome-label {
@@ -467,7 +534,7 @@ input:-webkit-autofill:active {
     flex-wrap: nowrap;
     align-items: center;
     justify-content: space-around;
-    margin: 80px auto auto auto;
+    margin: 50px auto auto auto;
 }
 
 .login-page-input-error {
@@ -476,13 +543,6 @@ input:-webkit-autofill:active {
     position: absolute;
 }
 
-.login-page-input-icons {
-    margin: auto 350px auto auto;
-}
-
-.login-page-inputs {
-    position: fixed;
-}
 .login-page-inputs, .login-page-captcha-input {
     width: 300px;
     text-align: center;
@@ -508,7 +568,7 @@ input:-webkit-autofill:active {
 
 .login-page-rememberMe-container {
     font-size: 1rem;
-    margin: 40px auto auto auto;
+    margin: 30px auto auto auto;
     font-family: "Fira Sans";
     letter-spacing: 1px
 }
@@ -522,8 +582,8 @@ input:-webkit-autofill:active {
     justify-content: space-around;
 }
 
-.login-page-login-button, .login-page-submit-button {
-    margin: 30px auto auto auto;
+.login-page-login-button {
+    margin: 25px auto auto auto;
     background-color: #3f3c3c;
     color: rgba(255, 255, 255, 0.74);
     border-radius: 5px;
@@ -546,30 +606,16 @@ input:-webkit-autofill:active {
     cursor: pointer;
 }
 
-
 .login-page-auth-error {
-    top: 80px;
+    top: 79px;
     color: red;
     position: absolute;
 }
 
-/*API KEY BLOCK*/
-.login-page-apiKey-container {
-    margin-top: 150px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    text-align: center;
-    align-items: center;
-}
-
-.login-page-apiKey-label {
-    font-family: "Fira Sans";
-    font-size: 1.5rem;
-}
-
-.login-page-submit-button {
-   margin-top: 100px;
+.login-page-captcha-error {
+    position: absolute;
+    top: 65px;
+    color: red;
 }
 
 /*UNDER CONSTRUCTION*/

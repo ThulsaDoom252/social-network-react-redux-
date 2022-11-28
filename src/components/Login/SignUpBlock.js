@@ -6,7 +6,7 @@ const SignUpBlock = (props) => {
         <div className={"login-page-right-part-signUp-block"}>
             <h1 className={"login-page-right-part-signUp-label"}>No account?</h1>
             <p className={"login-page-right-part-signUp-link"}>
-                <Link to="//social-network.samuraijs.com/signUp" target="_blank">Sign up</Link>
+                <Link style={{"width":"100%"}} to="//social-network.samuraijs.com/signUp" target="_blank">Sign up</Link>
             </p>
         </div>
     )

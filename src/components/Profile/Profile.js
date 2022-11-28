@@ -24,6 +24,8 @@ const Profile = (props) => {
         props.setUserTC(userId)
     }, [props.router.params.userId])
 
+    window.auth = props.auth
+
     return (
         <div>
             <ProfileInfo  {...props} userId={props.router.params.userId}/>
