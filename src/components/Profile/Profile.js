@@ -27,8 +27,10 @@ const Profile = (props) => {
     window.auth = props.auth
 
     return (
-        <div>
+        <div className={"profile-main-container"}>
+            <div></div>
             <ProfileInfo  {...props} userId={props.router.params.userId}/>
+            <div></div>
         </div>
     )
 

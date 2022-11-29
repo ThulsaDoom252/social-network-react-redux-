@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import './App.css';
-import Header from "./components/Header";
+import Header from "./components/Header/Header";
 import Sidebar from "./components/Sidebar";
 import Profile from "./components/Profile/Profile";
 import Footer from "./components/Footer";
@@ -28,7 +28,7 @@ function App(props) {
     } else {
         return (
             <BrowserRouter>
-                <div className={props.auth ? "container" : "container-logout"}>
+                <div className={"container"}>
                     <Header/>
                     <Sidebar/>
                     <section className={props.auth ? "section-content" : null}>

@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
 /***
     The new CSS reset - version 1.7.3 (last updated 7.8.2022)
     GitHub page: https://github.com/elad2412/the-new-css-reset
@@ -100,32 +101,20 @@ input:-webkit-autofill:active {
 }
 
 /*MAIN CONTAINERS*/
-.container {
-    max-width: 1000px;
-    min-height: 800px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-areas:
-     "s h"
-     "s c";
-    grid-template-rows: 8% auto;
-    grid-template-columns: 15% auto;
-}
-
 .section-content {
     position: relative;
-    grid-area: c;
     min-height: 84.5vh;
     text-align: center;
     background-color: yellow;
 }
 
-.container-logout {
+.container {
     background-color: #5ee7c1;
     width: 100%;
     height: 100vh;
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
 }
 
@@ -165,118 +154,83 @@ input:-webkit-autofill:active {
 
 /*Header*/
 .header-container {
-    grid-area: h;
-    border-radius: 10px;
+    background-image: url("./components/Header/BG.jpg");
+    background-size: 1100px 300px;
+    background-position: center -30px;
+    height: 200px;
+    width: 1100px;
+    font-size: 0.938rem;
+    background-repeat: no-repeat;
     display: flex;
-    border-top: solid;
-    border-right: solid;
-    border-color: darkorange;
-    background-color: #bf112b;
-    text-align: center;
+    justify-content: center;
     align-items: center;
-    font-size: x-large;
-    letter-spacing: 10px;
-    max-width: 1118px;
-    min-width: 100px;
-    min-height: 50px;
-    justify-content: space-between;
-}
-
-.header-burger-navbar {
-    display: none;
-    height: 30px;
-    z-index: 1;
-    color: orange;
-}
-
-.header-burger-navbar:active {
-    color: yellow;
-}
-
-.header-burger-navbar-button {
-    width: 80px;
-}
-
-.header-burger-navbar-block {
-    background: rgba(159, 40, 40, .7);
-    border-radius: 10px;
-    margin: 0 auto;
-    font-size: 0.625rem;
-    width: 80px;
-    letter-spacing: 0.2rem;
-}
-
-.burger-item {
-    padding: 2%;
-    display: block;
-    color: orange;
-    text-decoration: none;
-}
-
-.burger-item:hover {
-    text-decoration: underline;
-}
-
-.burger-item-active {
-    display: block;
-    color: gold;
-    text-decoration: underline;
-}
-
-.header-slogan-block {
-    color: yellow;
-    font-family: Teko;
-    margin: 0 auto;
-    font-style: italic;
-}
-
-.header-slogan {
-    color: orange;
-    font-size: 1.25rem;
+    color: white;
+    position: relative;
 }
 
 .header-current-user-block {
+    position: absolute;
+    bottom: 50px;
+    padding: 0 0 0 1.5%;
+    width: 100%;
     display: flex;
-    align-items: normal;
+    align-items: center;
 }
 
 .header-current-user-avatar {
-    margin: 0 auto;
-    max-width: 25%;
+    max-width: 40%;
     border-radius: 50px;
 }
 
-.header-current-user-name-block {
-    margin: 0 auto;
-    letter-spacing: 0;
-    font-size: 0.938rem;
-    color: yellow;
+.header-current-user-name {
+    margin: 0 0 0 30px;
+    letter-spacing: 3px;
     text-decoration: none;
 }
 
-.header-current-user-name {
-    color: orange;
-}
-
 .header-current-user-name:hover {
-    transition: 0.5s;
-    color: yellow;
+    transition: 1s;
+    text-decoration: underline;
 }
 
 .header-logout-button {
     display: flex;
     align-items: center;
-    color: orange;
+    letter-spacing: 2px;
+    justify-content: center;
+    background-color: #5EE7C1FF;
+    width: 100px;
+    height: 40px;
     font-size: 1rem;
+    position: absolute;
+    right: 2%;
     border-style: none;
-    background-color: transparent;
+    border-radius: 5px;
 }
 
 .header-logout-button:hover {
     transition: 0.5s;
-    color: yellow;
+    text-decoration: underline;
     cursor: pointer;
 }
+.header-navBar {
+    margin: 0 auto;
+    position: absolute;
+    bottom: 10px;
+    letter-spacing: 7px;
+}
+
+.header-navbar-button {
+    border-right: #ffffff solid 3px;
+    padding-left: 5px;
+}
+
+.header-navbar-button:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
 
 /*SIDEBAR*/
 .sidebar {
@@ -318,7 +272,7 @@ input:-webkit-autofill:active {
 .login-page-container {
     margin: 0 auto;
     display: flex;
-    height: 79vh;
+    height: 670px;
     width: 1150px;
     background-color: white;
     border-radius: 2%;
@@ -390,6 +344,7 @@ input:-webkit-autofill:active {
     .login-page-wallpaper {
         display: none;
     }
+
     .login-page-container {
         margin: 0 auto;
         display: flex;
