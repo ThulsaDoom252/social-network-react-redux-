@@ -1,4 +1,15 @@
-import {apiCaller, profileApi} from "../api/api";
+import {apiCaller, profileApi} from "../../api/api";
+import photo1 from "./photo-1.jpeg"
+import photo2 from "./photo-2.webp"
+import photo3 from "./photo-3.webp"
+import photo4 from "./photo-4.jfif"
+import photo5 from "./photo-5.png"
+import photo6 from "./photo-6.webp"
+import photo7 from "./photo-7.jpg"
+import photo8 from "./photo-8.png"
+import photo9 from "./photo-9.png"
+import photo10 from "./photo-10.png"
+
 import {
     ADD_POST,
     CURRENT_PROFILE, DATA_RECEIVED,
@@ -8,7 +19,7 @@ import {
     SET_NOTFOUND,
     SET_PHOTO, SET_RESULT, SET_STATUS,
     SET_USER_PROFILE, STATUS_ERROR
-} from "./types";
+} from "../types";
 
 //ACTIONS
 export const dataReceivedAC = (success) => ({type: DATA_RECEIVED, success})
@@ -40,10 +51,6 @@ export const currentUserDataAC = (name, about, applicant, description, github, v
 
 //STATE
 const initialState = {
-    posts: [
-        {message: 'Hi, how are ayou?', likesCount: 15},
-        {message: 'It is my first post', likesCount: 20}
-    ],
     avatar: null,
     profile: null,
     currentUserAvatar: null,
@@ -65,7 +72,8 @@ const initialState = {
     result: null,
     errorMessage: null,
     notFound: null,
-    statusError: null
+    statusError: null,
+    defaultPhotos: [photo1, photo2, photo3, photo4, photo5, photo6, photo7, photo8, photo9, photo10]
 }
 
 //REDUCER

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {connect} from "react-redux";
-import {updateStatusTC} from "../../../redux/profile-reducer";
+import {updateStatusTC} from "../../../redux/profile-reducer/profile-reducer";
 
 const Status = (props) => {
     const isUserPage = props.currentUser.toString() === props.userId.toString()
@@ -24,7 +24,7 @@ const Status = (props) => {
     }
     return (
         <div className="status-wrapper">
-            <p>Status:</p>
+            {/*<p>Status:</p>*/}
             <p hidden={!lengthError} style={{"color":"red"}}>Status lenght can't exceed 300 characters!</p>
             <div className="status-container">
                 {editMode ?

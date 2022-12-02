@@ -1,5 +1,6 @@
 import {login, loginApi} from "../api/api";
-import {setAvatarTC} from "./profile-reducer";
+import {setAvatarTC} from "./profile-reducer/profile-reducer";
+
 import {
     ERROR_CODE_MESSAGE,
     DELETE,
@@ -27,7 +28,7 @@ const initialState = {
     error: false,
     captcha: null,
     fetching: false,
-    errorMessage: null
+    errorMessage: null,
 }
 
 //REDUCER
