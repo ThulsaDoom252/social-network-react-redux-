@@ -3,7 +3,7 @@ import fetching from "../../common/ModuleFetching.gif"
 import NotFound from "../../common/NotFound";
 import ProfileData from "./profileData";
 import ProfileAvatarBlock from "./profileAvatarBlock";
-import ProfileWall from "./ProfileWall";
+import ProfileWall from "./Wall/ProfileWall";
 
 const ProfileCenterPart = (props) => {
     if (props.notFound) {
