@@ -21,6 +21,13 @@ export const apiCaller = {
                 })
         )
     },
+    getRandomUsers: (randomPage) => {
+        return (
+            instance.get(`users?page=${randomPage}&count=${5}`).then(response => {
+                return response.data
+            })
+        )
+    },
     setUsers: (userId) => {
         return profileApi.setUsersProfile(userId)
     },

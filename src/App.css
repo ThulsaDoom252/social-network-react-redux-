@@ -588,23 +588,29 @@ input:-webkit-autofill:active {
 
 /*MESSAGES*/
 .message-page-container {
-    min-height: 800px;
+    display: flex;
+    min-height: 600px;
     border: gray solid thin;
     border-radius: 4px;
     width: 80%;
     font-family: "Open Sans";
     margin: 20px auto auto auto;
+    background-color: #ffffff;
 }
 
-.message-page-top {
-    display: flex;
-    height: 85px;
-    border-bottom: gray thin solid;
+.message-page-left-part {
+    width: 25%;
+}
+
+.message-page-right-part {
+    width: 75%;
 }
 
 .new-message-block {
     display: flex;
-    width: 25%;
+    width: 100%;
+    height: 80px;
+    border-bottom: solid gray thin;
     border-right: solid gray thin;
     align-items: center;
     justify-content: center;
@@ -619,27 +625,87 @@ input:-webkit-autofill:active {
 .sender-block {
     align-items: center;
     justify-content: space-between;
-    width: 75%;
+    width: 100%;
     display: flex;
+    height: 80px;
     font-size: 1.5rem;
     padding: 0 25px 0 25px;
+    border-bottom: solid gray thin;
 }
 
 .sender-block-button {
     padding: 10px;
 }
 
+.messages-container {
+    height: 450px;
+    overflow-y: scroll;
+    padding: 20px;
+}
+
+.message-block {
+    margin: 20px;
+    display: flex;
+    height: auto;
+    align-items: end;
+    width: 50%;
+}
+
+.message-block-avatar {
+    width: 15%;
+    border-radius: 20px;
+}
+
+.message-block-text {
+    width: 85%;
+    text-align: left;
+    word-wrap: break-word;
+    height: auto;
+    background-color: #ccb4b4;
+    border-radius: 10px;
+    padding: 10px;
+}
+
 .message-page-users {
     border-right: solid black 1px;
-    height: 800px;
-    width: 25%;
+    height: 530px;
+    font-size: 1.1rem;
+    overflow-y: scroll;
+    width: 100%;
+    padding: 10px;
 }
 
-.message-page-messages {
-    height: 800px;
-    width: 50%;
-
+.message-page-user {
+    margin: 20px;
+    display: flex;
 }
+
+.message-input-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px
+}
+
+.message-input {
+    width: 80%;
+    height: 30px;
+    border: gray solid thin;
+    border-radius: 5px;
+}
+
+.message-page-user-avatar {
+    width: 30%;
+    border-radius: 30px;
+}
+
+.message-page-user-name {
+    font-weight: bold;
+    word-wrap: break-word;
+}
+
+
+
 /*.messages-page {*/
 /*    background-color: orange;*/
 /*    display: grid;*/
@@ -844,6 +910,7 @@ input:-webkit-autofill:active {
     color: white;
     height: 40px;
     width: 120px;
+    padding-top: 8px;
     letter-spacing: 1px;
     font-size: 1.1rem;
     border-radius: 8px;
@@ -1093,6 +1160,123 @@ input:-webkit-autofill:active {
     background-color: rgba(0,0,0,0.5); /* Black background with opacity */
     cursor: pointer; /* Add a pointer on hover */
 }
+
+
+/*EDIT PROFILE*/
+.edit-profile-page-container {
+    display: flex;
+    height: 580px;
+    font-family: "Open Sans";
+    background-color: white;
+    margin-top: 20px;
+}
+
+.edit-profile-avatar-block {
+    width: 25%;
+    display: flex;
+    align-items: center;
+}
+
+.edit-profile-avatar {
+    width: 300px;
+    height: 200px;
+}
+
+.edit-profile-data-block {
+    height: 100%;
+    padding: 10px;
+    width: 50%;
+    text-align: left;
+    border-left: gray thin solid;
+    border-right: gray thin solid;
+}
+
+
+.edit-profile-title {
+    position: relative;
+    left: 30px;
+    letter-spacing: 0.5px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 22px;
+}
+
+.data-first-block {
+    display: flex;
+    justify-content: center;
+}
+
+.data-first-block div {
+    padding: 0 30px 0 30px;
+}
+
+.edit-profile-input, .edit-profile-job-description-input {
+    text-align: center;
+    padding: 5px;
+    border-radius: 3px;
+    border: gray thin solid;
+}
+
+.data-second-block {
+    margin-top: 90px;
+    text-align: center;
+}
+
+.edit-profile-checkbox-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.edit-profile-job-description-input {
+    width: 80%;
+}
+
+.edit-profile-page-submit-button {
+    margin-top: 100px;
+    background-color: #3f3c3c;
+    color: #ffffff;
+    width: 120px;
+    border-radius: 5px;
+    height: 30px;
+}
+
+.edit-profile-contacts-block {
+    width: 25%;
+    padding: 10px;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    font-family: "Open Sans";
+}
+
+.edit-profile-contact-title {
+    position: absolute;
+    left: 40px;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.edit-profile-contact-block {
+    margin-top: 50px;
+    position: relative;
+}
+
+.edit-profile-contact-label {
+    font-weight: bold;
+    font-size: 0.95rem;
+    position: absolute;
+    top: -19px;
+    left: 30px;
+}
+
+.edit-profile-contact-input {
+    padding: 5px;
+    border-radius: 3px;
+    border: gray thin solid;
+}
+
 
 /*!*BREAKPOINTS*!*/
 /*@media (max-width: 800px) {*/

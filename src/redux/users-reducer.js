@@ -43,7 +43,9 @@ const userReducer = (state = initialState, action) => {
                 })
             }
         case SET_USERS:
-            return {...state, users: [...action.users]}
+            return {
+                ...state,
+                users: [...action.users]}
 
         case FETCH:
             return {...state, isFetching: action.isFetching}

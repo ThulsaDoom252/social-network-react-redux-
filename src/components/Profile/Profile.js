@@ -26,11 +26,14 @@ const Profile = (props) => {
         props.setUserTC(userId)
     }, [props.router.params.userId])
 
-    window.overlay2 = props.lala
+
+    setTimeout(() => {
+        console.log(window.a)
+    }, 3000)
 
     return (
         <div className={"profile-main-container"}>
-            <ProfileLeftPart about = {props.about} userId = {props.router.params.userId} currentUserId = {props.Id} profile = {props.profile}  email = {props.email}/>
+            <ProfileLeftPart userId = {props.router.params.userId} currentUserId = {props.Id} profile = {props.profile}  email = {props.email}/>
                 <ProfileCenterPart  {...props} userId={props.router.params.userId}/>
             <ProfileRightPart photos =  {props.defaultPhotos} overlay = {props.overlay} toggleOverlay = {props.showOverlayAC}/>
         </div>
@@ -41,7 +44,6 @@ const Profile = (props) => {
 let mapStateToProps = (state) => {
     return {
         profile: state.profilePage.profile,
-        about: state.profilePage.aboutMe,
         auth: state.auth.isLogged,
         Id: state.auth.id,
         email: state.auth.email,

@@ -29,9 +29,9 @@ export const notFoundAC = (notFound) => ({type: SET_NOTFOUND, notFound})
 export const photoAC = (photo) => ({type: SET_PHOTO, photo})
 export const avatarAC = (avatar) => ({type: SET_AVATAR, avatar})
 export const fetchingAC = (isIt) => ({type: IS_FETCHING, isIt})
-export const addPostCreator = (post) => ({type: 'ADD-POST', post})
-export const setUserProfile = (profile) => ({type: 'SET_USER_PROFILE', profile})
-export const statusAC = (status) => ({type: 'SET_STATUS', status})
+export const addPostCreator = (post) => ({type: ADD_POST, post})
+export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
+export const statusAC = (status) => ({type: SET_STATUS, status})
 export const currentUserDataAC = (name, about, applicant, description, github, vk, facebook, instagram, twitter, site, youtube, link) =>
     ({
         type: CURRENT_PROFILE,
@@ -52,6 +52,7 @@ export const currentUserDataAC = (name, about, applicant, description, github, v
 //STATE
 const initialState = {
     avatar: null,
+    avatarLarge: null,
     profile: null,
     currentUserAvatar: null,
     name: null,
@@ -116,7 +117,7 @@ const profileReducer = (state = initialState, action) => {
         case SET_AVATAR:
             return {
                 ...state,
-                avatar: action.avatar
+                avatar: action.avatar,
             }
 
         case IS_FETCHING :
