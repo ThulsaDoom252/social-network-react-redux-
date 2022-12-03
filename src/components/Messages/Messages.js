@@ -22,7 +22,6 @@ const Messages = (props) => {
         `Lets go for a ride. i am ${userNames[4]}`
     ]
 
-
     useEffect(() => {
         props.getRandomUsersTC()
     }, [])
@@ -34,8 +33,8 @@ const Messages = (props) => {
                 <p>ThulsaDoom252</p>
                 <button className={"new-message-button"}><BiMessageAltEdit/></button>
             </div>
-            <div className={"message-page-users"}>
-                {props.randomUsers.map((user, index) => <div key={index} onClick={() => setSenderId(index)}
+            <div className={"message-page-sender-block"}>
+                {props.randomUsers.map((user, index) => <div style={{"background-color": index === senderId ? "gray" : null}} key={index} onClick={() => setSenderId(index)}
                                                              className={"message-page-user"}>
                     <img className={"message-page-user-avatar"}
                          src={user.photos.small ? user.photos.small : props.defaultAvatar}

@@ -586,10 +586,76 @@ input:-webkit-autofill:active {
     padding-top: 150px;
 }
 
+/*FRIENDS*/
+.friends-page-container {
+    background-color: #c7bdbd;
+    margin-top: 20px;
+    padding: 20px;
+    font-family: "Open Sans";
+    height: 700px;
+    overflow-y: scroll;
+    border-radius: 5px;
+}
+
+
+.friends-page-title {
+    font-size: 1.3rem;
+}
+
+.friends-page-hr {
+    background-color: black;
+    height: 0.5px;
+    width: 50%;
+    margin: 15px auto auto auto;
+}
+
+
+.friends-block {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    margin: 20px auto auto  auto;
+    height: calc(100% - 50px);
+}
+
+.friend-block {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    font-weight: 2;
+    font-size: 1.2rem;
+}
+
+.friend-data-block {
+    background-color: white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom: solid gray thin;
+    border-left: solid gray thin;
+    border-right: solid gray thin;
+}
+
+.friend-avatar {
+   border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.friend-name, .friend-status, .friend-button {
+    margin: 4px;
+}
+
+.friend-button {
+    background-color: gray;
+    color: white;
+    width: 90%;
+    border-radius: 4px;
+    height: 30px;
+}
+
+
 /*MESSAGES*/
 .message-page-container {
     display: flex;
-    min-height: 600px;
+    min-height: 710px;
     border: gray solid thin;
     border-radius: 4px;
     width: 80%;
@@ -638,7 +704,7 @@ input:-webkit-autofill:active {
 }
 
 .messages-container {
-    height: 450px;
+    height: 550px;
     overflow-y: scroll;
     padding: 20px;
 }
@@ -666,13 +732,14 @@ input:-webkit-autofill:active {
     padding: 10px;
 }
 
-.message-page-users {
+.message-page-sender-block {
     border-right: solid black 1px;
-    height: 530px;
+    height: 630px;
     font-size: 1.1rem;
     overflow-y: scroll;
     width: 100%;
     padding: 10px;
+    cursor: pointer;
 }
 
 .message-page-user {
@@ -703,7 +770,6 @@ input:-webkit-autofill:active {
     font-weight: bold;
     word-wrap: break-word;
 }
-
 
 
 /*.messages-page {*/
@@ -1157,7 +1223,7 @@ input:-webkit-autofill:active {
     right: 0;
     bottom: 0;
     z-index: 2;
-    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+    background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
     cursor: pointer; /* Add a pointer on hover */
 }
 
@@ -1398,63 +1464,39 @@ input:-webkit-autofill:active {
 
 
 /***********************************************USERS*********************************************/
+.users-page-container {
+    margin-top: 15px;
+    border-radius: 5px;
+    font-family: "Open Sans";
+    background-color: white;
+    padding: 20px;
+    overflow-y: scroll;
+
+}
 .users-page-title {
     letter-spacing: 2px;
-    font-family: Pacifico;
     font-weight: 10;
-    padding-top: 10px;
-    text-align: center;
-    font-size: 25px;
-}
-
-.users-page-main-users-container {
-    position: relative;
-    top: 20px;
-    text-align: center;
-    font-size: 25px;
-    max-width: 800px;
-    min-height: 700px;
-    max-height: 1000000px;
-    margin: 0 auto;
-    border-radius: 100px;;
-    background-color: #f5ae58;
-    text-shadow: #2e2e2e 0 4px 5px;
-    box-shadow: inset 6px 6px 6px #c48b45, inset -6px -6px 6px #d19549;
+    font-size: 1.3rem;
 }
 
 .users-page-users-grid {
     display: grid;
+    height: 622px;
     max-height: fit-content;
-    grid-template-columns: 20% 20% 20% 20%;
+    margin: 40px auto auto auto;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 40% 40% 40% 40%;
 }
-
-.users-page-user-block-container {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
 
 .users-page-user-block {
-    border-radius: 50px;
-    max-width: 120px;
-    position: relative;
-    left: 50%;
-    top: 25%;
-    padding-bottom: 10px;
-}
-
-.users-page-user-block:hover {
+    width: 100%;
     cursor: pointer;
-    transition: 0.5s;
-    border-style: solid;
-    border-color: gold;
-    border-radius: 40px;
 }
 
 
 .users-page-avatar-small {
-    width: 100%;
-    border-radius: 100px;;
+    width: 100px;
+    border-radius: 20px;
 }
 
 .users-page-user-name {

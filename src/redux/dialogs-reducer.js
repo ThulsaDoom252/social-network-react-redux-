@@ -38,7 +38,7 @@ const dialogsReducer = (state = initialState, action) => {
                 messages: [...state.messages, {content: action.message}]
             }
         case SET_RANDOM_USERS:
-            return  {
+            return {
                 ...state,
                 randomUsers: [...action.randomUsers]
             }
@@ -53,14 +53,13 @@ const dialogsReducer = (state = initialState, action) => {
 
 }
 
-    function getRandomInt(max) {
-        return Math.floor(Math.random() * max);
-    }
+function getRandomPage(max) {
+    return Math.floor(Math.random() * max);
+}
 
-
-export const getRandomUsersTC = ()  => {
+export const getRandomUsersTC = () => {
     return async (dispatch) => {
-        const randomPage = getRandomInt(4000)
+        const randomPage = getRandomPage(4000)
         const data = await apiCaller.getRandomUsers(randomPage)
         dispatch(setRandomUsersAC(data.items))
     }
