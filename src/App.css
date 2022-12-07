@@ -613,7 +613,7 @@ input:-webkit-autofill:active {
 .friends-block {
     display: grid;
     grid-template-columns: 20% 20% 20% 20% 20%;
-    margin: 20px auto auto  auto;
+    margin: 20px auto auto auto;
     height: calc(100% - 50px);
 }
 
@@ -635,7 +635,8 @@ input:-webkit-autofill:active {
 }
 
 .friend-avatar {
-   border-top-left-radius: 10px;
+    cursor: pointer;
+    border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
 
@@ -649,6 +650,7 @@ input:-webkit-autofill:active {
     width: 90%;
     border-radius: 4px;
     height: 30px;
+    cursor: pointer;
 }
 
 
@@ -948,11 +950,39 @@ input:-webkit-autofill:active {
     text-align: center;
 }
 
-.profile-page-right-part-suggestions-block {
+.profile-page-right-part-friends-block {
     background-color: white;
     margin-top: 20px;
+    padding: 10px 10px 0 10px;
     min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
 }
+
+.profile-page-right-friend-block {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    justify-content: left;
+    width: 150px;
+    border-bottom: solid gray thin
+}
+
+.profile-page-right-friend-avatar {
+    width: 300px;
+}
+
+.profile-page-right-unfollow-button {
+    background-color: #3f3c3c;
+    position: relative;
+    padding: 3px;
+    font-family: "Open Sans";
+    border-radius: 5px;
+    left: 3px;
+    color: #ffffff;
+}
+
 
 /*CENTER*/
 .profile-page-center-container {
@@ -1154,6 +1184,8 @@ input:-webkit-autofill:active {
 .profile-page-photo-viewPort {
     position: absolute;
     width: 50vw;
+    height: 50vw;
+    z-index: 3;
 }
 
 .profile-page-input-error {
@@ -1219,19 +1251,25 @@ input:-webkit-autofill:active {
     width: 100vw; /* Full width (cover the whole page) */
     height: 100vh; /* Full height (cover the whole page) */
     top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     left: 0;
     right: 0;
     bottom: 0;
     z-index: 2;
-    background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+    background-color: rgba(0, 0, 0, 0.8); /* Black background with opacity */
     cursor: pointer; /* Add a pointer on hover */
 }
 
+.currently-viewing-photo {
+    width: 700px;
+}
 
 /*EDIT PROFILE*/
 .edit-profile-page-container {
     display: flex;
-    height: 580px;
+    height: 717px;
     font-family: "Open Sans";
     background-color: white;
     margin-top: 20px;
@@ -1423,15 +1461,13 @@ input:-webkit-autofill:active {
 .paginator-block {
     text-align: center;
     margin: 0 auto;
-    background-color: orange;
     max-width: 600px;
-    font-style: italic;
-    border-style: solid;
-    border-radius: 10px;
+    border: solid gray thin;
+    border-radius: 5px;
 }
 
 .paginator-page-number {
-    padding: 2px;
+    padding: 5px;
 }
 
 .paginator-page-number:hover, .paginator-selected-page:hover {
@@ -1439,23 +1475,19 @@ input:-webkit-autofill:active {
 }
 
 .paginator-selected-page {
-    border-style: solid;
-    font-size: 20px;
-    border-width: 1px;
-    border-radius: 50px;
-    border-color: red;
-    background-color: yellow;
+    font-size: 1.1rem;
+    text-decoration: underline;
 }
 
 .paginator-left-button, .paginator-right-button {
-    font-size: 12px;
-    background-color: orangered;
-    border-radius: 40px;
+    font-size: 1rem;
+    background-color: #3f3c3c;
+    color: #e7e0e0;
+    border-radius: 5px
 }
 
 .paginator-left-button:active, .paginator-right-button:active {
-    background-color: yellow;
-    color: red;
+    color: white;
 }
 
 .paginator-left-button:hover, .paginator-right-button:hover {
@@ -1468,11 +1500,12 @@ input:-webkit-autofill:active {
     margin-top: 15px;
     border-radius: 5px;
     font-family: "Open Sans";
-    background-color: white;
+    background-color: #d2c4c4;
     padding: 20px;
     overflow-y: scroll;
 
 }
+
 .users-page-title {
     letter-spacing: 2px;
     font-weight: 10;
@@ -1489,42 +1522,48 @@ input:-webkit-autofill:active {
 }
 
 .users-page-user-block {
-    width: 100%;
-    cursor: pointer;
+    display: flex;
+    font-size: 1.2rem;
+    flex-direction: column;
+    align-items: center;
 }
 
-
 .users-page-avatar-small {
-    width: 100px;
-    border-radius: 20px;
+    width: 120px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.users-data-block {
+    position: relative;
+    top: -5px;
+    width: 121px;
+    background-color: white;
+    border-left: gray thin solid;
+    border-right: gray thin solid;
+    border-bottom: gray thin solid;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 .users-page-user-name {
     font-style: italic;
-    max-width: 80%;
     word-wrap: break-word;
-    background-color: yellow;
-    border-radius: 10px;
-    font-size: 18px;
     margin: 0 auto;
 }
 
 .users-page-user-status {
-    font-style: italic;
-    max-width: 80%;
-    font-size: 16px;
     word-wrap: break-word;
-    background-color: red;
-    border-radius: 20px;
-    margin: 0 auto;
+    margin: 5px auto auto auto;
 }
-
 
 .users-page-follow-button {
     margin-top: 10px;
-    font-size: 17px;
-    border-radius: 10px;
-    font-family: Teko;
+    background-color: #888888;
+    width: 90%;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
 }
 
 /*SETTINGS-SWITCH*/

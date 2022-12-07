@@ -1,7 +1,6 @@
 import axios from "axios";
 
 let apiKey = localStorage.getItem("apiKey".toString())
-window.apiKey = apiKey
 
 export const instance = axios.create({
     withCredentials: true,
@@ -21,9 +20,16 @@ export const apiCaller = {
                 })
         )
     },
-    getRandomUsers: (randomPage) => {
+    getRandomUsers: (randomPage, count) => {
         return (
-            instance.get(`users?page=${randomPage}&count=${5}`).then(response => {
+            instance.get(`users?page=${randomPage}&count=${count}`).then(response => {
+                return response.data
+            })
+        )
+    },
+    getFriends: (count) => {
+        return (
+            instance.get(`users?friend=true&count=${count}`).then(response => {
                 return response.data
             })
         )
@@ -66,11 +72,6 @@ export const profileApi = {
         )
     },
 
-    getCurrentUser(userId) {
-        return instance.get('profile/' + userId).then(response => {
-            return response.data
-        })
-    },
 
     getStatus(userId) {
         return instance.get('profile/status/' + userId)

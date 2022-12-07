@@ -7,13 +7,14 @@ import {
 function ReactionsBar(props) {
     let [likes, likesNumber] = useState(0)
     let [dislikes, dislikesNumber] = useState(0)
+
     const randomNumberInRange = (min, max) => {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
     useEffect(() => {
         likesNumber(randomNumberInRange(1, 40))
         dislikesNumber(randomNumberInRange(1, 5))
-    })
+    }, [])
     return (
         <div className={"profile-reactions-container"}>
             <button className={"profile-reaction"}>

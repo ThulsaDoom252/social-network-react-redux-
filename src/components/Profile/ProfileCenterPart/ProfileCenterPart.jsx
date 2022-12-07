@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import fetching from "../../common/ModuleFetching.gif"
 import NotFound from "../../common/NotFound";
 import ProfileData from "./profileData";
@@ -7,7 +7,6 @@ import ProfileWall from "./Wall/ProfileWall";
 import {NavLink} from "react-router-dom";
 
 const ProfileCenterPart = (props) => {
-    const isCurrentUser = props.userId === props.Id.toString()
     if (props.notFound) {
         return <NotFound/>
     } else if (!props.profile) {

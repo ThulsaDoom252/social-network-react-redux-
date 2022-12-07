@@ -18,7 +18,8 @@ import {
     SET_AVATAR,
     SET_NOTFOUND,
     SET_PHOTO, SET_RESULT, SET_STATUS,
-    SET_USER_PROFILE, STATUS_ERROR
+    SET_USER_PROFILE, STATUS_ERROR,
+    SHOW_OVERLAY
 } from "../types";
 
 //ACTIONS
@@ -29,9 +30,9 @@ export const notFoundAC = (notFound) => ({type: SET_NOTFOUND, notFound})
 export const photoAC = (photo) => ({type: SET_PHOTO, photo})
 export const avatarAC = (avatar) => ({type: SET_AVATAR, avatar})
 export const fetchingAC = (isIt) => ({type: IS_FETCHING, isIt})
-export const addPostCreator = (post) => ({type: ADD_POST, post})
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 export const statusAC = (status) => ({type: SET_STATUS, status})
+export const showOverlayAC = (toggleRelay, Index) => ({type: SHOW_OVERLAY, toggleRelay, Index})
 export const currentUserDataAC = (name, about, applicant, description, github, vk, facebook, instagram, twitter, site, youtube, link) =>
     ({
         type: CURRENT_PROFILE,
@@ -54,6 +55,8 @@ const initialState = {
     avatar: null,
     avatarLarge: null,
     profile: null,
+    showOverlay: false,
+    selectedPhoto: null,
     currentUserAvatar: null,
     name: null,
     about: null,
@@ -103,8 +106,14 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 profile: action.profile
             }
-
         }
+
+        case SHOW_OVERLAY:
+            return {
+                ...state,
+                showOverlay: action.toggleRelay,
+                selectedPhoto: action.Index
+            }
 
 
         case ERROR_MESSAGE: {
@@ -174,6 +183,7 @@ const profileReducer = (state = initialState, action) => {
 export const setUserTC = (userId) => {
     return async (dispatch) => {
         try {
+            debugger
             const data = await apiCaller.setUsers(userId)
             dispatch(setUserProfile(data))
             dispatch(notFoundAC(false))
@@ -204,8 +214,9 @@ export const updateStatusTC = (status) => async (dispatch) => {
     }
 }
 
-export const currentUserDataTC = (userId) => async (dispatch) => {
-    const data = await profileApi.getCurrentUser(userId)
+export const setCurrentUserDataTC = (userId) => async (dispatch) => {
+    debugger
+    const data = await apiCaller.setUsers(userId)
     dispatch(currentUserDataAC(data.fullName, data.aboutMe, data.lookingForAJob, data.lookingForAJobDescription,
             data.contacts.github, data.contacts.vk, data.contacts.facebook, data.contacts.instagram, data.contacts.twitter,
             data.contacts.website, data.contacts.youtube, data.contacts.mainLink),
@@ -214,7 +225,7 @@ export const currentUserDataTC = (userId) => async (dispatch) => {
 }
 
 export const setAvatarTC = (userId) => async (dispatch) => {
-    const data = await profileApi.getCurrentUser(userId)
+    const data = await apiCaller.setUsers(userId)
     dispatch(avatarAC(data.photos.small))
 }
 

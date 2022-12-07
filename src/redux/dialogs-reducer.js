@@ -11,41 +11,16 @@ export const clearRandomUsersAC = () => ({type: CLEAR_RANDOM_USERS})
 const initialState = {
     defaultAvatar: defaultAvatar,
     randomUsers: [],
-    dialogs: [
-        {id: 1, name: 'Vladimir'},
-        {id: 2, name: 'Sergey'},
-        {id: 3, name: 'Viktor'},
-        {id: 4, name: 'Dasha'},
-        {id: 5, name: 'Valera'}
-    ],
-    messages: [
-        {content: 'HI'},
-        {content: 'Hey'},
-        {content: 'Whats ap?'},
-        {content: 'I like you'},
-        {content: 'Lets go f or a ride'}
-
-    ],
     underConstruction: true
 }
 
 //REDUCER
 const dialogsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case  ADD_MESSAGE:
-            return {
-                ...state,
-                messages: [...state.messages, {content: action.message}]
-            }
         case SET_RANDOM_USERS:
             return {
                 ...state,
                 randomUsers: [...action.randomUsers]
-            }
-        case CLEAR_RANDOM_USERS:
-            return {
-                ...state,
-                randomUsers: [...[]]
             }
         default:
             return state
@@ -60,7 +35,7 @@ function getRandomPage(max) {
 export const getRandomUsersTC = () => {
     return async (dispatch) => {
         const randomPage = getRandomPage(4000)
-        const data = await apiCaller.getRandomUsers(randomPage)
+        const data = await apiCaller.getRandomUsers(randomPage, 5)
         dispatch(setRandomUsersAC(data.items))
     }
 }

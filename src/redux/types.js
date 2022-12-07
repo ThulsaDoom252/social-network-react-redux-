@@ -36,6 +36,8 @@ export const ADD_POST = 'ADD_POST'
 
 //USERS
 export const FOLLOW = 'FOLLOW'
+export const UNFOLLOW_FRIEND = "UNFOLLOW_FRIEND"
+export const GET_FRIENDS = 'GET_FRIENDS'
 export const UNFOLLOW = 'UNFOLLOW'
 export const SET_USERS = 'SET_USERS'
 export const FETCH = 'FETCH'

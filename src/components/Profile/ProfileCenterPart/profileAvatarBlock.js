@@ -9,13 +9,16 @@ import {Link} from "react-router-dom";
 function ProfileAvatarBlock(props) {
     const isUserPage = props.currentUser.toString() === props.userId.toString()
     const hiddenFileInput = React.useRef(null);
+    window.s1 = props.profile.aboutMe
 
     let uploadPhoto = (e) => {
         props.updatePhotoTC(e.target.files[0])
     }
+
     const handleClick = event => isUserPage ? hiddenFileInput.current.click() : null;
     const contactClass = "profile-page-left-contact"
     const contact = props.profile.contacts
+
     return (
         <div className="profile-page-center-avatarBlockContainer">
             <div>

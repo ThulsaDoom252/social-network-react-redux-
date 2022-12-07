@@ -4,38 +4,33 @@ import {compose} from "redux";
 import {connect} from "react-redux";
 import authHoc from "../HOC/authHoc";
 import withRouter from "../HOC/withRouter";
-import {currentUserDataTC, getStatusTC, setUserTC, updateProfileTC, updateStatusTC} from "../../redux/profile-reducer/profile-reducer";
+import {
+    setCurrentUserDataTC,
+    getStatusTC,
+    setUserTC, showOverlayAC,
+} from "../../redux/profile-reducer/profile-reducer";
 import ProfileLeftPart from "./LeftPart";
 import ProfileRightPart from "./RightPart";
-import {showOverlayAC} from "../../redux/app-reducer";
+import {getFriendsTC} from "../../redux/users-reducer";
 
 const Profile = (props) => {
-    useEffect(() => {
-        let userId = props.router.params.userId
-        if (!userId) {
-            userId = `${props.Id}`
-        }
-        props.setUserTC(userId)
-        props.getStatusTC(userId)
-        props.currentUserDataTC(props.Id)
-    }, [])
+    const userId = props.router.params.userId
+    window.userId = userId
 
     useEffect(() => {
         let userId = props.router.params.userId
-        props.getStatusTC(userId)
         props.setUserTC(userId)
-    }, [props.router.params.userId])
-
-
-    setTimeout(() => {
-        console.log(window.a)
-    }, 3000)
+        props.getStatusTC(userId)
+        props.currentUserDataTC(userId)
+    }, [props.router.params.id])
 
     return (
         <div className={"profile-main-container"}>
-            <ProfileLeftPart userId = {props.router.params.userId} currentUserId = {props.Id} profile = {props.profile}  email = {props.email}/>
-                <ProfileCenterPart  {...props} userId={props.router.params.userId}/>
-            <ProfileRightPart photos =  {props.defaultPhotos} overlay = {props.overlay} toggleOverlay = {props.showOverlayAC}/>
+            <ProfileLeftPart userId={props.router.params.userId} currentUserId={props.Id} profile={props.profile}
+                             email={props.email}/>
+            <ProfileCenterPart  {...props} userId={props.router.params.userId}/>
+            <ProfileRightPart Id = {props.Id} userId = {userId} defaultAvatar={props.defaultAvatar} friends={props.friends} photos={props.defaultPhotos}
+                              overlay={props.overlay} toggleOverlay={props.showOverlayAC}/>
         </div>
     )
 
@@ -50,12 +45,15 @@ let mapStateToProps = (state) => {
         login: state.auth.login,
         notFound: state.profilePage.notFound,
         defaultPhotos: state.profilePage.defaultPhotos,
+        defaultAvatar: state.dialogsPage.defaultAvatar,
+        friends: state.usersPage.friends,
     }
 }
 
 export default compose(connect(mapStateToProps, {
     setUserTC,
     getStatusTC,
-    currentUserDataTC,
+    currentUserDataTC: setCurrentUserDataTC,
     showOverlayAC,
+    getFriendsTC,
 }), authHoc, withRouter)(Profile)

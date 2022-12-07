@@ -12,7 +12,7 @@ const LeftPart = (props) => {
                 </div>
                 <div>
                     <span className={"profile-page-left-part-label"}>About</span>
-                    <p>{props.about ? props.profile.aboutMe : "No info"}</p>
+                    <p>{"No info"}</p>
                 </div>
                 <div>
                     <p className={"profile-page-left-part-label"}>Email</p>

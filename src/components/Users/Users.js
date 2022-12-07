@@ -23,14 +23,14 @@ let Users = ({currentPage, totalCount, pageSize, ...props}) => {
                        pageSize={pageSize}/>
             <div className="users-page-users-grid">
                 {props.users.map(user =>
-                    <div className="users-page-user-block">
-                        <div key={user.id}>
-                            <NavLink to={'/profile/' + user.id}>
-                                <img className={"users-page-avatar-small"}
-                                     src={user.photos.small != null ? user.photos.small : anonymous}/>
-                            </NavLink>
-                            <div className={"users-page-user-name"}>{user.name}</div>
-                            <div className={"users-page-user-status"}>{user.status || 'No status'}</div>
+                    <div  className="users-page-user-block" key={user.id}>
+                        <NavLink to={'/profile/' + user.id}>
+                            <img className={"users-page-avatar-small"}
+                                 src={user.photos.small != null ? user.photos.small : anonymous}/>
+                        </NavLink>
+                        <div className={"users-data-block"}>
+                            <p className={"users-page-user-name"}>{user.name}</p>
+                            <p className={"users-page-user-status"}>{user.status ? user.status :  'No status'}</p>
                             {user.isFollow ?
                                 <button className={"users-page-follow-button"}
                                         disabled={props.followingProgress.some(id => id === user.id)}
@@ -43,7 +43,6 @@ let Users = ({currentPage, totalCount, pageSize, ...props}) => {
                                         onClick={() => {
                                             props.followTC(user.id)
                                         }}>Follow</button>}
-                            <hr/>
                         </div>
                     </div>
                 )}

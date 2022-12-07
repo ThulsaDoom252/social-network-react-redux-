@@ -1,12 +1,11 @@
 import {loginTC} from "./auth-reducer";
-import {HIDE_FOOTER, NIGHTMODE_RELAY, SET_INITIALIZATION, SWITCH_CONSTRUCTION, SHOW_OVERLAY} from "./types";
+import {HIDE_FOOTER, NIGHTMODE_RELAY, SET_INITIALIZATION, SWITCH_CONSTRUCTION} from "./types";
 
 //ACTION CREATORS
 export const initializeAC = () => ({type: SET_INITIALIZATION})
 export const underConstructionAC = (show) => ({type: SWITCH_CONSTRUCTION, show})
 export const nightModeAC = (relay) => ({type: NIGHTMODE_RELAY, relay})
 export const hideFooterAC = (hide) => ({type: HIDE_FOOTER, hide})
-export const showOverlayAC = (toggleRelay) => ({type: SHOW_OVERLAY, toggleRelay})
 
 //INITIAL STATE
 let initialState = {
@@ -14,7 +13,6 @@ let initialState = {
     underConstruction: true,
     footerHidden: false,
     nightMode: false,
-    showOverlay: false,
     nightModeColors: {
         "sidebar/header-background": "#0B18DCFF",
         "nightMode-text-color": "#e3cfcf",
@@ -50,12 +48,6 @@ let appReducer = (state = initialState, action) => {
             return {
                 ...state,
                 underConstruction: action.show
-            }
-
-        case SHOW_OVERLAY:
-            return  {
-                ...state,
-                showOverlay: action.toggleRelay
             }
 
         case NIGHTMODE_RELAY:

@@ -12,11 +12,9 @@ import {
     TfiUser
 } from "react-icons/all";
 
-
 const Header = (props) => {
     useEffect(() => {
         props.setAvatarTC(`${props.id}`)
-        console.log(localStorage.getItem("apiKey"));
     }, [])
 
     const logOut = () => {
