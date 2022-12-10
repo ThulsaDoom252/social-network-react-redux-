@@ -9,10 +9,12 @@ const ProfileData = (props) => {
         2: updateProfile
     } = props
     const [descriptionEditMode, setDescriptionEditMode] = useState(false)
+    const [aboutEditMode, setAboutEditMode] = useState(false)
     const formik = useFormik({
         initialValues: {
             isApplicant: applicant,
-            applicantDescription: description
+            applicantDescription: description,
+            about: aboutMe,
         },
         validationSchema: Yup.object({
             description: Yup.string().min(4, 'Info must contain more than 3 characters!').nullable(),
@@ -24,7 +26,8 @@ const ProfileData = (props) => {
     useEffect(() => {
         formik.setFieldValue("isApplicant", applicant)
         formik.setFieldValue("applicantDescription", !applicant ? "No info" : description)
-    }, [applicant, description])
+        formik.setFieldValue("about", aboutMe)
+    }, [applicant, description, aboutMe])
 
     const toggleEditMode = async (editMode, setEditMode) => {
         if (isCurrentUser && !editMode) {
@@ -33,7 +36,7 @@ const ProfileData = (props) => {
             setEditMode(false)
             await formik.setFieldValue("applicantDescription", values.applicantDescription === "" ? "No info" : values.applicantDescription)
             await formik.setFieldValue("isApplicant", values.applicantDescription !== "No info")
-            updateProfile(userId, aboutMe,
+            updateProfile(userId, values.aboutMe,
                 values.isApplicant, values.applicantDescription,
                 fullName, contacts.github,
                 contacts.vk, contacts.facebook,
@@ -53,7 +56,13 @@ const ProfileData = (props) => {
                        onBlur={() => toggleEditMode(descriptionEditMode, setDescriptionEditMode)} autoFocus={true}
                        type="text" value={values.applicantDescription}/> :
                 <p  className={"job-description"} onDoubleClick={() => toggleEditMode(descriptionEditMode, setDescriptionEditMode)}>{values.applicantDescription}</p>}</div>
+            <div className={"test-job-info"}>{descriptionEditMode ?
+                <input id={"about"} className={"about-description-input"} onChange={handleChange}
+                       onBlur={() => toggleEditMode(aboutEditMode, setAboutEditMode)} autoFocus={true}
+                       type="text" value={values.about}/> :
+                <p  className={"job-description"} onDoubleClick={() => toggleEditMode(aboutEditMode, setAboutEditMode)}>{values.about}</p>}</div>
         </div>
+
     )
 }
 

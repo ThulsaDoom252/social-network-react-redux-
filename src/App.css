@@ -1070,6 +1070,60 @@ input:-webkit-autofill:active {
     justify-content: space-between;
 }
 
+.profile-page-center-friends-block {
+    width: 40%;
+    font-family: "Fira Sans";
+    min-height: 200px;
+    font-size: 1.1rem;
+    margin: -15px auto 40px 30px;
+    border: gray thin solid;
+}
+
+.center-friends-block {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.center-friend-block {
+    width: 100px;
+    padding: 5px;
+}
+
+.center-friends-button {
+    font-size: 3rem;
+    font-family: "Fira Sans";
+    cursor: pointer;
+}
+
+
+.profile-page-center-gallery-block {
+    width: 40%;
+    min-height: 200px;
+    margin: -30px auto 30px 30px;
+    border: solid gray thin
+}
+
+.photos-block {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.center-gallery-photo-block {
+    width: 125px;
+    padding: 5px;
+}
+
+.center-gallery-button {
+    font-size: 1.3rem;
+    font-family: "Fira Sans";
+    cursor: pointer;
+}
+
 .test-job-info {
     font-family: SansSerif;
     font-size: 1.2rem;
