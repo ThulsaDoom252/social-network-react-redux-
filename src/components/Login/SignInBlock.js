@@ -31,8 +31,6 @@ const SignInBlock = (props) => {
     let handleSubmit = formik.handleSubmit
     let touched = formik.touched
     let handleBlur = formik.handleBlur
-    window.ce = props.captchaError
-    window.ca = props.captcha
 
     return (
         <form onSubmit={handleSubmit}>

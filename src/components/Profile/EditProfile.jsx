@@ -59,7 +59,8 @@ const EditProfile = (props) => {
             props.fetchingAC(true)
         }
     })
-    return (<form onSubmit={handleSubmit}>
+    return (
+        <form onSubmit={handleSubmit}>
             <div style={{
                 "background-color": props.nightMode && props.nightModeColors["nightMode-container-block"],
                 "box-shadow": props.nightMode && props.nightModeColors["profile-block-border-shadow"]

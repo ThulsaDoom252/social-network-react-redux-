@@ -1,14 +1,16 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {connect} from "react-redux";
 import {logOutTC} from "../../redux/auth-reducer";
 import {avatarAC, setAvatarTC} from "../../redux/profile-reducer/profile-reducer";
 import {NavLink} from "react-router-dom";
-import {RiLogoutBoxRLine} from "react-icons/ri";
-import {TfiUser} from "react-icons/tfi";
-import {BiMessageSquareDetail} from "react-icons/bi";
-import {FaUserFriends} from "react-icons/fa";
-import {ImUsers} from "react-icons/im";
-
+import {
+    BiMessageSquareDetail,
+    FaUserFriends,
+    ImUsers,
+    IoSettingsOutline,
+    RiLogoutBoxRLine,
+    TfiUser
+} from "react-icons/all";
 
 const Header = (props) => {
     useEffect(() => {
@@ -43,7 +45,7 @@ const Header = (props) => {
                         <NavLink className={navButtons} to={'/messages'}><BiMessageSquareDetail/>Messages</NavLink>
                         <NavLink className={navButtons} to={"/friends"}><FaUserFriends/>Friends</NavLink>
                         <NavLink className={navButtons} to={"/users"}><ImUsers/>Users</NavLink>
-                        <NavLink className={navButtons} to={"/settings"}>Settings</NavLink>
+                        <NavLink className={navButtons} to={"/settings"}><IoSettingsOutline/>Settings</NavLink>
                     </div>
             </header>
         </div>

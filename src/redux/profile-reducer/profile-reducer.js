@@ -54,7 +54,10 @@ export const currentUserDataAC = (name, about, applicant, description, github, v
 const initialState = {
     avatar: null,
     avatarLarge: null,
-    profile: null,
+    directEditMode: false,
+    profile: '',
+    photos: '',
+    contacts: '',
     showOverlay: false,
     selectedPhoto: null,
     currentUserAvatar: null,
@@ -104,7 +107,9 @@ const profileReducer = (state = initialState, action) => {
         case SET_USER_PROFILE: {
             return {
                 ...state,
-                profile: action.profile
+                profile: action.profile,
+                photos: {...action.profile.photos},
+                contacts: {...action.profile.contacts},
             }
         }
 
@@ -142,7 +147,11 @@ const profileReducer = (state = initialState, action) => {
             }
 
         case SET_PHOTO:
-            return {...state, profile: {...state.profile, photos: action.photo}}
+            return {...state,
+                profile: {...state.profile, photos: action.photo},
+                photos: {...action.photo},
+
+            }
 
         case DATA_RECEIVED: {
             return {
@@ -183,8 +192,8 @@ const profileReducer = (state = initialState, action) => {
 export const setUserTC = (userId) => {
     return async (dispatch) => {
         try {
-            debugger
             const data = await apiCaller.setUsers(userId)
+            debugger
             dispatch(setUserProfile(data))
             dispatch(notFoundAC(false))
         } catch (error) {

@@ -1,27 +1,27 @@
 import React from 'react';
-import defaultAvatar from "../../../common/default-avatar.jfif";
 import ReactionsBar from "./ReactionsBar";
 
 function Posts(props) {
+    const {0: name, 1: firstPost, 2: secondPost, 3: largePhoto, 4: defaultAvatar} = props
     return (
         <div>
             <div className={"profile-page-post-container"}>
                 <img className="profile-page-post-avatar"
-                     src={props.avatar ? props.avatar : defaultAvatar}
+                     src={largePhoto ? largePhoto : defaultAvatar}
                      alt="large photo"/>
                 <div className={"profile-page-post-block"}>
-                    <p className={"profile-page-post-name"}>{props.name}</p>
-                    <p className={"profile-page-post"}>{props.firstPost}</p>
+                    <p className={"profile-page-post-name"}>{name}</p>
+                    <p className={"profile-page-post"}>{firstPost}</p>
                     <ReactionsBar/>
                 </div>
             </div>
             <div className={"profile-page-post-container"}>
                 <img className="profile-page-post-avatar"
-                     src={props.avatar ? props.avatar : defaultAvatar}
+                     src={largePhoto ? largePhoto : defaultAvatar}
                      alt="large photo"/>
                 <div className={"profile-page-post-block"}>
-                    <p className={"profile-page-post-name"}>{props.name}</p>
-                    <p className={"profile-page-post"}>{props.secondPost}</p>
+                    <p className={"profile-page-post-name"}>{name}</p>
+                    <p className={"profile-page-post"}>{secondPost}</p>
                     <ReactionsBar/>
                 </div>
             </div>

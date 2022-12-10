@@ -7,30 +7,47 @@ import withRouter from "../HOC/withRouter";
 import {
     setCurrentUserDataTC,
     getStatusTC,
-    setUserTC, showOverlayAC,
+    setUserTC, showOverlayAC, updateProfileTC, updateStatusTC,
 } from "../../redux/profile-reducer/profile-reducer";
 import ProfileLeftPart from "./LeftPart";
 import ProfileRightPart from "./RightPart";
-import {getFriendsTC} from "../../redux/users-reducer";
+import {getFriendsTC, unfollowFriendTC} from "../../redux/users-reducer";
 
 const Profile = (props) => {
-    const userId = props.router.params.userId
-    window.userId = userId
+    const {
+        notFound,
+        email,
+        profile,
+        profile: {aboutMe: about},
+        profile: {userId},
+        updateProfileTC: updateProfile,
+        directEditMode,
+        defaultAvatar,
+        friends,
+        status,
+        defaultPhotos,
+        showOverlayAC: toggleOverlay,
+        getFriendsTC: getFriends,
+        unfollowFriendTC: unfollowFriend,
+        updateStatusTC: updateStatus
+    } = props
+    const currentUserId = props.Id
+    const userIdParam = props.router.params.userId
+    const isCurrentUser = userIdParam === currentUserId.toString()
 
     useEffect(() => {
-        let userId = props.router.params.userId
-        props.setUserTC(userId)
-        props.getStatusTC(userId)
-        props.currentUserDataTC(userId)
-    }, [props.router.params.id])
+        let userIdParam = props.router.params.userId
+        props.setUserTC(userIdParam)
+        props.getStatusTC(userIdParam)
+        props.currentUserDataTC(userIdParam)
+    }, [userIdParam])
 
     return (
         <div className={"profile-main-container"}>
-            <ProfileLeftPart userId={props.router.params.userId} currentUserId={props.Id} profile={props.profile}
-                             email={props.email}/>
-            <ProfileCenterPart  {...props} userId={props.router.params.userId}/>
-            <ProfileRightPart Id = {props.Id} userId = {userId} defaultAvatar={props.defaultAvatar} friends={props.friends} photos={props.defaultPhotos}
-                              overlay={props.overlay} toggleOverlay={props.showOverlayAC}/>
+            <ProfileLeftPart {...[userId, isCurrentUser, email, about, updateProfile, directEditMode]}/>
+            <ProfileCenterPart  {...[profile, isCurrentUser, notFound, directEditMode, updateProfile, defaultAvatar, status, updateStatus]}/>
+            <ProfileRightPart {...[isCurrentUser, defaultAvatar, friends, defaultPhotos, toggleOverlay,
+                getFriends, unfollowFriend]}/>
         </div>
     )
 
@@ -39,14 +56,15 @@ const Profile = (props) => {
 let mapStateToProps = (state) => {
     return {
         profile: state.profilePage.profile,
+        directEditMode: state.profilePage.directEditMode,
         auth: state.auth.isLogged,
         Id: state.auth.id,
         email: state.auth.email,
-        login: state.auth.login,
         notFound: state.profilePage.notFound,
         defaultPhotos: state.profilePage.defaultPhotos,
         defaultAvatar: state.dialogsPage.defaultAvatar,
         friends: state.usersPage.friends,
+        status: state.profilePage.status,
     }
 }
 
@@ -56,4 +74,7 @@ export default compose(connect(mapStateToProps, {
     currentUserDataTC: setCurrentUserDataTC,
     showOverlayAC,
     getFriendsTC,
+    updateProfileTC,
+    updateStatusTC,
+    unfollowFriendTC,
 }), authHoc, withRouter)(Profile)

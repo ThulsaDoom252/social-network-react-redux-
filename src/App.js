@@ -14,7 +14,7 @@ import Users from "./components/Users/Users";
 import Messages from "./components/Messages/Messages";
 import Overlay from "./components/Overlay/Overlay";
 import Friends from "./components/Friends";
-import EditProfileDataContainer from "./components/Profile/EditProfileDataContainer";
+import EditProfileData from "./components/Profile/ProfileCenterPart/EditProfile/EditProfileData";
 
 function App(props) {
     useEffect(() => {
@@ -39,7 +39,7 @@ function App(props) {
                             <Route path="/messages" element={<Messages/>}/>
                             <Route path="/users" element={<Users/>}/>
                             <Route path="/news" element={<News/>}/>
-                            <Route path = "/edit" element = {<EditProfileDataContainer/>}/>
+                            <Route path = "/edit" element = {<EditProfileData/>}/>
                             <Route path="/settings" element={<Settings/>}/>
                             <Route path="" element={<Login/>}/>
                             <Route path={"/friends"} element={<Friends/>}/>

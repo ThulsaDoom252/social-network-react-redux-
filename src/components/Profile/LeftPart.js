@@ -1,23 +1,38 @@
-import React from 'react';
-import {HiOutlineDotsHorizontal} from "react-icons/hi";
+import React, {useEffect, useState} from 'react';
+import {HiOutlineDotsHorizontal} from "react-icons/all";
+import {useFormik} from "formik";
+import * as Yup from "yup";
 
 const LeftPart = (props) => {
-    let currentUser = props.userId === props.currentUserId.toString()
-    // window.fuck = props.profile.aboutMe
+    const {0: userId, 1: isCurrentUser, 2: email, 3: about, 4: updateProfile, 5: directEditMode} = props
+    const [aboutEditMode, setAboutEditMode] = useState(false)
+    const formik = useFormik({
+        initialValues: {
+            about: about
+        },
+        validationSchema: Yup.object({
+            about: Yup.string().min(4, 'Info must contain more than 3 characters!').nullable(),
+        }),
+    })
+
+    useEffect(() => {
+        formik.setFieldValue("name", about)
+    }, [about])
+
     return (
         <div className={"profile-page-left-part-container"}>
             <div className={"profile-page-left-part-userData"}>
                 <div>
                     <span className={"profile-page-left-part-label"}>Id</span>
-                    <p>{props.userId}</p>
+                    <p>{userId}</p>
                 </div>
                 <div>
                     <span className={"profile-page-left-part-label"}>About</span>
-                    <p>{"No info"}</p>
+                    <p>{about}</p>
                 </div>
                 <div>
                     <p className={"profile-page-left-part-label"}>Email</p>
-                    {currentUser ? props.email : "No email"}
+                    {isCurrentUser ? email : "No email"}
                 </div>
             </div>
             <div className={"profile-page-left-part-button"}>
@@ -26,5 +41,6 @@ const LeftPart = (props) => {
         </div>
     );
 }
+
 
 export default LeftPart;

@@ -104,14 +104,14 @@ input:-webkit-autofill:active {
 .section-content {
     position: relative;
     max-height: fit-content;
-    min-height: 600px;
+    min-height: 730px;
     width: 1100px;
     text-align: center;
-    background-color: #32c5d3;
+    background: linear-gradient(360deg, #6868ff, #3c91ff, #37a6c7, #70d3ef);
 }
 
 .container {
-    background-color: #5ee7c1;
+    background: linear-gradient(180deg, #5ee7c1, #00e8a5, #35cbff, #5ee7c1);
     width: 100vw;
     height: 100vh;
     max-height: fit-content;
@@ -277,7 +277,7 @@ input:-webkit-autofill:active {
     display: flex;
     height: 670px;
     width: 1150px;
-    background-color: white;
+    background: linear-gradient(190deg, #e5ffeb, #badcd2, #bdb1c5, #cbbc92);
     border-radius: 2%;
     animation: loginAppear 1.5s forwards;
 }
@@ -323,7 +323,6 @@ input:-webkit-autofill:active {
     width: 70%;
     font-family: "Open Sans";
     height: 75%;
-    background: rgb(255, 107, 10, 0.3);
 }
 
 .login-page-left-part-slogan-block {
@@ -333,7 +332,7 @@ input:-webkit-autofill:active {
     border-radius: 10%;
     text-align: center;
     padding: 1%;
-    background: rgb(172, 151, 151, 0.3);
+    background: rgb(172, 151, 151, 0.1);
 }
 
 .login-page-left-part-line {
@@ -588,7 +587,7 @@ input:-webkit-autofill:active {
 
 /*FRIENDS*/
 .friends-page-container {
-    background-color: #c7bdbd;
+    background: linear-gradient(300deg, #ffffff, #ffc8c8, #dcd9cc, #dedad2);
     margin-top: 20px;
     padding: 20px;
     font-family: "Open Sans";
@@ -663,7 +662,8 @@ input:-webkit-autofill:active {
     width: 80%;
     font-family: "Open Sans";
     margin: 20px auto auto auto;
-    background-color: #ffffff;
+    background: linear-gradient(300deg, #ffdddd, #e7abab, #fae5bb, #fce4cb);
+
 }
 
 .message-page-left-part {
@@ -863,7 +863,8 @@ input:-webkit-autofill:active {
 
 /*LEFT PART*/
 .profile-page-left-part-container {
-    background-color: white;
+    background: linear-gradient(400deg, #ffdddd, #ffe5bf, #fae5bb, #fce4cb);
+    border-radius: 3px;
     width: 200px;
     display: flex;
     position: absolute;
@@ -945,13 +946,13 @@ input:-webkit-autofill:active {
 }
 
 .profile-page-right-part-photos-block {
-    background-color: white;
+    background: linear-gradient(400deg, #ffdddd, #ffe5bf, #fffaf7, #fce4cb);
     min-height: 300px;
     text-align: center;
 }
 
 .profile-page-right-part-friends-block {
-    background-color: white;
+    background: linear-gradient(400deg, #ffdddd, #ffffff, #fae5bb, #fce4cb);
     margin-top: 20px;
     padding: 10px 10px 0 10px;
     min-height: 300px;
@@ -987,7 +988,7 @@ input:-webkit-autofill:active {
 /*CENTER*/
 .profile-page-center-container {
     top: 0;
-    background-color: rgba(255, 209, 209, 0.97);
+    background: linear-gradient(300deg, #ffdddd, #e7abab, #fae5bb, #fce4cb);
     width: 650px;
     min-height: 500px;
     font-family: "Open Sans";
@@ -1022,7 +1023,9 @@ input:-webkit-autofill:active {
 }
 
 .test-job-info {
-    background-color: rgba(255, 255, 255, 0.99);
+    font-family: SansSerif;
+    font-size: 1.2rem;
+    background-color: rgba(243, 223, 132, 0.2);
     width: 200px;
     min-height: 100px;
     border-radius: 5px;
@@ -1142,6 +1145,13 @@ input:-webkit-autofill:active {
     width: 50%;
     max-width: 400px;
     bottom: 120px;
+}
+
+.contact-direct-input {
+background-color: black;
+    color: white;
+    position: absolute;
+    z-index: 3;
 }
 
 .profile-page-left-part-name {
@@ -1278,16 +1288,35 @@ input:-webkit-autofill:active {
 .edit-profile-avatar-block {
     width: 25%;
     display: flex;
+    flex-direction: column;
     align-items: center;
+    margin: 210px auto;
 }
 
 .edit-profile-avatar {
-    width: 300px;
-    height: 200px;
+    padding: 10px;
+    width: 200px;
+    border-radius: 3px;
+}
+
+.upload-avatar-button {
+    padding: 10px;
+    background-color: #32c5d3;
+    border-radius: 2px;
+    color: white;
+    cursor: pointer;
+
+}
+
+.edit-profile-email {
+    padding: 10px;
 }
 
 .edit-profile-data-block {
     height: 100%;
+    background: url("./components/Profile/ProfileCenterPart/EditProfile/bg.png") no-repeat;
+    background-position-x: 170px;
+    background-position-y: 110px;
     padding: 10px;
     width: 50%;
     text-align: left;
@@ -1298,7 +1327,7 @@ input:-webkit-autofill:active {
 
 .edit-profile-title {
     position: relative;
-    left: 30px;
+    left: 40px;
     letter-spacing: 0.5px;
     font-weight: bold;
     font-size: 1.1rem;
@@ -1307,10 +1336,30 @@ input:-webkit-autofill:active {
 
 .data-first-block {
     display: flex;
+    position: relative;
     justify-content: center;
 }
 
+.edit-error {
+    color: red;
+    position: absolute;
+    font-size: 0.85rem;
+    width: 210px;
+}
+
+.name-error {
+    top: 30px;
+    left: 55px;
+}
+
+.about-error {
+    top: 30px;
+    left: 300px;
+}
+
+
 .data-first-block div {
+    margin-top: 25px;
     padding: 0 30px 0 30px;
 }
 
@@ -1322,8 +1371,15 @@ input:-webkit-autofill:active {
 }
 
 .data-second-block {
+    position: relative;
     margin-top: 90px;
     text-align: center;
+}
+
+.description-error {
+    left: 130px;
+    top: 114px;
+    width: 269px;
 }
 
 .edit-profile-checkbox-block {
@@ -1335,15 +1391,32 @@ input:-webkit-autofill:active {
 
 .edit-profile-job-description-input {
     width: 80%;
+    margin-top: 30px;
+}
+
+.applicant-label {
+    font-size: 1.2rem;
+    margin-right: 10px;
+}
+
+.job-description-label {
+    font-size: 1.1rem;
+    font-weight: 2;
+    margin-top: 60px;
 }
 
 .edit-profile-page-submit-button {
-    margin-top: 100px;
-    background-color: #3f3c3c;
+    margin-top: 110px;
+    background-color: #32c5d3;
+    cursor: pointer;
     color: #ffffff;
-    width: 120px;
+    width: 140px;
     border-radius: 5px;
-    height: 30px;
+    height: 35px;
+}
+
+.edit-profile-page-submit-button:active {
+    color: red;
 }
 
 .edit-profile-contacts-block {
@@ -1365,6 +1438,11 @@ input:-webkit-autofill:active {
 .edit-profile-contact-block {
     margin-top: 50px;
     position: relative;
+}
+
+.contact-error {
+    bottom: -20px;
+    left: 25px;
 }
 
 .edit-profile-contact-label {
@@ -1494,6 +1572,155 @@ input:-webkit-autofill:active {
     cursor: pointer;
 }
 
+/*SETTINGS*/
+.settings-page-container {
+    min-height: 715px;
+    margin: 15px auto;
+    width: 90%;
+    font-size: 1.1rem;
+    padding: 15px;
+    font-family: SansSerif;
+    display: flex;
+    background: url("./components/Settings/settings-bg.png") rgb(255, 255, 255, 0.8);
+    background-repeat: no-repeat;
+    background-position-x: 350px;
+    background-position-y: 90px;
+}
+
+.settings-left-part {
+    padding: 2px;
+    border-right: gray solid thin;
+}
+
+.settings-class {
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 15px;
+}
+
+.settings-left-part-block, .settings-right-part-block {
+    margin: 80px auto;
+}
+
+.settings-right-part {
+    width: 90%;
+}
+
+.settings-right-part-title {
+    letter-spacing: 1px;
+    font-size: 1.3rem;
+    font-weight: 50;
+}
+
+.settings-block {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    padding: 20px;
+}
+
+.settings-block-switch {
+    cursor: pointer;
+}
+
+.sbl {
+    text-align: center;
+}
+
+/*SETTINGS SWITCH*/
+:root {
+    --duration: 0.4s;
+}
+.checker {
+    display: block;
+    font-size: 1.2rem;
+    height: 1em;
+    width: 2.5em;
+    box-sizing: content-box;
+    padding: 0.15em;
+    border-radius: 0.25em;
+    transition: transform var(--duration) ease;
+    cursor: pointer;
+}
+.checkmark {
+    width: 1em;
+    height: 1em;
+    transition: transform var(--duration) ease;
+    transform: translateX(-0.4em);
+    z-index: 5;
+}
+.checkmark svg {
+    display: block;
+    background: #e5e5e5;
+    transform: translateX(0.4em);
+    border-radius: 0.15em;
+    transition: background-color var(--duration) ease, transform calc(var(--duration) * 1.5) ease;
+}
+.checkmark svg path {
+    stroke-dasharray: 90 90;
+    stroke-dashoffset: 90;
+    transition: stroke-dashoffset calc(var(--duration) / 3) linear calc(var(--duration) / 3);
+}
+.checkbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.4;
+    visibility: hidden;
+}
+.checkbox:checked ~ .checkmark {
+    transform: translate(1.9em);
+}
+.checkbox:checked ~ .checkmark svg {
+    background: #77c44c;
+    transform: translate(-0.4em);
+}
+.checkbox:checked ~ .checkmark svg path {
+    stroke-dashoffset: 0;
+}
+.check-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    background: white;
+    z-index: 2;
+}
+.check-bg:before, .check-bg:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: inherit;
+}
+.check-bg:after {
+    background: white;
+}
+.check-bg:before {
+    transition: transform var(--duration) ease;
+    transform: translateY(30%);
+    transform-origin: bottom center;
+    background: black;
+    filter: blur(0.25em);
+    opacity: 0.2;
+    z-index: -1;
+}
+.checker.checker:active {
+    transform: scale(0.85);
+    transition-duration: calc(var(--duration) / 2);
+}
+.checker.checker:active .check-bg::before {
+    transform: translateY(0) scale(0.8);
+    opacity: 0.2;
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+    position: relative;
+}
+
 
 /***********************************************USERS*********************************************/
 .users-page-container {
@@ -1565,138 +1792,6 @@ input:-webkit-autofill:active {
     color: white;
     cursor: pointer;
 }
-
-/*SETTINGS-SWITCH*/
-.switch-body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 1em;
-}
-
-.switch {
-    display: inline-block;
-    position: relative;
-    /*
-    SIZE OF SWITCH
-    ==============
-    All sizes are in em - therefore
-    changing the font-size here
-    will change the size of the switch.
-    See .switch-small below as example.
-    */
-    font-size: 2em;
-    font-weight: bold;
-    text-align: center;
-    text-transform: uppercase;
-    color: #3f3c3c;
-    width: 7em;
-    height: 4em;
-    overflow: hidden;
-    border-bottom: 0.5em solid #ff992b;
-}
-
-.switch-small {
-    font-size: 0.45em; /* Sizes the switch */
-    margin: 1em;
-}
-
-.switch::before {
-    content: "";
-    position: absolute;
-    top: 0.5em;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #999;
-    border: 0.5em solid #ff992b;
-    border-bottom: 0;
-}
-
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.switch-left,
-.switch-right {
-    cursor: pointer;
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 2.5em;
-    width: 3em;
-    transition: 0.2s;
-}
-
-.switch-left {
-    height: 2.4em;
-    width: 2.75em;
-    left: 0.85em;
-    bottom: 0.4em;
-    background-color: #ddd;
-    transform: rotate(15deg) skewX(15deg);
-}
-
-.switch-right {
-    right: 0.5em;
-    bottom: 0;
-    background-color: #bd5757;
-    color: #fff;
-}
-
-.switch-left::before,
-.switch-right::before {
-    content: "";
-    position: absolute;
-    width: 0.4em;
-    height: 2.45em;
-    bottom: -0.45em;
-    background-color: #ccc;
-    transform: skewY(-65deg);
-}
-
-.switch-left::before {
-    left: -0.4em;
-}
-
-.switch-right::before {
-    right: -0.375em;
-    background-color: transparent;
-    transform: skewY(65deg);
-}
-
-.switch-input:checked + .switch-left {
-    background-color: #ff0707;
-    color: #ffd929;
-    bottom: 0px;
-    left: 0.5em;
-    height: 2.5em;
-    width: 3em;
-    transform: rotate(0deg) skewX(0deg);
-}
-
-.switch-input:checked + .switch-left::before {
-    background-color: transparent;
-    width: 3.0833em;
-}
-
-.switch-input:checked + .switch-left + .switch-right {
-    background-color: #ddd;
-    color: #888;
-    bottom: 0.4em;
-    right: 0.8em;
-    height: 2.4em;
-    width: 2.75em;
-    transform: rotate(-15deg) skewX(-15deg);
-}
-
-.switch-input:checked + .switch-left + .switch-right::before {
-    background-color: #ccc;
-}
-
 
 @media (max-width: 528px) {
     .header-slogan-block {

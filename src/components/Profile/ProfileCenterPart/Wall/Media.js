@@ -1,4 +1,5 @@
 import React from 'react';
+import miracle from "./test.mp3"
 import { ReactAudioControl } from 'react-audio-control'
 import 'react-audio-control/dist/index.css'
 

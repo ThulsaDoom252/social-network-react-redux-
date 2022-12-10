@@ -1,31 +1,28 @@
 import React, {useEffect, useState} from 'react';
-import {connect} from "react-redux";
-import {updateStatusTC} from "../../../redux/profile-reducer/profile-reducer";
 
 const Status = (props) => {
-    const isUserPage = props.currentUser.toString() === props.userId.toString()
+    const {0: propStatus, 1: isCurrentUser, 2: updateStatus} = props
     const [editMode, setEditMode] = useState(false)
-    const [status, setStatus] = useState(props.status)
-    const lengthError  = status !== null && status.length > 300
+    const [status, setStatus] = useState(propStatus)
+    const lengthError = status !== null && status.length > 300
     const changeStatus = (e) => {
         setStatus(e.currentTarget.value)
     }
     const white = {"background-color": "white"}
     useEffect(() => {
-        setStatus(props.status)
-    }, [props.status])
+        setStatus(propStatus)
+    }, [propStatus])
     const toggleEditMode = () => {
         if (editMode) {
             setEditMode(false)
-            props.updateStatusTC(status)
-        } else if (!editMode && isUserPage) {
+            updateStatus(status)
+        } else if (!editMode && isCurrentUser) {
             setEditMode(true)
         }
     }
     return (
         <div className="status-wrapper">
-            {/*<p>Status:</p>*/}
-            <p hidden={!lengthError} style={{"color":"red"}}>Status lenght can't exceed 300 characters!</p>
+            <p hidden={!lengthError} style={{"color": "red"}}>Status length can't exceed 300 characters!</p>
             <div className="status-container">
                 {editMode ?
                     <input style={white}
@@ -34,16 +31,10 @@ const Status = (props) => {
                            onChange={changeStatus}
                            type={"text"}
                            value={status}/> :
-                    <p className="status" onDoubleClick={toggleEditMode}>{props.status || "No Status"}</p>}
+                    <p className="status" onDoubleClick={toggleEditMode}>{propStatus || "No Status"}</p>}
             </div>
         </div>
     );
 }
 
-const mapStateToProps = (state) => {
-    return {
-        status: state.profilePage.status
-    }
-}
-
-export default connect(mapStateToProps, {updateStatusTC})(Status);
+export default Status;
