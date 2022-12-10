@@ -122,6 +122,26 @@ input:-webkit-autofill:active {
 }
 
 
+/***************************************************************GALLERY*************************************************/
+.gallery-container {
+    height: 621px;
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    width: 100%;
+    background: linear-gradient(400deg, #c2c2fc, #dbdbff, #a2a2e1, #d5d5ff);
+}
+
+.photo-block {
+    width: 270px;
+    padding: 5px 10px 5px 10px;
+}
+
+.photo {
+    cursor: pointer;
+}
+
 /*INITIALIZING*/
 .initializing-image {
     display: flex;
@@ -252,6 +272,7 @@ input:-webkit-autofill:active {
     bottom: 10px;
     letter-spacing: 7px;
 }
+
 
 .header-navbar-button {
     border-right: #ffffff solid 3px;
@@ -1226,7 +1247,12 @@ input:-webkit-autofill:active {
 }
 
 .profile-page-right-part-photos-block-label {
-    font-family: "Open Sans"
+    font-family: "Open Sans";
+    cursor: pointer;
+}
+
+.profile-page-right-part-photos-block-label:hover {
+    text-decoration: underline;
 }
 
 .profile-page-right-part-photos-block {
