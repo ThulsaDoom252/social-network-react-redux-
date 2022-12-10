@@ -5,7 +5,8 @@ import SignUpBlock from "./SignUpBlock";
 import SignInBlock from "./SignInBlock";
 
 const LoginPage = (props) => {
-    if (props.auth) return <Navigate to={'/profile'}/>
+    const {id: currentUser, auth: loggedIn} = props
+    if (loggedIn) return <Navigate to={`/profile/${currentUser}`}/>
     let [showSignInBlock, toggleShowSignInBlock] = useState(true)
     let [signButtonDisabled, disableSignButton] = useState(false)
     const switchRelay = () => showSignInBlock ? toggleShowSignInBlock(false) : toggleShowSignInBlock(true)
@@ -55,8 +56,8 @@ const LoginPage = (props) => {
 
 let mapStateToProps = (state) => {
     return {
+        id: state.auth.id,
         auth: state.auth.isLogged,
-        preLogged: state.auth.preLogged
     }
 }
 

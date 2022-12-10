@@ -139,20 +139,49 @@ input:-webkit-autofill:active {
 
 /*NOT FOUND*/
 .not-found-container {
-    max-width: 100%;
-    height: 100%;
+    margin: 10% auto;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
 }
 
-.not-found-container img {
-    border-radius: 200px;
+.not-found-image {
+    width: 200px;
+    position: relative;
+    top: 25px;
 }
 
-.not-found-text {
+.not-found-text-block {
     font-size: 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "Fira Sans";
+}
+
+.not-found-label-1 {
+    color: red;
+    color-rendering: optimizeQuality;
+    font-size: 6rem;
+    letter-spacing: 30px;
+}
+
+.not-found-label-2 {
+    color: red;
+    font-size: 7rem;
+    letter-spacing: 30px;
+}
+
+.not-found-button {
+    font-size: 2rem;
+    padding: 10px;
+    letter-spacing: 10px;
+    background: linear-gradient(180deg, #69f5d7, #67e0c7, #00f6bb, #b5f5d7);
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 /*Header*/
