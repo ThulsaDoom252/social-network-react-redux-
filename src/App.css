@@ -325,9 +325,9 @@ input:-webkit-autofill:active {
 /*************************LOGIN PAGE*********************/
 .login-page-container {
     display: flex;
-    height: 670px;
+    height: 600px;
     font-family: "Fira Sans";
-    width: 1150px;
+    max-width: 1150px;
     background: linear-gradient(190deg, #e5ffeb, #badcd2, #bdb1c5, #cbbc92);
     border-radius: 2%;
     animation: loginAppear 1.5s forwards;
@@ -494,7 +494,6 @@ input:-webkit-autofill:active {
     margin-top: 25px;
     padding: 15px 0 0 40px;
     text-align: center;
-    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -516,7 +515,6 @@ input:-webkit-autofill:active {
     display: flex;
     position: relative;
     flex-direction: column;
-    flex-wrap: nowrap;
     align-items: center;
     justify-content: space-around;
     margin: 50px auto auto auto;
@@ -529,7 +527,7 @@ input:-webkit-autofill:active {
 }
 
 .login-page-inputs, .login-page-captcha-input {
-    width: 300px;
+    width: 78%;
     text-align: center;
     font-family: Teko;
     letter-spacing: 1px;
@@ -566,6 +564,17 @@ input:-webkit-autofill:active {
     align-items: center;
     justify-content: space-around;
 }
+
+.mobile-signUp-block {
+    margin-top: 30px;
+    display: none;
+}
+
+.mobile-signUp-button {
+    margin-top: 1px;
+    cursor: pointer;
+}
+
 
 .login-page-login-button {
     margin: 25px auto auto auto;
@@ -1520,30 +1529,51 @@ input:-webkit-autofill:active {
 /*!*BREAKPOINTS*!*/
 /********************!*LOGIN-PAGE*!*/
 @media only screen and (max-width: 1149px) {
-    .login-page-wallpaper {
-        display: none;
-    }
-
     .login-page-container {
         display: flex;
         max-width: 400px !important;
         min-width: 280px !important;
-        background-color: white;
         justify-content: center;
         align-content: center;
+        margin: 10px;
         border-radius: 2%;
         animation: loginAppear 1.5s forwards;
     }
 
+    .login-page-wallpaper {
+        display: none;
+    }
+
     .login-page-right-part-signIn-block {
-        font-family: "Open Sans";
-        padding: 0 7px 0 0 !important;
-        background-position-x: -80px !important;
-        background-size: 450px !important;
+        display: flex;
+        position: relative;
+        right: 20px;
+        justify-content: center;
+        background-image: url("./components/Login/mobile-logo.png");
+        background-size: 300px;
+        background-position: 24px 55px;
+
+    }
+
+    .mobile-signUp-block {
+        display: block;
+    }
+
+}
+
+@media only screen and (max-width: 392px) {
+    .login-page-right-part-signIn-block {
+        background-position: -10px 55px;
+        background-size: 280px;
     }
 }
 
-
+@media only screen and (max-width: 392px) {
+    .login-page-right-part-signIn-block {
+        background-position: -10px 55px;
+        background-size: 260px;
+    }
+}
 
 
 /***************************************************PAGINATOR****************************************/
