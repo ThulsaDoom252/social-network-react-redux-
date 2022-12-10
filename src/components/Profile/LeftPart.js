@@ -1,8 +1,9 @@
 import React from 'react';
-import {HiOutlineDotsHorizontal} from "react-icons/all";
+import {HiOutlineDotsHorizontal} from "react-icons/hi";
 
 const LeftPart = (props) => {
     let currentUser = props.userId === props.currentUserId.toString()
+    // window.fuck = props.profile.aboutMe
     return (
         <div className={"profile-page-left-part-container"}>
             <div className={"profile-page-left-part-userData"}>

@@ -2,9 +2,9 @@ import React, {useEffect, useState} from "react";
 import {compose} from "redux";
 import {connect} from "react-redux";
 import authHoc from "../HOC/authHoc";
-import {BiMessageAltEdit, FiInfo, FiPhoneCall, FiVideo} from "react-icons/all";
+import {FiInfo, FiPhoneCall, FiVideo} from "react-icons/fi";
+import {BiMessageAltEdit} from "react-icons/bi"
 import {clearRandomUsersAC, getRandomUsersTC} from "../../redux/dialogs-reducer";
-import testPic from "./1.png"
 
 const Messages = (props) => {
     let [senderId, setSenderId] = useState(0)

@@ -4,7 +4,6 @@ import {connect} from "react-redux";
 import {getFriendsTC, unfollowFriendTC} from "../redux/users-reducer";
 import {compose} from "redux";
 import authHoc from "./HOC/authHoc";
-import anonymous from "./common/default-avatar.jfif";
 import {NavLink} from "react-router-dom";
 
 

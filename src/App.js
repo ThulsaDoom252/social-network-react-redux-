@@ -1,7 +1,6 @@
 import React, {useEffect} from "react";
 import './App.css';
 import Header from "./components/Header/Header";
-import Sidebar from "./components/Sidebar";
 import Profile from "./components/Profile/Profile";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Settings from "./components/Settings/Settings";
