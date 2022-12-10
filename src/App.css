@@ -326,32 +326,11 @@ input:-webkit-autofill:active {
 .login-page-container {
     display: flex;
     height: 670px;
+    font-family: "Fira Sans";
     width: 1150px;
     background: linear-gradient(190deg, #e5ffeb, #badcd2, #bdb1c5, #cbbc92);
     border-radius: 2%;
     animation: loginAppear 1.5s forwards;
-}
-
-@keyframes loginAppear {
-    0% {
-        opacity: 0;
-        margin-bottom: 50px;
-    }
-
-    100% {
-        opacity: 1;
-        margin-bottom: 0;
-    }
-}
-
-@keyframes loginBlockAppear {
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
 }
 
 /*LEFT PART*/
@@ -392,27 +371,27 @@ input:-webkit-autofill:active {
     height: 2px;
 }
 
-@media only screen and (max-width: 1149px) {
-    .login-page-wallpaper {
-        display: none;
+/*LOGIN ANIMATION*/
+
+@keyframes loginAppear {
+    0% {
+        opacity: 0;
+        margin-bottom: 50px;
     }
 
-    .login-page-container {
-        display: flex;
-        max-width: 400px !important;
-        min-width: 280px !important;
-        background-color: white;
-        justify-content: center;
-        align-content: center;
-        border-radius: 2%;
-        animation: loginAppear 1.5s forwards;
+    100% {
+        opacity: 1;
+        margin-bottom: 0;
+    }
+}
+
+@keyframes loginBlockAppear {
+    0% {
+        opacity: 0;
     }
 
-    .login-page-right-part-signIn-block {
-        font-family: "Open Sans";
-        padding: 0 7px 0 0 !important;
-        background-position-x: -80px !important;
-        background-size: 450px !important;
+    100% {
+        opacity: 1;
     }
 }
 
@@ -1538,80 +1517,33 @@ input:-webkit-autofill:active {
     border: gray thin solid;
 }
 
-
 /*!*BREAKPOINTS*!*/
-/*@media (max-width: 800px) {*/
-/*    .container {*/
-/*        display: block;*/
-/*    }*/
+/********************!*LOGIN-PAGE*!*/
+@media only screen and (max-width: 1149px) {
+    .login-page-wallpaper {
+        display: none;
+    }
 
-/*    .header {*/
-/*        max-width: 100%;*/
-/*        min-height: 4%;*/
-/*    }*/
+    .login-page-container {
+        display: flex;
+        max-width: 400px !important;
+        min-width: 280px !important;
+        background-color: white;
+        justify-content: center;
+        align-content: center;
+        border-radius: 2%;
+        animation: loginAppear 1.5s forwards;
+    }
 
-/*    .header-container {*/
-/*        padding: 0 !important;*/
-/*    }*/
+    .login-page-right-part-signIn-block {
+        font-family: "Open Sans";
+        padding: 0 7px 0 0 !important;
+        background-position-x: -80px !important;
+        background-size: 450px !important;
+    }
+}
 
-/*    .section-content {*/
-/*        max-width: 100%;*/
-/*        min-height: 720px;*/
-/*    }*/
 
-/*    .sidebar {*/
-/*        display: none;*/
-/*    }*/
-
-/*    .header-burger-navbar {*/
-/*        display: block;*/
-/*    }*/
-
-/*    .header-logout-button {*/
-/*        margin-right: 1%;*/
-/*    }*/
-/*}*/
-
-/*!*SETTINGS*!*/
-/*.settings-page-container {*/
-/*    display: flex;*/
-/*    width: 100%;*/
-/*    justify-content: center;*/
-/*    padding-top: 80px;*/
-/*}*/
-
-/*.settings-page-block {*/
-/*    text-align: center;*/
-/*    background-color: #d19549;*/
-/*    width: 75%;*/
-/*    min-height: 400px;*/
-/*    border-radius: 120px;*/
-/*    box-shadow: inset 6px 6px 6px #c48b45, inset -6px -6px 6px #d19549;*/
-/*}*/
-
-/*.settings-page-title {*/
-/*    font-size: 1.9vmax;*/
-/*}*/
-
-/*.settings-page-options-block {*/
-/*    display: flex;*/
-/*    justify-content: space-between;*/
-/*    align-items: center;*/
-/*}*/
-
-/*.settings-keys-block {*/
-/*    padding-left: 10%;*/
-/*    text-align: left;*/
-/*}*/
-
-/*.settings-keys {*/
-/*    width: 110%;*/
-/*    padding: 5%;*/
-/*}*/
-
-/*.settings-switches-block {*/
-/*    width: 40%;*/
-/*}*/
 
 
 /***************************************************PAGINATOR****************************************/
