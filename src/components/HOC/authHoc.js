@@ -4,7 +4,7 @@ import {Navigate} from "react-router-dom";
 const authHoc = (Component) => {
     return (props) => {
         if (!props.auth) {
-            return <Navigate to="/login"/>
+            return <Navigate to="/"/>
         } else {
             return <Component {...props}/>
         }

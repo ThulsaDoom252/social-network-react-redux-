@@ -1,7 +1,6 @@
 import axios from "axios";
 
 let apiKey = localStorage.getItem("apiKey".toString())
-window.apiKey = apiKey
 
 export const instance = axios.create({
     withCredentials: true,
@@ -15,10 +14,24 @@ export const instance = axios.create({
 export const apiCaller = {
     getUsers: (currentPage, pageSize, fetching, setUsers) => {
         return (
-            instance.get(`users?page=${currentPage}&count=${8}`)
+            instance.get(`users?page=${currentPage}&count=${20}`)
                 .then(response => {
                     return response.data
                 })
+        )
+    },
+    getRandomUsers: (randomPage, count) => {
+        return (
+            instance.get(`users?page=${randomPage}&count=${count}`).then(response => {
+                return response.data
+            })
+        )
+    },
+    getFriends: (count) => {
+        return (
+            instance.get(`users?friend=true&count=${count}`).then(response => {
+                return response.data
+            })
         )
     },
     setUsers: (userId) => {
@@ -59,11 +72,6 @@ export const profileApi = {
         )
     },
 
-    getCurrentUser(userId) {
-        return instance.get('profile/' + userId).then(response => {
-            return response.data
-        })
-    },
 
     getStatus(userId) {
         return instance.get('profile/status/' + userId)
@@ -115,9 +123,9 @@ export const profileApi = {
 export const loginApi = {
     auth: () => {
         return instance.get('auth/me').then(response => {
-            return response.data
-        })
-
+                return response.data
+            }
+        )
     },
 
     getCaptcha: () => {
@@ -141,7 +149,6 @@ export const loginApi = {
             return response.data
         })
     }
-
 }
 
 

@@ -6,7 +6,7 @@ import {connect} from "react-redux";
 function Sidebar(props) {
     const current = props.currentUser
     return (
-        <div hidden={!props.auth} className={"sidebar"}>
+        <div hidden={true} className={"sidebar"}>
             <img className={"sidebar-logo"} src={logo} alt='logo'/>
             <NavLink className={navData => navData.isActive ? "sidebar-item-active" : "sidebar-item"}
                      to={`/profile/${current}`}>Profile</NavLink>

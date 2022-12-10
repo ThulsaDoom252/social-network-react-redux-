@@ -1,5 +1,5 @@
 import React from 'react';
-import initializing from "./common/Initializing.gif"
+import initializing from "./common/initializing2.gif"
 
 const Initialize = (props) => {
     return (

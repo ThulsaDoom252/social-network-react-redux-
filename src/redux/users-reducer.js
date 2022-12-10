@@ -1,8 +1,10 @@
 import {apiCaller} from "../api/api";
-import {FETCH, FOLLOW, FOLLOWING_PROGRESS, SET_PAGE, SET_USERS, UNFOLLOW} from "./types";
+import {FETCH, FOLLOW, FOLLOWING_PROGRESS, SET_PAGE, SET_USERS, UNFOLLOW, GET_FRIENDS, UNFOLLOW_FRIEND} from "./types";
 
 //ACTION CREATORS
 export const follow = (userid) => ({type: FOLLOW, userid})
+export const getFriendsAC = (friends) => ({type: GET_FRIENDS, friends})
+export const unFollowFriendAC = (friendId, index) => ({type: UNFOLLOW_FRIEND, friendId})
 export const unFollow = (userid) => ({type: UNFOLLOW, userid})
 export const setUsers = (users) => ({type: SET_USERS, users})
 export const setCurrentPage = (currentPage) => ({type: SET_PAGE, currentPage})
@@ -12,11 +14,16 @@ export const followingProgressRelay = (isFetching, userId) => ({type: FOLLOWING_
 //STATE
 const initialState = {
     users: [],
+    friends: [],
     pageSize: 10,
     totalCount: 19607,
     currentPage: 2,
     isFetching: true,
     followingProgress: []
+}
+
+Array.prototype.remove = function(value) {
+    this.splice(this.indexOf(value), 1);
 }
 
 //REDUCERS
@@ -42,8 +49,21 @@ const userReducer = (state = initialState, action) => {
                     return u;
                 })
             }
+        case UNFOLLOW_FRIEND:
+            return {
+                ...state,
+                friends: [...state.friends.filter(friend => friend.id !== action.friendId)]
+            }
         case SET_USERS:
-            return {...state, users: [...action.users]}
+            return {
+                ...state,
+                users: [...action.users]
+            }
+        case GET_FRIENDS:
+            return {
+                ...state,
+                friends: [...action.friends]
+            }
 
         case FETCH:
             return {...state, isFetching: action.isFetching}
@@ -85,6 +105,7 @@ export const unFollowTC = (userid) => {
     }
 }
 
+
 export const getUsersTC = (thisPage, pageSize) => {
     return async (dispatch) => {
         dispatch(fetchingRelay(true))
@@ -93,6 +114,21 @@ export const getUsersTC = (thisPage, pageSize) => {
         dispatch(setUsers(data.items))
         dispatch(setCurrentPage(thisPage))
 
+    }
+}
+
+export const getFriendsTC = (count) => {
+    return async (dispatch) => {
+        const data = await apiCaller.getFriends(count)
+        dispatch(getFriendsAC(data.items))
+    }
+}
+
+export const unfollowFriendTC = (friendId, index) => {
+    return async (dispatch) => {
+        debugger
+        await apiCaller.unFollow(friendId)
+        dispatch(unFollowFriendAC(friendId, index))
     }
 }
 
