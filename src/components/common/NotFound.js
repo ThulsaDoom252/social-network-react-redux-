@@ -1,5 +1,5 @@
 import React from 'react';
-import notFound from "./notFound.jpg"
+import notFound from "./404.png"
 import authHoc from "../HOC/authHoc";
 import {compose} from "redux";
 import {connect} from "react-redux";

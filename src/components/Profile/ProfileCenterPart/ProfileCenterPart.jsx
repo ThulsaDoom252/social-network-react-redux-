@@ -37,7 +37,7 @@ const ProfileCenterPart = (props) => {
             </div>
             <div className={"profile-page-center-userInfo-container"}>
                 <ProfileAvatarBlock {...[profile, isCurrentUser, directEditMode, updateProfile, defaultAvatar, status, updateStatus]}/>
-                <ProfileData {...[profile, isCurrentUser]}/>
+                <ProfileData {...[profile, isCurrentUser, updateProfile]}/>
             </div>
             <ProfileWall {...[name, photos, defaultAvatar]}/>
         </div>
