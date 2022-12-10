@@ -43,7 +43,7 @@ const Header = (props) => {
                 <div className={"header-navBar"}>
                     <NavLink className={navButtons} to={`/profile/${currentUser}`}><TfiUser/>Profile</NavLink>
                     <NavLink className={navButtons} to={'/messages'}><BiMessageSquareDetail/>Messages</NavLink>
-                    <NavLink className={navButtons} to={'/photos'}><TfiGallery/>Photos</NavLink>
+                    <NavLink className={navButtons} to={'/gallery'}><TfiGallery/>Photos</NavLink>
                     <NavLink className={navButtons} to={"/friends"}><FaUserFriends/>Friends</NavLink>
                     <NavLink className={navButtons} to={"/users"}><ImUsers/>Users</NavLink>
                     <NavLink className={navButtons} to={"/settings"}><IoSettingsOutline/>Settings</NavLink>

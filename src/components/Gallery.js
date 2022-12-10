@@ -4,7 +4,7 @@ import {compose} from "redux";
 import authHoc from "./HOC/authHoc";
 import {showOverlayAC} from "../redux/profile-reducer/profile-reducer";
 
-function Photos(props) {
+function Gallery(props) {
     const {photos, showOverlayAC : toggleOverlay} = props
     return (
         <div className={"gallery-container"}>
@@ -20,4 +20,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default compose(connect(mapStateToProps, {showOverlayAC}), authHoc)(Photos);
+export default compose(connect(mapStateToProps, {showOverlayAC}), authHoc)(Gallery);

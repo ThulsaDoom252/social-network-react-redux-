@@ -15,7 +15,7 @@ import Messages from "./components/Messages/Messages";
 import Overlay from "./components/Overlay/Overlay";
 import Friends from "./components/Friends";
 import EditProfileData from "./components/Profile/ProfileCenterPart/EditProfile/EditProfileData";
-import Photos from "./components/Photos";
+import Photos from "./components/Gallery";
 
 function App(props) {
     useEffect(() => {
@@ -38,7 +38,7 @@ function App(props) {
                         <Routes>
                             <Route path={"/profile/:userId"} element={<Profile overlay = {props.overlayVisible} showOverlay = {props.showOverlayAC}/>}/>
                             <Route path="/messages" element={<Messages/>}/>
-                            <Route path="/photos" element={<Photos/>}/>
+                            <Route path="/gallery" element={<Photos/>}/>
                             <Route path="/users" element={<Users/>}/>
                             <Route path="/news" element={<News/>}/>
                             <Route path = "/edit" element = {<EditProfileData/>}/>
