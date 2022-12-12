@@ -1592,20 +1592,32 @@ body {
 
 /*!*BREAKPOINTS*!*/
 /********************!*LOGIN-PAGE*!*/
+
 @media only screen and (max-width: 1149px) {
-    .login-page-container {
-        display: flex;
-        max-width: 400px !important;
-        min-width: 280px !important;
-        justify-content: center;
-        align-content: center;
-        margin: 10px;
-        border-radius: 2%;
-        animation: loginAppear 1.5s forwards;
+
+    .login-page-right-part-signUp-block {
+        display: none;
     }
 
     .login-page-wallpaper {
         display: none;
+    }
+
+    .mobile-signUp-block {
+        display: block;
+    }
+
+    .login-page-container {
+        display: flex;
+        max-width: 400px;
+        justify-content: center;
+        align-content: center;
+        border-radius: 2%;
+        animation: loginAppear 1.5s forwards;
+    }
+
+    .login-page-right-part-container {
+        width: auto;
     }
 
     .login-page-right-part-signIn-block {
@@ -1617,10 +1629,6 @@ body {
         background-size: 300px;
         background-position: 24px 55px;
 
-    }
-
-    .mobile-signUp-block {
-        display: block;
     }
 
 }
