@@ -15,10 +15,13 @@ const ProfileCenterPart = (props) => {
         4: updateProfile,
         5: defaultAvatar,
         6: status,
-        7: updateStatus
+        7: updateStatus,
+        8: defaultPhotos,
+        9: toggleOverlay,
+        10: friends,
     } = props
 
-    const {fullName : name, photos} = profile
+    const {fullName: name, photos} = profile
     if (notFound) {
         return <NotFound/>
     } else if (!profile) {
@@ -38,6 +41,22 @@ const ProfileCenterPart = (props) => {
             <div className={"profile-page-center-userInfo-container"}>
                 <ProfileAvatarBlock {...[profile, isCurrentUser, directEditMode, updateProfile, defaultAvatar, status, updateStatus]}/>
                 <ProfileData {...[profile, isCurrentUser, updateProfile]}/>
+            </div>
+            <div className={"mobile-friends-block"}>
+                <div className={"center-friends-block"}>
+                    {friends.map((friend, index) => index < 4 && <div className={"center-friend-block"}><img
+                        src={friend.photos.small ? friend.photos.small : defaultAvatar}
+                        alt={`photo${index}`}/><p>{friend.name}</p></div>)}
+                </div>
+                <NavLink to={"/friends"} className={"center-friends-button"}>...</NavLink>
+            </div>
+            <div className={"mobile-gallery-block"}>
+                <div className={"photos-block"}>
+                    {defaultPhotos.map((photo, index) => <div className={"center-gallery-photo-block"}>{index < 4 &&
+                        <img className={"center-gallery-photo"} onClick={() => toggleOverlay(true, index)} src={photo}
+                             alt={`photo${index}`}/>}</div>)}
+                </div>
+                <NavLink to={"/gallery"} className={"center-gallery-button"}>To gallery</NavLink>
             </div>
             <ProfileWall {...[name, photos, defaultAvatar]}/>
         </div>

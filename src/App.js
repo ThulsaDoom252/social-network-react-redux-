@@ -26,29 +26,33 @@ function App(props) {
 
     if (!props.initialized) {
         return (
-            <Initialize/>
+            <div className={"container"}>
+                <Initialize/>
+            </div>
         )
     } else {
         return (
             <BrowserRouter>
-                <div style = {{"height": props.auth && "auto"}} className={"container"}>
+                <div style={{"height": props.auth && "auto"}} className={"container"}>
                     {props.overlayVisible && <Overlay/>}
-                    <Header/>
-                    <section className={props.auth ? "section-content" : null}>
-                        <Routes>
-                            <Route path={"/profile/:userId"} element={<Profile overlay = {props.overlayVisible} showOverlay = {props.showOverlayAC}/>}/>
-                            <Route path="/messages" element={<Messages/>}/>
-                            <Route path="/gallery" element={<Photos/>}/>
-                            <Route path="/users" element={<Users/>}/>
-                            <Route path="/news" element={<News/>}/>
-                            <Route path = "/edit" element = {<EditProfileData/>}/>
-                            <Route path="/settings" element={<Settings/>}/>
-                            <Route path="" element={<Login/>}/>
-                            <Route path={"/friends"} element={<Friends/>}/>
-                            <Route path="*" element={<NotFound/>}/>
-                            <Route path="/profile/*" element={<NotFound/>}/>
-                        </Routes>
-                    </section>
+                    <div className={props.auth ? "wrapper" : null}>
+                        <section className={props.auth  ? "section-content" : null}>
+                            <Header/>
+                            <Routes>
+                                <Route path={"/profile/:userId"} element={<Profile overlay={props.overlayVisible} showOverlay={props.showOverlayAC}/>}/>
+                                <Route path="/messages" element={<Messages/>}/>
+                                <Route path="/gallery" element={<Photos/>}/>
+                                <Route path="" element={<Login/>}/>
+                                <Route path="/users" element={<Users/>}/>
+                                <Route path="/news" element={<News/>}/>
+                                <Route path="/edit" element={<EditProfileData/>}/>
+                                <Route path="/settings" element={<Settings/>}/>
+                                <Route path={"/friends"} element={<Friends/>}/>
+                                <Route path="*" element={<NotFound/>}/>
+                                <Route path="/profile/*" element={<NotFound/>}/>
+                            </Routes>
+                        </section>
+                    </div>
                 </div>
             </BrowserRouter>
         );

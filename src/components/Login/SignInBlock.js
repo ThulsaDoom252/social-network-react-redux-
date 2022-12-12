@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import {connect} from "react-redux";
 import {getCaptchaTC, loginFetchAC, mainLoginTC} from "../../redux/auth-reducer";
 import login from "./Login";
+import {Link} from "react-router-dom";
 
 const SignInBlock = (props) => {
     let [fetch, isFetch] = useState(false)
@@ -88,6 +89,11 @@ const SignInBlock = (props) => {
                         <button className={"login-page-login-button"} type={"submit"} disabled={fetch}>{fetch ?
                             "Please wait....": "Log in"}
                         </button>
+                        <div className={"mobile-signUp-block"}>
+                            <p>Not a member?</p>
+                            <Link to={"//social-network.samuraijs.com/signUp"} className={"mobile-signUp-button"}>Sign up</Link>
+                        </div>
+
                         {props.error &&
                             <p className={"login-page-auth-error"}>{props.errorMessage}</p>}
                     </div>
