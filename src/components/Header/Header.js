@@ -40,7 +40,7 @@ const Header = (props) => {
                         <span className={"header-logOut-label"}>Log out</span>
                     </button>
                 </div>
-                <div className={"header-navBar"}>
+                <div className={"header-navbar"}>
                     <NavLink className={navButtons} to={`/profile/${currentUser}`}><TfiUser/>Profile</NavLink>
                     <NavLink className={navButtons} to={'/messages'}><BiMessageSquareDetail/>Messages</NavLink>
                     <NavLink className={navButtons} to={'/gallery'}><TfiGallery/>Photos</NavLink>

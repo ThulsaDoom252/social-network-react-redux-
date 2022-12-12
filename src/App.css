@@ -285,7 +285,7 @@ body {
     cursor: pointer;
 }
 
-.header-navBar {
+.header-navbar {
     margin: 0 auto;
     position: absolute;
     bottom: 10px;
@@ -1715,6 +1715,31 @@ body {
 
     .gallery-container {
         margin-top: 15px;
+    }
+}
+
+@media screen and (max-width: 445px) {
+    .header-container {
+        background-image:url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLztS__hOy_lTkKfNniEhUAnX6M5QQD76NPa42C3vA0vRl6rnHggRjXeQU18pujQ2mmhg&usqp=CAU");
+        height: 100px;
+        background-size: cover;
+        background-position: center 13px;
+    }
+    .header-current-user-avatar,
+    .header-current-user-name,
+    .header-logout-button {
+        display: none;
+    }
+
+    .header-navbar {
+        width: 90% !important;
+        font-family: SansSerif;
+    }
+
+    .header-navbar-button {
+        letter-spacing: 0;
+        margin: 8px;
+
     }
 }
 
