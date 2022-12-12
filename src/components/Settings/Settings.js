@@ -1,12 +1,16 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import authHoc from "../HOC/authHoc";
 import {connect} from "react-redux";
 import {compose} from "redux";
 import {hideFooterAC, nightModeAC, underConstructionAC} from "../../redux/app-reducer";
 import SettingsBlock from "./Settings-block";
+import {toggleNightModeAC} from "../../redux/settings-reducer";
 
 const Settings = (props) => {
-    let [currentSettingsGroup, setCurrentSettingsGroup] = useState(1)
+    const [currentSettingsGroup, setCurrentSettingsGroup] = useState(1)
+    const {nightMode, toggleNightModeAC : toggleNightMode} = props
+
+
     return (
         <div className={"settings-page-container"}>
             <div className="settings-left-part">
@@ -24,8 +28,8 @@ const Settings = (props) => {
                 <div className={"settings-right-part-block"}>
                     {currentSettingsGroup === 1 &&
                         <div>
-                            <SettingsBlock label={"NightMode"}/>
-                            <SettingsBlock label={"Show Mobile Version"}/>
+                            <SettingsBlock label={"NightMode"} option = {nightMode} setOption = {toggleNightMode} disabled = {false}/>
+                            <SettingsBlock label={"Show Mobile Version"} disabled = {true}/>
                         </div>}
                     {currentSettingsGroup === 2 && <div>
                         <SettingsBlock label={"With Edit Profile Button"}/>
@@ -45,9 +49,10 @@ const Settings = (props) => {
 let settingsState = (state) => {
     return {
         auth: state.auth.isLogged,
+        nightMode: state.settings.nightMode
 
     }
 }
 
 
-export default compose(connect(settingsState, {nightModeAC, underConstructionAC, hideFooterAC}), authHoc)(Settings)
+export default compose(connect(settingsState, {nightModeAC, underConstructionAC, hideFooterAC, toggleNightModeAC}), authHoc)(Settings)

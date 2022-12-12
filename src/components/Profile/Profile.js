@@ -27,7 +27,7 @@ const Profile = (props) => {
         showOverlayAC: toggleOverlay,
         getFriendsTC: getFriends,
         unfollowFriendTC: unfollowFriend,
-        updateStatusTC: updateStatus
+        updateStatusTC: updateStatus,
     } = props
     const currentUserId = props.Id
     const userIdParam = props.router.params.userId

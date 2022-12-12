@@ -43,3 +43,6 @@ export const SET_USERS = 'SET_USERS'
 export const FETCH = 'FETCH'
 export const SET_PAGE = 'SET_PAGE'
 export const FOLLOWING_PROGRESS = 'FOLLOWING_PROGRESS'
+
+//SETTINGS
+export const TOGGLE_NIGHTMODE = "TOGGLE_NIGHTMODE"

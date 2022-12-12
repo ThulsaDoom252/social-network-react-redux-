@@ -1,10 +1,11 @@
 import React from 'react';
 
 function Switch(props) {
+    const {option, setOption, disabled} = props
     return (
         <div id="app" className={"switch-container"}>
             <label className="checker">
-                <input className="checkbox" type="checkbox"/>
+                <input className="checkbox" disabled={disabled} onClick={() => !option ? setOption(true) : setOption(false)} checked={option} type="checkbox"/>
                 <div className="check-bg"></div>
                 <div className="checkmark">
                     <svg viewBox="0 0 100 100">
