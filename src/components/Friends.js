@@ -23,21 +23,24 @@ function Friends(props) {
                 <p className={"friends-page-title"}>You following {props.friends.length} Users</p>
                 <hr className={"friends-page-hr"}/>
             </div>
-            <div className={"friends-block"}>
-                {props.friends.map((friend, index) => <div key={index} className={"friend-block"}>
-                    <NavLink to={'/profile/' + friend.id}>
-                        <img className={"friend-avatar"}
-                             src={friend.photos.large ? friend.photos.large : props.defaultAvatar} alt="user-avatar"/>
-                    </NavLink>
-                    <div className={"friend-data-block"}>
-                        <p className={"friend-name"}>{friend.name}</p>
-                        <p className={"friend-status"}>{friend.status}</p>
-                        <button onClick={() => unfollowFriend(friend.id)}
-                                className={"friend-button"}>Unfollow
-                        </button>
-                    </div>
-                </div>)}
+            <div className={"friends-flex-block"}>
+                <div className={"friends-grid-block"}>
+                    {props.friends.map((friend, index) => <div key={index} className={"friend-block"}>
+                        <NavLink to={'/profile/' + friend.id}>
+                            <img className={"friend-avatar"}
+                                 src={friend.photos.large ? friend.photos.large : props.defaultAvatar} alt="user-avatar"/>
+                        </NavLink>
+                        <div className={"friend-data-block"}>
+                            <p className={"friend-name"}>{friend.name}</p>
+                            <p className={"friend-status"}>{friend.status}</p>
+                            <button onClick={() => unfollowFriend(friend.id)}
+                                    className={"friend-button"}>Unfollow
+                            </button>
+                        </div>
+                    </div>)}
+                </div>
             </div>
+
         </div>
     );
 }

@@ -132,14 +132,24 @@ body {
 
 /***************************************************************GALLERY*************************************************/
 .gallery-container {
-    height: 621px;
     margin-top: 15px;
+    font-family: SansSerif;
+    background: linear-gradient(400deg, #c2c2fc, #dbdbff, #a2a2e1, #d5d5ff);
+}
+
+.gallery-photo-label {
+    font-size: 1.10rem;
+}
+.gallery-photos-block {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     overflow-y: scroll;
-    width: 100%;
-    background: linear-gradient(400deg, #c2c2fc, #dbdbff, #a2a2e1, #d5d5ff);
+
+}
+
+.gallery-footer {
+    height: auto;
 }
 
 .photo-block {
@@ -636,13 +646,15 @@ body {
 .friends-page-container {
     background: linear-gradient(300deg, #ffffff, #ffc8c8, #dcd9cc, #dedad2);
     margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     padding: 20px;
     font-family: "Open Sans";
     height: 700px;
     overflow-y: scroll;
     border-radius: 5px;
 }
-
 
 .friends-page-title {
     font-size: 1.3rem;
@@ -655,8 +667,14 @@ body {
     margin: 15px auto auto auto;
 }
 
+.friends-flex-block {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
 
-.friends-block {
+
+.friends-grid-block {
     display: grid;
     grid-template-columns: 20% 20% 20% 20% 20%;
     margin: 20px auto auto auto;
@@ -686,8 +704,13 @@ body {
     border-top-right-radius: 10px;
 }
 
+.friend-name {
+    text-decoration: underline;
+}
+
 .friend-name, .friend-status, .friend-button {
     margin: 4px;
+    word-wrap: break-word;
 }
 
 .friend-button {
@@ -1688,6 +1711,10 @@ body {
     .new-message-button {
         font-size: 1.4rem;
         left: 5px;
+    }
+
+    .gallery-container {
+        margin-top: 15px;
     }
 }
 
