@@ -48,15 +48,15 @@ const ProfileData = (props) => {
 
     return (
         <div>
-            <div className={"test-job-info"}>
+            <div className={"user-data-block"}>
                 {values.isApplicant && isCurrentUser ? "You are looking for a job" : values.isApplicant && !isCurrentUser ? "Looking for a job" : "Not looking for a job"}
             </div>
-            <div className={"test-job-info"}>{descriptionEditMode ?
+            <div className={"user-data-block"}>{descriptionEditMode ?
                 <input id={"applicantDescription"} className={"job-description-input"} onChange={handleChange}
                        onBlur={() => toggleEditMode(descriptionEditMode, setDescriptionEditMode)} autoFocus={true}
                        type="text" value={values.applicantDescription}/> :
                 <p  className={"job-description"} onDoubleClick={() => toggleEditMode(descriptionEditMode, setDescriptionEditMode)}>{values.applicantDescription}</p>}</div>
-            <div className={"test-job-info"}>{descriptionEditMode ?
+            <div className={"user-data-block-about"}>{descriptionEditMode ?
                 <input id={"about"} className={"about-description-input"} onChange={handleChange}
                        onBlur={() => toggleEditMode(aboutEditMode, setAboutEditMode)} autoFocus={true}
                        type="text" value={values.about}/> :

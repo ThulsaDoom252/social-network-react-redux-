@@ -42,7 +42,7 @@ const ProfileCenterPart = (props) => {
                 <ProfileAvatarBlock {...[profile, isCurrentUser, directEditMode, updateProfile, defaultAvatar, status, updateStatus]}/>
                 <ProfileData {...[profile, isCurrentUser, updateProfile]}/>
             </div>
-            <div className={"profile-page-center-friends-block"}>
+            <div className={"mobile-friends-block"}>
                 <div className={"center-friends-block"}>
                     {friends.map((friend, index) => index < 4 && <div className={"center-friend-block"}><img
                         src={friend.photos.small ? friend.photos.small : defaultAvatar}
@@ -50,7 +50,7 @@ const ProfileCenterPart = (props) => {
                 </div>
                 <NavLink to={"/friends"} className={"center-friends-button"}>...</NavLink>
             </div>
-            <div className={"profile-page-center-gallery-block"}>
+            <div className={"mobile-gallery-block"}>
                 <div className={"photos-block"}>
                     {defaultPhotos.map((photo, index) => <div className={"center-gallery-photo-block"}>{index < 4 &&
                         <img className={"center-gallery-photo"} onClick={() => toggleOverlay(true, index)} src={photo}

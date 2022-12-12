@@ -35,8 +35,9 @@ function App(props) {
             <BrowserRouter>
                 <div style={{"height": props.auth && "auto"}} className={"container"}>
                     {props.overlayVisible && <Overlay/>}
-                    <Header/>
+                    <div className="wrapper">
                     <section className={props.auth ? "section-content" : null}>
+                    <Header/>
                         <Routes>
                             <Route path={"/profile/:userId"} element={<Profile overlay={props.overlayVisible}
                                                                                showOverlay={props.showOverlayAC}/>}/>
@@ -52,6 +53,7 @@ function App(props) {
                             <Route path="/profile/*" element={<NotFound/>}/>
                         </Routes>
                     </section>
+                    </div>
                 </div>
             </BrowserRouter>
         );
