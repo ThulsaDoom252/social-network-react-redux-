@@ -5,14 +5,13 @@ import {compose} from "redux";
 import {hideFooterAC, nightModeAC, underConstructionAC} from "../../redux/app-reducer";
 import SettingsBlock from "./Settings-block";
 import {toggleNightModeAC} from "../../redux/settings-reducer";
+import {nightModeStyles} from "../../common/nightModeStyles";
 
-const Settings = (props) => {
+const Settings = ({nightMode, toggleNightModeAC: toggleNightMode}) => {
     const [currentSettingsGroup, setCurrentSettingsGroup] = useState(1)
-    const {nightMode, toggleNightModeAC : toggleNightMode} = props
-
 
     return (
-        <div className={"settings-page-container"}>
+        <div style={nightMode ? nightModeStyles.settings : null} className={"settings-page-container"}>
             <div className="settings-left-part">
                 <div className={"settings-left-part-block"}>
                     <p style={{"text-decoration": currentSettingsGroup === 1 && "underline"}} className="settings-class"

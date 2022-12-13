@@ -17,6 +17,7 @@ const Profile = (props) => {
     const {
         notFound,
         email,
+        nightMode,
         profile,
         updateProfileTC: updateProfile,
         directEditMode,
@@ -42,12 +43,12 @@ const Profile = (props) => {
 
     return (
         <div className={"profile-main-container"}>
-            <ProfileLeftPart {...[profile, isCurrentUser, email, updateProfile, directEditMode]}/>
+            <ProfileLeftPart {...[profile, isCurrentUser, email, updateProfile, directEditMode, nightMode]}/>
             <ProfileCenterPart  {...[profile, isCurrentUser, notFound, directEditMode,
                 updateProfile, defaultAvatar, status, updateStatus, defaultPhotos,
-                toggleOverlay, friends]}/>
+                toggleOverlay, friends, nightMode]}/>
             <ProfileRightPart {...[isCurrentUser, defaultAvatar, friends, defaultPhotos, toggleOverlay,
-                getFriends, unfollowFriend]}/>
+                getFriends, unfollowFriend, nightMode]}/>
 
         </div>
     )

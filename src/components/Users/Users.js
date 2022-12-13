@@ -7,13 +7,14 @@ import {followTC, getUsersTC, unFollowTC} from "../../redux/users-reducer";
 import authHoc from "../HOC/authHoc";
 import {compose} from "redux";
 import Fetching from "../common/Fetching"
+import {nightModeStyles} from "../../common/nightModeStyles";
 
-let Users = ({currentPage, totalCount, pageSize, ...props}) => {
+let Users = ({currentPage, totalCount, pageSize, nightMode, ...props}) => {
     useEffect(() => {
         props.getUsersTC(props.currentPage, props.pageSize)
     }, [])
     return (
-        <div className={"users-page-container"}>
+        <div style={nightMode ? nightModeStyles.centerBlock : null} className={"users-page-container"}>
             {props.id === "1408" && <Fetching isFetching={props.isFetching}/>}
             <div className={"users-page-title"}>USERS:</div>
             <Paginator portionSize={10}

@@ -5,6 +5,7 @@ import ProfileData from "./profileData";
 import ProfileAvatarBlock from "./profileAvatarBlock";
 import ProfileWall from "./Wall/ProfileWall";
 import {NavLink} from "react-router-dom";
+import {nightModeStyles} from "../../../common/nightModeStyles";
 
 const ProfileCenterPart = (props) => {
     const {
@@ -19,6 +20,7 @@ const ProfileCenterPart = (props) => {
         8: defaultPhotos,
         9: toggleOverlay,
         10: friends,
+        11: nightMode,
     } = props
 
     const {fullName: name, photos} = profile
@@ -34,7 +36,7 @@ const ProfileCenterPart = (props) => {
         </div>
     }
     return (
-        <div className={"profile-page-center-container"}>
+        <div style={nightMode ? nightModeStyles.centerBlock : null} className={"profile-page-center-container"}>
             <div className={"profile-page-center-bg"}>
                 <NavLink to={"/edit"} className={"profile-page-edit-button"}>Edit Profile</NavLink>
             </div>

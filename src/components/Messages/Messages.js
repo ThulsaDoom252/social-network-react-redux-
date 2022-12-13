@@ -4,8 +4,10 @@ import {connect} from "react-redux";
 import authHoc from "../HOC/authHoc";
 import {BiMessageAltEdit, FiInfo, FiPhoneCall, FiVideo} from "react-icons/all";
 import {clearRandomUsersAC, getRandomUsersTC} from "../../redux/dialogs-reducer";
+import {nightModeStyles} from "../../common/nightModeStyles";
 
 const Messages = (props) => {
+    const {nightMode} = props
     let [senderId, setSenderId] = useState(0)
 
     let currentUserName = props.login
@@ -27,7 +29,7 @@ const Messages = (props) => {
 
 
     return (
-        <div className={"message-page-container"}>
+        <div style={nightMode ? nightModeStyles.centerBlock : null} className={"message-page-container"}>
             <div className={"message-page-left-part"}>
                 <div className={"new-message-block"}>
                     <p>ThulsaDoom252</p>

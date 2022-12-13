@@ -1,6 +1,7 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
 import {useEffect} from "react";
+import {nightModeStyles} from "../../common/nightModeStyles";
 
 
 const RightPart = (props) => {
@@ -11,7 +12,8 @@ const RightPart = (props) => {
         3: defaultPhotos,
         4: toggleOverlay,
         5: getFriends,
-        6: unFollowFriend
+        6: unFollowFriend,
+        7: nightMode,
     } = props
     useEffect(() => {
         if (isCurrentUser) {
@@ -22,7 +24,7 @@ const RightPart = (props) => {
     const unfollow = (friendId, index) => unFollowFriend(friendId, index)
     return (
         <div className={"profile-page-right-part-container"}>
-            <div className={"profile-page-right-part-photos-block"}>
+            <div style={nightMode ? nightModeStyles.profileRightPart : null}  className={"profile-page-right-part-photos-block"}>
                 <p className={"profile-page-right-part-photos-block-label"}><NavLink to={"/photos"}>Latest photos</NavLink></p>
                 {defaultPhotos.map((photo, index) => <span>
                     <img onClick={() => toggleOverlay(true, index)} key={index}
@@ -30,7 +32,7 @@ const RightPart = (props) => {
                          src={photo} alt="default-photo"/>
                 </span>)}
             </div>
-            <div className={"profile-page-right-part-friends-block"}>
+            <div style={nightMode ? nightModeStyles.profileRightPart : null}  className={"profile-page-right-part-friends-block"}>
                 <p>Friends({friends.length})</p>
                 <p>{friends.length === 0 && "You have no friends yet.."}</p>
                 {friends.map((friend, index) => index < 5 && <div className={"profile-page-right-friend-block"}>

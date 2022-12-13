@@ -16,13 +16,24 @@ import Overlay from "./components/Overlay/Overlay";
 import Friends from "./components/Friends";
 import EditProfileData from "./components/Profile/ProfileCenterPart/EditProfile/EditProfileData";
 import Photos from "./components/Gallery";
+import {nightModeStyles} from "./common/nightModeStyles";
 
 function App(props) {
+    const {nightMode} = props
+    const navbar = document.querySelectorAll("header-navbar")
+    useEffect(() => {
+        if (nightMode) {
+            document.body.style = "background: linear-gradient(360deg, black, #2a2828, #121a34, #252a2d)"
+
+        } else {
+            document.body.style = "background: linear-gradient(180deg, #5ee7c1, #00e8a5, #35cbff, #5ee7c1)"
+        }
+    }, [nightMode])
+
     useEffect(() => {
         props.initializeTC()
         console.log('once')
     }, [])
-
 
     if (!props.initialized) {
         return (
@@ -30,24 +41,29 @@ function App(props) {
                 <Initialize/>
             </div>
         )
+
     } else {
         return (
             <BrowserRouter>
-                <div style={{"height": props.auth && "auto"}} className={"container"}>
+                <div>
                     {props.overlayVisible && <Overlay/>}
-                    <div className={props.auth ? "wrapper" : null}>
-                        <section className={props.auth  ? "section-content" : null}>
+                    <div className={props.auth && "wrapper"}>
+                        <section style={nightMode ? nightModeStyles.section : null}
+                                 className={props.auth && "section-content"}>
                             <Header/>
                             <Routes>
-                                <Route path={"/profile/:userId"} element={<Profile overlay={props.overlayVisible} showOverlay={props.showOverlayAC}/>}/>
-                                <Route path="/messages" element={<Messages/>}/>
-                                <Route path="/gallery" element={<Photos/>}/>
+                                <Route path={"/profile/:userId"} element={<Profile
+                                    nightMode={nightMode}
+                                    overlay={props.overlayVisible}
+                                    showOverlay={props.showOverlayAC}/>}/>
+                                <Route path="/messages" element={<Messages nightMode={nightMode}/>}/>
+                                <Route path="/gallery" element={<Photos nightMode={nightMode}/>}/>
                                 <Route path="" element={<Login/>}/>
-                                <Route path="/users" element={<Users/>}/>
+                                <Route path="/users" element={<Users nightMode={nightMode}/>}/>
                                 <Route path="/news" element={<News/>}/>
                                 <Route path="/edit" element={<EditProfileData/>}/>
-                                <Route path="/settings" element={<Settings/>}/>
-                                <Route path={"/friends"} element={<Friends/>}/>
+                                <Route path="/settings" element={<Settings nightMode={nightMode}/>}/>
+                                <Route path={"/friends"} element={<Friends nightMode={nightMode}/>}/>
                                 <Route path="*" element={<NotFound/>}/>
                                 <Route path="/profile/*" element={<NotFound/>}/>
                             </Routes>
@@ -64,6 +80,7 @@ let mapStateToProps = (state) => {
         initialized: state.app.initialized,
         auth: state.auth.isLogged,
         overlayVisible: state.profilePage.showOverlay,
+        nightMode: state.settings.nightMode,
     }
 }
 

@@ -100,12 +100,6 @@ input:-webkit-autofill:active {
     transition: background-color 5000s ease-in-out 0s;
 }
 
-body {
-    overflow-x: hidden;
-    background: linear-gradient(180deg, #5ee7c1, #00e8a5, #35cbff, #5ee7c1);
-
-}
-
 /*MAIN CONTAINERS*/
 .wrapper {
     width: 1100px;
@@ -114,18 +108,21 @@ body {
 .section-content {
     /*min-height: 730px;*/
     width: 100%;
+    transition: 0.5s;
     text-align: center;
     background: linear-gradient(360deg, #6868ff, #3c91ff, #37a6c7, #70d3ef);
+    /*background: linear-gradient(400deg, #0e1f42, #1e071e, darkblue, #0d0d4b);*/
+
 }
 
 .container {
-    background: linear-gradient(180deg, #5ee7c1, #00e8a5, #35cbff, #5ee7c1);
+    transition: 0.5s;
     width: 100vw;
     height: 100vh;
     max-height: fit-content;
     display: flex;
-    justify-content: center;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
@@ -350,6 +347,7 @@ body {
     background: linear-gradient(190deg, #e5ffeb, #badcd2, #bdb1c5, #cbbc92);
     border-radius: 2%;
     animation: loginAppear 1.5s forwards;
+    margin: 150px auto;
 }
 
 /*LEFT PART*/
@@ -648,7 +646,7 @@ body {
     margin-top: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: left;
     padding: 20px;
     font-family: "Open Sans";
     height: 700px;
@@ -920,7 +918,6 @@ body {
     text-align: left;
     font-family: SansSerif;
     width: 100%;
-
 }
 
 .profile-page-left-part-userData div {
@@ -1651,7 +1648,6 @@ body {
 @media only screen and (max-width: 1110px) {
     .wrapper {
         width: 800px;
-        margin: 0 auto;
     }
 
     .profile-page-left-part-container, .profile-page-right-part-container {
@@ -1704,7 +1700,6 @@ body {
 @media screen and (max-width: 760px) {
     .wrapper {
         width: 600px;
-        margin: 0 auto;
     }
 
     .profile-page-center-bg {

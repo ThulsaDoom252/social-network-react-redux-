@@ -3,7 +3,9 @@ import {TOGGLE_NIGHTMODE} from "./types";
 export const toggleNightModeAC = (toggle) => ({type: TOGGLE_NIGHTMODE, toggle})
 
 const initialState = {
-    nightMode: false
+    nightMode: false,
+    editMethod: null,
+    showFakeModules: true,
 }
 
 

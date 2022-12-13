@@ -6,9 +6,11 @@ import {compose} from "redux";
 import authHoc from "./HOC/authHoc";
 import anonymous from "./common/default-avatar.jfif";
 import {NavLink} from "react-router-dom";
+import {nightModeStyles} from "../common/nightModeStyles";
 
 
 function Friends(props) {
+    const {nightMode} = props
     useEffect(() => {
         props.getFriendsTC(100)
     }, [])
@@ -18,7 +20,7 @@ function Friends(props) {
     }
 
     return (
-        <div className={"friends-page-container"}>
+        <div style={nightMode ? nightModeStyles.centerBlock : null} className={"friends-page-container"}>
             <div className={"friends-page-title-block"}>
                 <p className={"friends-page-title"}>You following {props.friends.length} Users</p>
                 <hr className={"friends-page-hr"}/>

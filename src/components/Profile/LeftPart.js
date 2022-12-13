@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import {HiOutlineDotsHorizontal} from "react-icons/all";
+import {FaMoon, FaSun, HiOutlineDotsHorizontal} from "react-icons/all";
 import {useFormik} from "formik";
 import * as Yup from "yup";
+import {nightModeStyles} from "../../common/nightModeStyles";
 
 const LeftPart = (props) => {
     const {
@@ -9,7 +10,8 @@ const LeftPart = (props) => {
         1: isCurrentUser,
         2: email,
         3: updateProfile,
-        4: directEditMode
+        4: directEditMode,
+        5: nightMode,
     } = props
     const [aboutEditMode, setAboutEditMode] = useState(false)
     const formik = useFormik({
@@ -47,8 +49,9 @@ const LeftPart = (props) => {
     console.log(values)
 
     return (
-        <div className={"profile-page-left-part-container"}>
+        <div style={nightMode ? nightModeStyles.profileLeft : null} className={"profile-page-left-part-container"}>
             <div className={"profile-page-left-part-userData"}>
+
                 <div>
                     <span className={"profile-page-left-part-label"}>Id</span>
                     <p>{userId}</p>
