@@ -54,7 +54,7 @@ export const currentUserDataAC = (name, about, applicant, description, github, v
 const initialState = {
     avatar: null,
     avatarLarge: null,
-    directEditMode: false,
+    directEditMode: true,
     profile: '',
     photos: '',
     contacts: '',

@@ -30,7 +30,7 @@ const LeftPart = (props) => {
     const values = formik.values
     const {handleChange} = formik
     const toggleEditMode = (editMode, setEditMode) => {
-        if (isCurrentUser && editMode === false) {
+        if (isCurrentUser && !editMode && directEditMode) {
             setEditMode(true)
         } else if (editMode === true && !formik.errors.about) {
             setEditMode(false)

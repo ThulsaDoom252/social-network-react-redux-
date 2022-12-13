@@ -25,6 +25,7 @@ const Profile = (props) => {
         friends,
         status,
         defaultPhotos,
+        hideProfileWall,
         showOverlayAC: toggleOverlay,
         getFriendsTC: getFriends,
         unfollowFriendTC: unfollowFriend,
@@ -46,7 +47,7 @@ const Profile = (props) => {
             <ProfileLeftPart {...[profile, isCurrentUser, email, updateProfile, directEditMode, nightMode]}/>
             <ProfileCenterPart  {...[profile, isCurrentUser, notFound, directEditMode,
                 updateProfile, defaultAvatar, status, updateStatus, defaultPhotos,
-                toggleOverlay, friends, nightMode]}/>
+                toggleOverlay, friends, nightMode, hideProfileWall]}/>
             <ProfileRightPart {...[isCurrentUser, defaultAvatar, friends, defaultPhotos, toggleOverlay,
                 getFriends, unfollowFriend, nightMode]}/>
 
@@ -58,7 +59,6 @@ const Profile = (props) => {
 let mapStateToProps = (state) => {
     return {
         profile: state.profilePage.profile,
-        directEditMode: state.profilePage.directEditMode,
         auth: state.auth.isLogged,
         Id: state.auth.id,
         email: state.auth.email,
@@ -67,6 +67,8 @@ let mapStateToProps = (state) => {
         defaultAvatar: state.dialogsPage.defaultAvatar,
         friends: state.usersPage.friends,
         status: state.profilePage.status,
+        directEditMode: state.settings.directEditMode,
+        hideProfileWall: state.settings.hideProfileWall,
     }
 }
 

@@ -2,12 +2,11 @@ import React, {useEffect, useState} from 'react';
 import authHoc from "../HOC/authHoc";
 import {connect} from "react-redux";
 import {compose} from "redux";
-import {hideFooterAC, nightModeAC, underConstructionAC} from "../../redux/app-reducer";
 import SettingsBlock from "./Settings-block";
-import {toggleNightModeAC} from "../../redux/settings-reducer";
+import {directEditModeAC, toggleNightModeAC, toggleWallAC} from "../../redux/settings-reducer";
 import {nightModeStyles} from "../../common/nightModeStyles";
 
-const Settings = ({nightMode, toggleNightModeAC: toggleNightMode}) => {
+const Settings = ({nightMode, directEditMode, hideProfileWall, toggleNightModeAC: toggleNightMode, directEditModeAC: toggleDirectEditMode, toggleWallAC: toggleWall}) => {
     const [currentSettingsGroup, setCurrentSettingsGroup] = useState(1)
 
     return (
@@ -27,14 +26,13 @@ const Settings = ({nightMode, toggleNightModeAC: toggleNightMode}) => {
                 <div className={"settings-right-part-block"}>
                     {currentSettingsGroup === 1 &&
                         <div>
-                            <SettingsBlock label={"NightMode"} option = {nightMode} setOption = {toggleNightMode} disabled = {false}/>
-                            <SettingsBlock label={"Show Mobile Version"} disabled = {true}/>
+                            <SettingsBlock label={"NightMode"} option={nightMode} setOption={toggleNightMode}
+                                           disabled={false}/>
+                            <SettingsBlock label={"Show Mobile Version"} disabled={true}/>
                         </div>}
                     {currentSettingsGroup === 2 && <div>
-                        <SettingsBlock label={"With Edit Profile Button"}/>
-                        <SettingsBlock label={"On profile page"}/>
-                        <SettingsBlock label={"Both methods"}/>
-                        <SettingsBlock label={"Hide wall"}/>
+                        <SettingsBlock label={"Direct on profile page"} option = {directEditMode} setOption = {toggleDirectEditMode}/>
+                        <SettingsBlock label={"Hide wall"} option = {hideProfileWall} setOption = {toggleWall}/>
                     </div>}
                     {currentSettingsGroup === 3 && <SettingsBlock label={"Hide non-functional modules"}/>}
                 </div>
@@ -48,10 +46,12 @@ const Settings = ({nightMode, toggleNightModeAC: toggleNightMode}) => {
 let settingsState = (state) => {
     return {
         auth: state.auth.isLogged,
-        nightMode: state.settings.nightMode
+        nightMode: state.settings.nightMode,
+        directEditMode: state.settings.directEditMode,
+        hideProfileWall: state.settings.hideProfileWall,
 
     }
 }
 
 
-export default compose(connect(settingsState, {nightModeAC, underConstructionAC, hideFooterAC, toggleNightModeAC}), authHoc)(Settings)
+export default compose(connect(settingsState, {toggleNightModeAC, directEditModeAC, toggleWallAC}), authHoc)(Settings)

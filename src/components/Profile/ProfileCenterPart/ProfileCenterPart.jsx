@@ -21,6 +21,7 @@ const ProfileCenterPart = (props) => {
         9: toggleOverlay,
         10: friends,
         11: nightMode,
+        12: isWallHidden,
     } = props
 
     const {fullName: name, photos} = profile
@@ -38,11 +39,12 @@ const ProfileCenterPart = (props) => {
     return (
         <div style={nightMode ? nightModeStyles.centerBlock : null} className={"profile-page-center-container"}>
             <div className={"profile-page-center-bg"}>
-                <NavLink to={"/edit"} className={"profile-page-edit-button"}>Edit Profile</NavLink>
+                <NavLink hidden={directEditMode} to={"/edit"} className={"profile-page-edit-button"}>Edit
+                    Profile</NavLink>
             </div>
             <div className={"profile-page-center-userInfo-container"}>
                 <ProfileAvatarBlock {...[profile, isCurrentUser, directEditMode, updateProfile, defaultAvatar, status, updateStatus]}/>
-                <ProfileData {...[profile, isCurrentUser, updateProfile]}/>
+                <ProfileData {...[profile, isCurrentUser, updateProfile, directEditMode]}/>
             </div>
             <div className={"mobile-friends-block"}>
                 <div className={"center-friends-block"}>
@@ -60,7 +62,7 @@ const ProfileCenterPart = (props) => {
                 </div>
                 <NavLink to={"/gallery"} className={"center-gallery-button"}>To gallery</NavLink>
             </div>
-            <ProfileWall {...[name, photos, defaultAvatar]}/>
+            {!isWallHidden && <ProfileWall {...[name, photos, defaultAvatar]}/>}
         </div>
 
     )

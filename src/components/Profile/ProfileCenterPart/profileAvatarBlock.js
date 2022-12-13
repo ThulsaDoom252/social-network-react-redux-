@@ -35,16 +35,6 @@ function ProfileAvatarBlock(props) {
     const contactClass = "profile-page-left-contact"
 
     const [nameEditMode, setNameEditMode] = useState(false)
-    const [aboutEditMode, setAboutEditMode] = useState(false)
-    const [jobEditMode, setJobEditMode] = useState(false)
-    const [youtubeEditMode, setYoutubeEditMode] = useState(false)
-    const [instagramEditMode, setInstagramEditMode] = useState(false)
-    const [facebookEditMode, setFacebookEditMode] = useState(false)
-    const [mainLinkEditMode, setMainLinkEditMode] = useState(false)
-    const [githubEditMode, setGithubEditMode] = useState(false)
-    const [vkEditMode, setVkEditMode] = useState(false)
-    const [websiteEditMode, setWebsiteEditMode] = useState(false)
-    const [twitterEditMode, setTwitterEditMode] = useState(false)
 
     const contactsArray = [
         youtube === null ? "" : youtube,
@@ -92,7 +82,7 @@ function ProfileAvatarBlock(props) {
     })
 
     const toggleProfileDataEditMode = (editMode, setEditMode) => {
-        if (editMode === false && isCurrentUser === true) {
+        if (editMode === false && isCurrentUser === true && directEditMode) {
             setEditMode(true)
         } else if (editMode === true && !formik.errors.name) {
             setEditMode(false)
@@ -199,12 +189,6 @@ function ProfileAvatarBlock(props) {
             </form>
         </div>
     );
-}
-
-let mapStateToProps = state => {
-    return {
-        profileDirectEdit: state.profilePage.directEditMode
-    }
 }
 
 export default connect(null, {updatePhotoTC, updateProfileTC})(ProfileAvatarBlock);
