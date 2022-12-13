@@ -43,7 +43,7 @@ const ProfileCenterPart = (props) => {
                     Profile</NavLink>
             </div>
             <div className={"profile-page-center-userInfo-container"}>
-                <ProfileAvatarBlock {...[profile, isCurrentUser, directEditMode, updateProfile, defaultAvatar, status, updateStatus]}/>
+                <ProfileAvatarBlock {...[profile, isCurrentUser, directEditMode, updateProfile, defaultAvatar, status, updateStatus, toggleOverlay]}/>
                 <ProfileData {...[profile, isCurrentUser, updateProfile, directEditMode]}/>
             </div>
             <div className={"mobile-friends-block"}>

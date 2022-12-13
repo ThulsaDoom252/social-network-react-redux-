@@ -23,7 +23,8 @@ function ProfileAvatarBlock(props) {
         3: updateProfile,
         4: defaultAvatar,
         5: status,
-        6: updateStatus
+        6: updateStatus,
+        7: toggleOverlay,
     } = props
     const hiddenFileInput = React.useRef(null);
 
@@ -35,6 +36,8 @@ function ProfileAvatarBlock(props) {
     const contactClass = "profile-page-left-contact"
 
     const [nameEditMode, setNameEditMode] = useState(false)
+    const [contactsEditMode, setContactsEditMode] = useState(false)
+    const [contactEditMode, setContactEditMode] = useState(false)
 
     const contactsArray = [
         youtube === null ? "" : youtube,
@@ -120,7 +123,6 @@ function ProfileAvatarBlock(props) {
     return (
         <div className="profile-page-center-avatarBlockContainer">
             <form onSubmit={formik.handleSubmit}>
-                {/*<input type="text" placeholder={"contact"} className={"contact-direct-input"}/>*/}
                 <div>
                     <input ref={hiddenFileInput}
                            hidden={true} type={"file"}
@@ -132,14 +134,22 @@ function ProfileAvatarBlock(props) {
                     <p onDoubleClick={() => toggleProfileDataEditMode(nameEditMode, setNameEditMode)}
                        className={"profile-page-left-part-name"}>{
                         nameEditMode ?
-                            <input type={"text"} id={"name"} className={"name-input"} onChange={formik.handleChange}
+                            <input style={{"border": errors.name ? "solid red thin" : "solid thin"}} type={"text"}
+                                   id={"name"}
+                                   className={"name-input"} onChange={formik.handleChange}
                                    value={values.name} autoFocus={true} onBlur={() =>
                                 toggleProfileDataEditMode(nameEditMode, setNameEditMode)}/> : values.name}</p>
+                    {errors.name && <p className={"profile-page-input-error"}>{errors.name}</p>}
                     <Status {...[status, isCurrentUser, updateStatus]}/>
                     <div className={"profile-page-left-contacts-block"}>
                     <span style={{"color": !youtube && "gray"}}
                           className={`${contactClass} ${contactClass}-youtubeIcon`}>
-                        {youtube ? <Link
+                        {youtube ? <Link onClick = {(e) => {
+                            if(contactsEditMode) {
+                                e.preventDefault()
+                                setContactEditMode(true)
+                            }
+                            }}
                                 to={`${youtube.toString()}`} target={"_blank"}><SiYoutube
                                 title={youtube}/></Link> :
                             <SiYoutube title={"No youtube address"}/>}</span>
@@ -184,7 +194,9 @@ function ProfileAvatarBlock(props) {
                                     title={github}/></Link> :
                                 <SiGithub title={"No github repositories link"}/>}
                         </span>
+                        {contactEditMode && <input type="text" placeholder={"contact"} className={"contact-direct-input"}/>}
                     </div>
+                    {directEditMode && <p style={{"cursor": "pointer"}} onClick={() => toggleProfileDataEditMode(contactsEditMode, setContactsEditMode)}>{contactsEditMode ? "Choose contacts to edit" : "Edit Contacts"}</p>}
                 </div>
             </form>
         </div>

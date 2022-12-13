@@ -6,7 +6,7 @@ export const toggleWallAC = (toggle) => ({type: TOGGLE_WALL, toggle})
 
 const initialState = {
     nightMode: false,
-    directEditMode: false,
+    directEditMode: true,
     showFakeModules: true,
     hideProfileWall: false,
 }

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {FaMoon, FaSun, HiOutlineDotsHorizontal} from "react-icons/all";
+import {HiOutlineDotsHorizontal} from "react-icons/all";
 import {useFormik} from "formik";
 import * as Yup from "yup";
 import {nightModeStyles} from "../../common/nightModeStyles";
@@ -46,7 +46,11 @@ const LeftPart = (props) => {
         }
     }
 
-    console.log(values)
+    const {errors} = formik
+    // REFS
+    const aboutBlockStyle = {
+        "border": errors.about ? "solid red" : aboutEditMode && !errors.about ? "solid thin" : null
+    }
 
     return (
         <div style={nightMode ? nightModeStyles.profileLeft : null} className={"profile-page-left-part-container"}>
@@ -58,11 +62,12 @@ const LeftPart = (props) => {
                 </div>
                 <div className={"profile-page-left-part-about-block"}>
                     <span className={"profile-page-left-part-label"}>About</span>
-                    <p className={"profile-page-left-part-about"}
+                    <p style={aboutBlockStyle} className={"profile-page-left-part-about"}
                        onDoubleClick={() => toggleEditMode(aboutEditMode, setAboutEditMode)}>{aboutEditMode ?
                         <input id={"about"} onBlur={() => toggleEditMode(aboutEditMode, setAboutEditMode)}
                                className={"about-input"} onChange={handleChange} type={"text"} value={values.about}
                                autoFocus={true}/> : values.about}</p>
+                    {errors.about && <p style={{"width": "150px"}} className={"profile-page-input-error"}>{errors.about}</p>}
                 </div>
                 <div>
                     <p className={"profile-page-left-part-label"}>Email</p>

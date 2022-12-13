@@ -948,6 +948,7 @@ input:-webkit-autofill:active {
 
 .profile-page-left-contacts-block {
     color: #a99e9e;
+    position: relative;
     font-size: 1.3rem;
     width: 300px;
     margin: 15px 0 0 0;
@@ -1036,7 +1037,6 @@ input:-webkit-autofill:active {
 
 /*CENTER*/
 .profile-page-center-container {
-    top: 0;
     background: linear-gradient(300deg, #ffdddd, #e7abab, #fae5bb, #fce4cb);
     width: 650px;
     min-height: 500px;
@@ -1268,9 +1268,12 @@ input:-webkit-autofill:active {
 
 .contact-direct-input {
     background-color: black;
+    left: 0;
+    right: 0;
     color: white;
     position: absolute;
     z-index: 3;
+    border: solid thick red;
 }
 
 .profile-page-left-part-name {
@@ -1324,6 +1327,8 @@ input:-webkit-autofill:active {
 
 .profile-page-input-error {
     color: red;
+    width: 200px;
+    word-wrap: break-word;
 }
 
 .profile-page-personal-info-block {

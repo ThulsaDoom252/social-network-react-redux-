@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import authHoc from "../HOC/authHoc";
 import {connect} from "react-redux";
 import {compose} from "redux";

@@ -25,7 +25,6 @@ export const SET_USER_PROFILE = 'SET_USER_PROFILE'
 export const DATA_RECEIVED = 'DATA_RECEIVED'
 export const SET_PHOTO = 'SET_PHOTO'
 export const SET_AVATAR = 'SET_AVATAR'
-export const SET_AVATAR_LARGE = "SET_AVATAR_LARGE"
 export const IS_FETCHING = 'IS_FETCHING'
 export const SET_RESULT = 'SET_RESULT'
 export const SET_NOTFOUND = 'SET_NOTFOUND'
