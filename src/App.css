@@ -1267,13 +1267,11 @@ input:-webkit-autofill:active {
 }
 
 .contact-direct-input {
-    background-color: black;
-    left: 0;
-    right: 0;
-    color: white;
     position: absolute;
     z-index: 3;
-    border: solid thick red;
+    background: white;
+    border: solid thin;
+    color: black;
 }
 
 .profile-page-left-part-name {

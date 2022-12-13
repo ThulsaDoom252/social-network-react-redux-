@@ -37,7 +37,13 @@ function ProfileAvatarBlock(props) {
 
     const [nameEditMode, setNameEditMode] = useState(false)
     const [contactsEditMode, setContactsEditMode] = useState(false)
-    const [contactEditMode, setContactEditMode] = useState(false)
+    const [youtubeEditMode, setYoutubeEditMode] = useState(false)
+    const [twitterEditMode, setTwitterEditMode] = useState(false)
+    const [instagramEditMode, setInstagramEditMode] = useState(false)
+    const [facebookEditMode, setFacebookEditMode] = useState(false)
+    const [githubEditMode, setGitHubEditMode] = useState(false)
+    const [vkEditMode, setVkEditMode] = useState(false)
+    const [websiteEditMode, setWebsiteEditMode] = useState(false)
 
     const contactsArray = [
         youtube === null ? "" : youtube,
@@ -95,6 +101,16 @@ function ProfileAvatarBlock(props) {
         }
     }
 
+    const toggleContactEditMode = (editMode, setEditMode) => {
+        if (isCurrentUser && !editMode && directEditMode) {
+            setEditMode(true)
+            toggleOverlay(true)
+        } else {
+            setEditMode(false)
+            toggleOverlay(false)
+        }
+    }
+
     let aboutInfo = formik.values.about === "" ? "no info" : formik.values.about
     let jobInfo = formik.values.jobDescription === "" ? "enter job description" : formik.values.jobDescription
     const errorStyle = "profile-page-input-error"
@@ -144,59 +160,132 @@ function ProfileAvatarBlock(props) {
                     <div className={"profile-page-left-contacts-block"}>
                     <span style={{"color": !youtube && "gray"}}
                           className={`${contactClass} ${contactClass}-youtubeIcon`}>
-                        {youtube ? <Link onClick = {(e) => {
-                            if(contactsEditMode) {
-                                e.preventDefault()
-                                setContactEditMode(true)
-                            }
+                        {youtube ? <Link onClick={(e) => {
+                                if (contactsEditMode) {
+                                    e.preventDefault()
+                                    toggleContactEditMode(youtubeEditMode, setYoutubeEditMode)
+                                }
                             }}
-                                to={`${youtube.toString()}`} target={"_blank"}><SiYoutube
-                                title={youtube}/></Link> :
+                                         to={`//${values.youtube.toString()}`} target={"_blank"}><SiYoutube
+                                title={values.youtube}/>{youtubeEditMode &&
+                                <input id={"youtube"} onChange={formik.handleChange} type="text" placeholder={"contact"}
+                                       className={"contact-direct-input"} autoFocus={true}
+                                       onBlur={() => toggleContactEditMode(youtubeEditMode, setYoutubeEditMode)}
+                                       value={values.youtube}/>}</Link> :
                             <SiYoutube title={"No youtube address"}/>}</span>
                         <span style={{"color": !instagram && "gray"}}
                               className={`${contactClass} ${contactClass}-instagramIcon`}>
                          {instagram ? <Link
-                                 to={`//${instagram.toString()}`} target={"_blank"}><SiInstagram
-                                 title={instagram}/></Link> :
+                                 onClick={(e) => {
+                                     if (contactsEditMode) {
+                                         e.preventDefault()
+                                         toggleContactEditMode(instagramEditMode, setInstagramEditMode)
+                                     }
+                                 }}
+                                 to={`//${values.instagram.toString()}`} target={"_blank"}><SiInstagram
+                                 title={instagram}/>{instagramEditMode &&
+                                 <input id={"instagram"} onChange={formik.handleChange} type="text" placeholder={"contact"}
+                                        className={"contact-direct-input"} autoFocus={true}
+                                        onBlur={() => toggleContactEditMode(instagramEditMode, setInstagramEditMode)}
+                                        value={values.instagram}/>}</Link> :
                              <SiInstagram title={"No instagram address"}/>}
                         </span>
                         <span style={{"color": !facebook && "gray"}}
                               className={`${contactClass} ${contactClass}-facebookIcon`}>
                          {facebook ? <Link
-                                 to={`//${facebook}`} target={"_blank"}>
+                                 onClick={(e) => {
+                                     if (contactsEditMode) {
+                                         e.preventDefault()
+                                         toggleContactEditMode(facebookEditMode, setFacebookEditMode)
+                                     }
+                                 }}
+                                 to={`//${values.facebook.toString()}`} target={"_blank"}>
                                  <SiFacebook
-                                     title={facebook}/></Link> :
+                                     title={facebook}/>{facebookEditMode &&
+                                 <input id={"facebook"} onChange={formik.handleChange} type="text" placeholder={"contact"}
+                                        className={"contact-direct-input"} autoFocus={true}
+                                        onBlur={() => toggleContactEditMode(facebookEditMode, setFacebookEditMode)}
+                                        value={values.facebook}/>}</Link> :
                              <SiFacebook title={"No facebook address"}/>}
                        </span>
                         <span style={{"color": !twitter && "gray"}}
                               className={`${contactClass} ${contactClass}-twitterIcon`}>
                             {twitter ? <Link
-                                    to={`//${twitter}`} target={"_blank"}><SiTwitter
-                                    title={twitter}/></Link> :
+                                    onClick={(e) => {
+                                        if (contactsEditMode) {
+                                            e.preventDefault()
+                                            toggleContactEditMode(twitterEditMode, setTwitterEditMode)
+                                        }
+                                    }}
+                                    to={`//${values.twitter.toString()}`} target={"_blank"}><SiTwitter
+                                    title={twitter}/>
+                                    {twitterEditMode &&
+                                        <input id={"twitter"} onChange={formik.handleChange} type="text"
+                                               placeholder={"contact"}
+                                               className={"contact-direct-input"} autoFocus={true}
+                                               onBlur={() => toggleContactEditMode(twitterEditMode, setTwitterEditMode)}
+                                               value={values.twitter}/>}
+                                </Link> :
                                 <SiTwitter title={"No twitter address"}/>}
                         </span>
                         <span style={{"color": !website && "gray"}}
                               className={`${contactClass} ${contactClass}-websiteIcon`}>
                             {website ? <Link
-                                to={`//${website}`} target={"_blank"}><CgWebsite
-                                title={website}/></Link> : <CgWebsite title={"No website"}/>}
+                                onClick={(e) => {
+                                    if (contactsEditMode) {
+                                        e.preventDefault()
+                                        toggleContactEditMode(websiteEditMode, setWebsiteEditMode)
+                                    }
+                                }}
+                                to={`//${values.website.toString()}`} target={"_blank"}><CgWebsite
+                                title={website}/>
+                                {websiteEditMode &&
+                                    <input id={"website"} onChange={formik.handleChange} type="text"
+                                           placeholder={"contact"}
+                                           className={"contact-direct-input"} autoFocus={true}
+                                           onBlur={() => toggleContactEditMode(websiteEditMode, setWebsiteEditMode)}
+                                           value={values.website}/>}</Link> : <CgWebsite title={"No website"}/>}
                            </span>
                         <span style={{"color": !vk && "gray"}} className={`${contactClass} ${contactClass}-vkIcon`}>
                             {vk ? <Link
-                                to={`//${vk}`}
+                                onClick={(e) => {
+                                    if (contactsEditMode) {
+                                        e.preventDefault()
+                                        toggleContactEditMode(vkEditMode, setVkEditMode)
+                                    }
+                                }}
+                                to={`//${values.vk.toString()}`}
                                 target={"_blank"}><SiVk
-                                title={vk}/></Link> : <SiVk title={"No website link"}/>}
+                                title={vk}/>
+                                {vkEditMode &&
+                                    <input id={"vk"} onChange={formik.handleChange} type="text" placeholder={"contact"}
+                                           className={"contact-direct-input"} autoFocus={true}
+                                           onBlur={() => toggleContactEditMode(vkEditMode, setVkEditMode)}
+                                           value={values.vk}/>}
+                            </Link> : <SiVk title={"No website link"}/>}
                            </span>
                         <span style={{"color": !github && "gray"}}
                               className={`${contactClass} ${contactClass}-gitHubIcon`}>
                             {github ? <Link
-                                    to={`//${github}`} target={"_blank"}><SiGithub
-                                    title={github}/></Link> :
+                                    onClick={(e) => {
+                                        if (contactsEditMode) {
+                                            e.preventDefault()
+                                            toggleContactEditMode(githubEditMode, setGitHubEditMode)
+                                        }
+                                    }}
+                                    to={`//${values.github.toString()}`} target={"_blank"}><SiGithub
+                                    title={github}/>
+                                    {githubEditMode &&
+                                        <input id={"github"} onChange={formik.handleChange} type="text"
+                                               placeholder={"contact"}
+                                               className={"contact-direct-input"} autoFocus={true}
+                                               onBlur={() => toggleContactEditMode(githubEditMode, setGitHubEditMode)}
+                                               value={values.github}/>}</Link> :
                                 <SiGithub title={"No github repositories link"}/>}
                         </span>
-                        {contactEditMode && <input type="text" placeholder={"contact"} className={"contact-direct-input"}/>}
                     </div>
-                    {directEditMode && <p style={{"cursor": "pointer"}} onClick={() => toggleProfileDataEditMode(contactsEditMode, setContactsEditMode)}>{contactsEditMode ? "Choose contacts to edit" : "Edit Contacts"}</p>}
+                    {directEditMode && isCurrentUser ?  <p style={{"cursor": "pointer"}}
+                                          onClick={() => toggleProfileDataEditMode(contactsEditMode, setContactsEditMode)}>{contactsEditMode ? "Choose contacts to edit" : "Edit Contacts"}</p> : null}
                 </div>
             </form>
         </div>

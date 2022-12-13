@@ -5,7 +5,7 @@ import {showOverlayAC} from "../../redux/profile-reducer/profile-reducer";
 function Overlay(props) {
     return (
         <div className={"overlay"} onClick={() => props.showOverlayAC(false)}>
-            <div className={"profile-photo-viewPort"}>
+            <div hidden={true} className={"profile-photo-viewPort"}>
                 <img className={"currently-viewing-photo"} src={props.photos[props.currentPhoto]} alt="photo"/>
             </div>
         </div>
