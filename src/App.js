@@ -19,7 +19,7 @@ import Photos from "./components/Gallery";
 import {nightModeStyles} from "./common/nightModeStyles";
 
 function App(props) {
-    const {nightMode} = props
+    const {nightMode, showMobileVersion} = props
     const navbar = document.querySelectorAll("header-navbar")
     useEffect(() => {
         if (nightMode) {
@@ -47,7 +47,7 @@ function App(props) {
             <BrowserRouter>
                 <div>
                     {props.overlayVisible && <Overlay/>}
-                    <div className={props.auth && "wrapper"}>
+                    <div style={{"width": showMobileVersion &&  "800px"}} className={props.auth && "wrapper"}>
                         <section style={nightMode ? nightModeStyles.section : null}
                                  className={props.auth && "section-content"}>
                             <Header/>
@@ -81,6 +81,7 @@ let mapStateToProps = (state) => {
         auth: state.auth.isLogged,
         overlayVisible: state.profilePage.showOverlay,
         nightMode: state.settings.nightMode,
+        showMobileVersion: state.settings.showMobileVersion,
     }
 }
 

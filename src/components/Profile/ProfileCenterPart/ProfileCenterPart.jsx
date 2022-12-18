@@ -6,6 +6,7 @@ import ProfileAvatarBlock from "./profileAvatarBlock";
 import ProfileWall from "./Wall/ProfileWall";
 import {NavLink} from "react-router-dom";
 import {nightModeStyles} from "../../../common/nightModeStyles";
+import emojiHidden from "./emojiHidden.png"
 
 const ProfileCenterPart = (props) => {
     const {
@@ -22,6 +23,8 @@ const ProfileCenterPart = (props) => {
         10: friends,
         11: nightMode,
         12: isWallHidden,
+        13: updatePhoto,
+        14: showMobileVersion,
     } = props
 
     const {fullName: name, photos} = profile
@@ -43,10 +46,14 @@ const ProfileCenterPart = (props) => {
                     Profile</NavLink>
             </div>
             <div className={"profile-page-center-userInfo-container"}>
-                <ProfileAvatarBlock {...[profile, isCurrentUser, directEditMode, updateProfile, defaultAvatar, status, updateStatus, toggleOverlay]}/>
+                <ProfileAvatarBlock {...[profile,
+                    isCurrentUser, directEditMode,
+                    updateProfile, defaultAvatar,
+                    status, updateStatus,
+                    toggleOverlay, updatePhoto]}/>
                 <ProfileData {...[profile, isCurrentUser, updateProfile, directEditMode]}/>
             </div>
-            <div className={"mobile-friends-block"}>
+            <div style={{"display": showMobileVersion && "block"}} className={"mobile-friends-block"}>
                 <div className={"center-friends-block"}>
                     {friends.map((friend, index) => index < 4 && <div className={"center-friend-block"}><img
                         src={friend.photos.small ? friend.photos.small : defaultAvatar}
@@ -54,15 +61,21 @@ const ProfileCenterPart = (props) => {
                 </div>
                 <NavLink to={"/friends"} className={"center-friends-button"}>...</NavLink>
             </div>
-            <div className={"mobile-gallery-block"}>
+            <div style={{"display": showMobileVersion && "block"}} className={"mobile-gallery-block"}>
                 <div className={"photos-block"}>
                     {defaultPhotos.map((photo, index) => <div className={"center-gallery-photo-block"}>{index < 4 &&
-                        <img className={"center-gallery-photo"} onClick={() => toggleOverlay(true, index)} src={photo}
+                        <img className={"center-gallery-photo"} onClick={() => toggleOverlay(true, true, index)}
+                             src={photo}
                              alt={`photo${index}`}/>}</div>)}
                 </div>
                 <NavLink to={"/gallery"} className={"center-gallery-button"}>To gallery</NavLink>
             </div>
-            {!isWallHidden && <ProfileWall {...[name, photos, defaultAvatar]}/>}
+            {!isWallHidden ? <ProfileWall {...[name, photos, defaultAvatar]}/> :
+                <div className={"wall-plug"}>
+                    <span className={"wall-plug-label"}>The wall is hidden</span>
+                    <img className={"wall-plug-img"} src={emojiHidden} alt="wallIsHidden"/>
+                </div>}
+
         </div>
 
     )

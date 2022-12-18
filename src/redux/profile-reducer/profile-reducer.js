@@ -32,7 +32,7 @@ export const avatarAC = (avatar) => ({type: SET_AVATAR, avatar})
 export const fetchingAC = (isIt) => ({type: IS_FETCHING, isIt})
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 export const statusAC = (status) => ({type: SET_STATUS, status})
-export const showOverlayAC = (toggleRelay, Index) => ({type: SHOW_OVERLAY, toggleRelay, Index})
+export const showOverlayAC = (toggleRelay, toggleViewport, Index) => ({type: SHOW_OVERLAY, toggleRelay, toggleViewport, Index})
 export const currentUserDataAC = (name, about, applicant, description, github, vk, facebook, instagram, twitter, site, youtube, link) =>
     ({
         type: CURRENT_PROFILE,
@@ -59,6 +59,7 @@ const initialState = {
     photos: '',
     contacts: '',
     showOverlay: false,
+    showOverlayPhotoViewport: false,
     selectedPhoto: null,
     currentUserAvatar: null,
     name: null,
@@ -117,7 +118,8 @@ const profileReducer = (state = initialState, action) => {
             return {
                 ...state,
                 showOverlay: action.toggleRelay,
-                selectedPhoto: action.Index
+                showOverlayPhotoViewport: action.toggleViewport,
+                selectedPhoto: action.Index,
             }
 
 

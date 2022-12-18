@@ -7,7 +7,7 @@ import withRouter from "../HOC/withRouter";
 import {
     setCurrentUserDataTC,
     getStatusTC,
-    setUserTC, showOverlayAC, updateProfileTC, updateStatusTC,
+    setUserTC, showOverlayAC, updateProfileTC, updateStatusTC, updatePhotoTC,
 } from "../../redux/profile-reducer/profile-reducer";
 import ProfileLeftPart from "./LeftPart";
 import ProfileRightPart from "./RightPart";
@@ -18,6 +18,7 @@ const Profile = (props) => {
         notFound,
         email,
         nightMode,
+        showMobileVersion,
         profile,
         updateProfileTC: updateProfile,
         directEditMode,
@@ -30,6 +31,7 @@ const Profile = (props) => {
         getFriendsTC: getFriends,
         unfollowFriendTC: unfollowFriend,
         updateStatusTC: updateStatus,
+        updatePhotoTC: updatePhoto,
     } = props
     const currentUserId = props.Id
     const userIdParam = props.router.params.userId
@@ -42,14 +44,18 @@ const Profile = (props) => {
         props.currentUserDataTC(userIdParam)
     }, [userIdParam])
 
+
     return (
         <div className={"profile-main-container"}>
-            <ProfileLeftPart {...[profile, isCurrentUser, email, updateProfile, directEditMode, nightMode]}/>
+            {!showMobileVersion &&
+                <ProfileLeftPart {...[profile, isCurrentUser, email, updateProfile, directEditMode, nightMode]}/>}
             <ProfileCenterPart  {...[profile, isCurrentUser, notFound, directEditMode,
                 updateProfile, defaultAvatar, status, updateStatus, defaultPhotos,
-                toggleOverlay, friends, nightMode, hideProfileWall]}/>
-            <ProfileRightPart {...[isCurrentUser, defaultAvatar, friends, defaultPhotos, toggleOverlay,
-                getFriends, unfollowFriend, nightMode]}/>
+                toggleOverlay, friends, nightMode, hideProfileWall, updatePhoto, showMobileVersion]}/>
+            {!showMobileVersion &&
+                <ProfileRightPart {...[isCurrentUser, defaultAvatar, friends, defaultPhotos, toggleOverlay,
+                    getFriends, unfollowFriend, nightMode]}/>}
+
 
         </div>
     )
@@ -69,6 +75,7 @@ let mapStateToProps = (state) => {
         status: state.profilePage.status,
         directEditMode: state.settings.directEditMode,
         hideProfileWall: state.settings.hideProfileWall,
+        showMobileVersion: state.settings.showMobileVersion,
     }
 }
 
@@ -81,4 +88,5 @@ export default compose(connect(mapStateToProps, {
     updateProfileTC,
     updateStatusTC,
     unfollowFriendTC,
+    updatePhotoTC,
 }), authHoc, withRouter)(Profile)

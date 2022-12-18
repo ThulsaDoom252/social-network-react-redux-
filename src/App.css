@@ -105,6 +105,7 @@ input:-webkit-autofill:active {
     width: 1100px;
     margin: 0 auto;
 }
+
 .section-content {
     /*min-height: 730px;*/
     width: 100%;
@@ -137,6 +138,7 @@ input:-webkit-autofill:active {
 .gallery-photo-label {
     font-size: 1.10rem;
 }
+
 .gallery-photos-block {
     display: flex;
     justify-content: center;
@@ -1197,7 +1199,7 @@ input:-webkit-autofill:active {
 }
 
 .profile-page-center-wall {
-    min-height: 300px;
+    min-height: 140px;
 }
 
 /*POST*/
@@ -1239,19 +1241,25 @@ input:-webkit-autofill:active {
     background-color: white;
 }
 
+.wall-plug {
+    display: flex;
+    align-items: center;
+    height: 300px;
+    font-family: SansSerif;
+    font-size: 1.3rem;
+    justify-content: center;
+}
 
-/*.profile-page-user-block {*/
-/*    margin: 10% auto auto auto;*/
-/*    min-height: 250px;*/
-/*    display: block;*/
-/*    padding: 0 5% 0 5%;*/
-/*    background-color: #d19549;*/
-/*    width: 80%;*/
-/*    max-width: 850px;*/
-/*    !*FIX STATUS LENGTH NOT AFFECT WIDTH OF CONTAINER*!*/
-/*    border-radius: 20px;*/
-/*    box-shadow: inset 6px 6px 6px #c48b45, inset -6px -6px 6px #d19549;*/
-/*}*/
+.wall-plug-img {
+    width: 30px;
+}
+
+.wall-section-container {
+    margin-top: 50px;
+    font-size: 1.5rem;
+    font-family: "Fira Sans";
+}
+
 
 .profile-page-user-block-container {
     display: flex;
@@ -1269,9 +1277,18 @@ input:-webkit-autofill:active {
 .contact-direct-input {
     position: absolute;
     z-index: 3;
+    width: 250px;
     background: white;
     border: solid thin;
     color: black;
+}
+
+.direct-contact-edit-button {
+    background: linear-gradient(400deg, #a3eaa3, #aff1e1, #c8f5c8, #84e8e3);
+    width: 50%;
+    height: 20px;
+    text-align: center;
+    margin: 10px auto;
 }
 
 .profile-page-left-part-name {
@@ -1653,6 +1670,10 @@ input:-webkit-autofill:active {
         display: none;
     }
 
+    .show-mobile-version-switch {
+        display: none;
+    }
+
     .profile-main-container {
         justify-content: center;
         padding: 20px 10px 0 10px;
@@ -1683,7 +1704,7 @@ input:-webkit-autofill:active {
     }
 
     .mobile-friends-block {
-        margin-top: -130px !important;
+        margin-top: -100px !important;
     }
 
     .mobile-gallery-block {
@@ -1693,6 +1714,7 @@ input:-webkit-autofill:active {
     .user-data-block-about {
         display: block;
     }
+
 }
 
 
@@ -1722,11 +1744,12 @@ input:-webkit-autofill:active {
 
 @media screen and (max-width: 445px) {
     .header-container {
-        background-image:url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLztS__hOy_lTkKfNniEhUAnX6M5QQD76NPa42C3vA0vRl6rnHggRjXeQU18pujQ2mmhg&usqp=CAU");
+        background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLztS__hOy_lTkKfNniEhUAnX6M5QQD76NPa42C3vA0vRl6rnHggRjXeQU18pujQ2mmhg&usqp=CAU");
         height: 100px;
         background-size: cover;
         background-position: center 13px;
     }
+
     .header-current-user-avatar,
     .header-current-user-name,
     .header-logout-button {
@@ -1828,6 +1851,7 @@ input:-webkit-autofill:active {
     grid-template-columns: 50% 50%;
     padding: 20px;
 }
+
 
 .settings-block-switch {
     cursor: pointer;

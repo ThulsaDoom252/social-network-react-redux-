@@ -1,14 +1,16 @@
-import {DIRECT_EDITMODE, TOGGLE_NIGHTMODE, TOGGLE_WALL,} from "./types";
+import {DIRECT_EDITMODE, TOGGLE_MOBILE_VERSION, TOGGLE_NIGHTMODE, TOGGLE_WALL,} from "./types";
 
 export const toggleNightModeAC = (toggle) => ({type: TOGGLE_NIGHTMODE, toggle})
 export const directEditModeAC = (toggle) => ({type: DIRECT_EDITMODE, toggle})
 export const toggleWallAC = (toggle) => ({type: TOGGLE_WALL, toggle})
+export const toggleMobileVersionAC = (toggle) => ({type: TOGGLE_MOBILE_VERSION, toggle})
 
 const initialState = {
     nightMode: false,
     directEditMode: true,
     showFakeModules: true,
     hideProfileWall: false,
+    showMobileVersion: false,
 }
 
 
@@ -24,6 +26,12 @@ const settingsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 directEditMode: action.toggle
+            }
+
+        case TOGGLE_MOBILE_VERSION:
+            return {
+                ...state,
+                showMobileVersion: action.toggle
             }
 
         case TOGGLE_WALL:

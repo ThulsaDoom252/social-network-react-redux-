@@ -11,7 +11,7 @@ function Gallery(props) {
         <div style={nightMode ? nightModeStyles.centerBlock : null} className={"gallery-container"}>
             <p className={"gallery-photo-label"}>Your photos:</p>
             <div className={"gallery-photos-block"}>
-                {photos.map((photo, index) => <div className={"photo-block"}><img  onClick={() => toggleOverlay(true, index)} className={"photo"} src={photo} alt={`photo${index}`}/></div>)}
+                {photos.map((photo, index) => <div className={"photo-block"}><img  onClick={() => toggleOverlay(true, true, index)} className={"photo"} src={photo} alt={`photo${index}`}/></div>)}
             </div>
             <div className={"gallery-footer"}></div>
         </div>
