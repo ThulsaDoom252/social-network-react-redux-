@@ -5,34 +5,77 @@ import {connect} from "react-redux";
 import {setUserTC, updatePhotoTC, updateProfileTC} from "../../../../redux/profile-reducer/profile-reducer";
 import authHoc from "../../../HOC/authHoc";
 
-function EditProfileData(props) {
-    const userId = props.currentId
+function EditProfileData({
+                             auth,
+                             contacts: {facebook, instagram, youtube, github, vk, twitter, mainlink, website},
+                             currentId: userId,
+                             email,
+                             photos: {large: largePhoto},
+                             profile: {
+                                 fullName,
+                                 aboutMe,
+                                 lookingForAJob: applicant,
+                                 lookingForAJobDescription: description
+                             },
+                             setUserTC: setUser,
+                             updatePhotoTC: updatePhoto,
+                             updateProfileTC: updateProfile,
+                         }) {
     useEffect(() => {
-        props.setUserTC(userId)
+        setUserTC(userId)
     }, [])
 
     const hiddenFileInput = React.useRef(null);
 
     let uploadPhoto = (e) => {
-        props.updatePhotoTC(e.target.files[0])
+        updatePhoto(e.target.files[0])
     }
     const handleClick = event => hiddenFileInput.current.click()
+
+    let [nameHook, setNameHook] = useState(fullName)
+    let [aboutHook, setAboutHook] = useState(aboutMe)
+    let [applicantHook, setApplicantHook] = useState(applicant)
+    let [descriptionHook, setDescriptionHook] = useState(description)
+    let [websiteHook, setWebsiteHook] = useState(website)
+    let [youtubeHook, setYoutubeHook] = useState(youtube)
+    let [instagramHook, setInstagramHook] = useState(instagram)
+    let [facebookHook, setFacebookHook] = useState(facebook)
+    let [gitHubHook, setGitHubHook] = useState(github)
+    let [mainlinkHook, setMainlinkHook] = useState(mainlink)
+    let [vkHook, setVkHook] = useState(vk)
+    let [twitterHook, setTwitterHook] = useState(twitter)
+
+    useEffect(() => {
+        setNameHook(fullName)
+        setAboutHook(aboutMe)
+        setApplicantHook(applicant)
+        setDescriptionHook(description)
+        setWebsiteHook(website)
+        setYoutubeHook(youtube)
+        setInstagramHook(instagram)
+        setFacebookHook(facebook)
+        setGitHubHook(github)
+        setMainlinkHook(mainlink)
+        setVkHook(vk)
+        setTwitterHook(twitter)
+    }, [fullName, aboutMe, applicant, description, website, youtube, instagram, facebook, github, mainlink, twitter, vk])
+
 
     const urlError = Yup.string().matches(/((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/, 'Enter correct url!').nullable()
     const {handleSubmit, handleChange, values, touched, errors} = useFormik({
         initialValues: {
-            name: props.profile.fullName,
-            about: props.profile.aboutMe,
-            isApplicant: props.profile.lookingForAJob,
-            description: props.profile.lookingForAJobDescription,
-            website: props.contacts.website,
-            vk: props.contacts.vk,
-            facebook: props.contacts.facebook,
-            twitter: props.contacts.twitter,
-            instagram: props.contacts.instagram,
-            github: props.contacts.github,
-            mainlink: props.contacts.mainlink,
-            youtube: props.contacts.youtube,
+            name: nameHook,
+            about: aboutHook,
+            isApplicant: applicantHook,
+            description: descriptionHook,
+            website: websiteHook,
+            vk: vkHook,
+            facebook: facebookHook,
+            twitter: twitterHook,
+            instagram: instagramHook,
+            github: gitHubHook,
+            mainlink: mainlinkHook,
+            youtube: youtubeHook,
 
         },
         validationSchema: Yup.object({
@@ -55,11 +98,9 @@ function EditProfileData(props) {
                        github,
                        mainlink
                    }) => {
-            debugger
-            props.updateProfileTC(props.currentId, about, isApplicant, description, name, github, vk, facebook, instagram,
+            updateProfile(userId, about, isApplicant, description, name, github, vk, facebook, instagram,
                 twitter, website, youtube, mainlink
             )
-            // props.fetchingAC(true)
         }
     })
 
@@ -77,17 +118,17 @@ function EditProfileData(props) {
             <div className={"edit-profile-page-container"}>
                 <div className={"edit-profile-avatar-part"}>
                     <p style={{"font-size": "1.2rem"}}>Edit Photo</p>
-                    <img className={"edit-profile-avatar"} src={props.photos.large} alt="edit-avatar"/>
+                    <img className={"edit-profile-avatar"} src={largePhoto} alt="edit-avatar"/>
                     <input ref={hiddenFileInput}
                            hidden={true} type={"file"}
                            onChange={uploadPhoto}/>
                     <button type="button" className={"upload-avatar-button"} onClick={handleClick}>Upload photo</button>
-                    <p className={"edit-profile-email"}>{props.email}</p>
+                    <p className={"edit-profile-email"}>{email}</p>
                 </div>
                 <div className={"edit-profile-data-part"}>
                     <p className={"edit-profile-title"}>Edit Profile</p>
                     <div className="edit-profile-mobile-avatar-block">
-                        <img className={"edit-profile-avatar"} src={props.photos.large} alt="avatar-edit-mobile"/>
+                        <img className={"edit-profile-avatar"} src={largePhoto} alt="avatar-edit-mobile"/>
                         <input ref={hiddenFileInput}
                                hidden={true} type={"file"}
                                onChange={uploadPhoto}/>

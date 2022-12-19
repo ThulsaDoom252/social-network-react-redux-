@@ -67,7 +67,7 @@ const ProfileData = (props) => {
                            onBlur={() => toggleEditMode(descriptionEditMode, setDescriptionEditMode)} autoFocus={true}
                            type="text" value={values.applicantDescription}/> :
                     <p className={"job-description"}
-                       onDoubleClick={() => toggleEditMode(descriptionEditMode, setDescriptionEditMode)}>{values.description ? values.description : "No info about job/skills"}</p>}
+                       onDoubleClick={() => toggleEditMode(descriptionEditMode, setDescriptionEditMode)}>{values.applicantDescription ? values.applicantDescription : "No info about job/skills"}</p>}
             </div>}
             {errors.applicantDescription && <p className={"profile-page-input-error"}>{errors.applicantDescription}</p>}
             <div style={aboutBlockStyle} className={"user-data-block-about"}>{aboutEditMode ?

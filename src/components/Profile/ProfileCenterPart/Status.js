@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
-const Status = (props) => {
-    const {0: propStatus, 1: isCurrentUser, 2: updateStatus} = props
+const Status = ({0: propStatus, 1: isCurrentUser, 2: updateStatus}) => {
     const [editMode, setEditMode] = useState(false)
     const [status, setStatus] = useState(propStatus)
     const lengthError = status !== null && status.length > 300
