@@ -21,6 +21,7 @@ import {
     SET_USER_PROFILE, STATUS_ERROR,
     SHOW_OVERLAY
 } from "../types";
+import React from "react";
 
 //ACTIONS
 export const dataReceivedAC = (success) => ({type: DATA_RECEIVED, success})
@@ -83,6 +84,7 @@ const initialState = {
     statusError: null,
     defaultPhotos: [photo1, photo2, photo3, photo4, photo5, photo6, photo7, photo8, photo9, photo10]
 }
+
 
 //REDUCER
 const profileReducer = (state = initialState, action) => {

@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {HiOutlineDotsHorizontal} from "react-icons/all";
 import {useFormik} from "formik";
-import * as Yup from "yup";
 import {nightModeStyles} from "../../common/nightModeStyles";
+import * as Yup from "yup";
 
 const LeftPart = (props) => {
     const {
@@ -18,8 +18,9 @@ const LeftPart = (props) => {
         initialValues: {
             about: aboutMe
         },
+
         validationSchema: Yup.object({
-            about: Yup.string().min(4, 'Info must contain more than 3 characters!').nullable(),
+            about: Yup.string().min(4, 'Info must contain more than 3 characters!').max(100, "info must contain less than 100 characters").nullable(),
         }),
     })
 
@@ -32,11 +33,12 @@ const LeftPart = (props) => {
     const toggleEditMode = (editMode, setEditMode) => {
         if (isCurrentUser && !editMode && directEditMode) {
             setEditMode(true)
-        } else if (editMode === true && !formik.errors.about) {
+        } else if (editMode === true && !errors.about) {
             setEditMode(false)
+            debugger
             updateProfile(
                 userId,
-                values.about,
+                (values.about ? values.about : "no info"),
                 lookingForAJob, lookingForAJobDescription,
                 fullName, contacts.github,
                 contacts.vk, contacts.facebook,
@@ -66,8 +68,8 @@ const LeftPart = (props) => {
                        onDoubleClick={() => toggleEditMode(aboutEditMode, setAboutEditMode)}>{aboutEditMode ?
                         <input id={"about"} onBlur={() => toggleEditMode(aboutEditMode, setAboutEditMode)}
                                className={"about-input"} onChange={handleChange} type={"text"} value={values.about}
-                               autoFocus={true}/> : values.about}</p>
-                    {errors.about && <p style={{"width": "150px"}} className={"profile-page-input-error"}>{errors.about}</p>}
+                               autoFocus={true}/> : values.about ? values.about : "no info"}</p>
+                    {isCurrentUser && errors.about ? <p className={"error"}>{errors.about}</p> : null}
                 </div>
                 <div>
                     <p className={"profile-page-left-part-label"}>Email</p>

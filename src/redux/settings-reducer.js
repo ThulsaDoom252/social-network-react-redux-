@@ -7,7 +7,7 @@ export const toggleMobileVersionAC = (toggle) => ({type: TOGGLE_MOBILE_VERSION, 
 
 const initialState = {
     nightMode: false,
-    directEditMode: true,
+    directEditMode: false,
     showFakeModules: true,
     hideProfileWall: false,
     showMobileVersion: false,

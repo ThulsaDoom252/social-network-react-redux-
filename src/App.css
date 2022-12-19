@@ -1423,13 +1423,13 @@ input:-webkit-autofill:active {
 /*EDIT PROFILE*/
 .edit-profile-page-container {
     display: flex;
-    height: 717px;
+    min-height: 717px;
     font-family: "Open Sans";
     background-color: white;
     margin-top: 20px;
 }
 
-.edit-profile-avatar-block {
+.edit-profile-avatar-part {
     width: 25%;
     display: flex;
     flex-direction: column;
@@ -1456,7 +1456,7 @@ input:-webkit-autofill:active {
     padding: 10px;
 }
 
-.edit-profile-data-block {
+.edit-profile-data-part {
     height: 100%;
     background: url("./components/Profile/ProfileCenterPart/EditProfile/bg.png") no-repeat;
     background-position-x: 170px;
@@ -1466,6 +1466,10 @@ input:-webkit-autofill:active {
     text-align: left;
     border-left: gray thin solid;
     border-right: gray thin solid;
+}
+
+.edit-profile-mobile-avatar-block {
+    display: none;
 }
 
 
@@ -1481,7 +1485,17 @@ input:-webkit-autofill:active {
 .data-first-block {
     display: flex;
     position: relative;
-    justify-content: center;
+}
+
+.data-name-block, .data-about-block {
+    text-align: center;
+}
+
+
+.data-first-block-errors {
+    color: red;
+    position: relative;
+    height: 30px;
 }
 
 .edit-error {
@@ -1490,17 +1504,6 @@ input:-webkit-autofill:active {
     font-size: 0.85rem;
     width: 210px;
 }
-
-.name-error {
-    top: 30px;
-    left: 55px;
-}
-
-.about-error {
-    top: 30px;
-    left: 300px;
-}
-
 
 .data-first-block div {
     margin-top: 25px;
@@ -1515,27 +1518,39 @@ input:-webkit-autofill:active {
 }
 
 .data-second-block {
-    position: relative;
-    margin-top: 90px;
+    margin-top: 60px;
     text-align: center;
-}
-
-.description-error {
-    left: 130px;
-    top: 114px;
-    width: 269px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .edit-profile-checkbox-block {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 25px;
+}
+
+.edit-profile-job-description-block {
+    padding-top: 40px;
+    width: 100%;
+    text-align: center;
 }
 
 .edit-profile-job-description-input {
     width: 80%;
     margin-top: 30px;
+}
+
+.edit-profile-job-description-error {
+    color: red;
+    position: relative;
+    height: 30px;
+}
+
+.edit-profile-mobile-contacts-container {
+    display: none;
 }
 
 .applicant-label {
@@ -1546,7 +1561,6 @@ input:-webkit-autofill:active {
 .job-description-label {
     font-size: 1.1rem;
     font-weight: 2;
-    margin-top: 60px;
 }
 
 .edit-profile-page-submit-button {
@@ -1563,44 +1577,61 @@ input:-webkit-autofill:active {
     color: red;
 }
 
-.edit-profile-contacts-block {
+.edit-profile-contacts-part {
     width: 25%;
-    padding: 10px;
+    padding: 5px;
     display: flex;
-    position: relative;
     flex-direction: column;
     font-family: "Open Sans";
 }
 
+.edit-profile-page-contacts {
+    padding: 20px;
+}
+
 .edit-profile-contact-title {
-    position: absolute;
-    left: 40px;
+    margin-top: 5px;
     font-weight: bold;
+    width: 100%;
+    padding-left: 30px;
+    text-align: left;
     font-size: 1.1rem;
 }
 
 .edit-profile-contact-block {
-    margin-top: 50px;
-    position: relative;
+    margin: 20px auto;
+    text-align: left;
 }
 
-.contact-error {
-    bottom: -20px;
-    left: 25px;
-}
 
 .edit-profile-contact-label {
     font-weight: bold;
     font-size: 0.95rem;
-    position: absolute;
-    top: -19px;
-    left: 30px;
 }
 
 .edit-profile-contact-input {
     padding: 5px;
     border-radius: 3px;
+    text-align: center;
+    width: 100%;
     border: gray thin solid;
+}
+
+.contact-error-container {
+    color: red;
+    width: 100%;
+    position: relative;
+    text-align: center;
+}
+
+.contact-error {
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+.error {
+    color: red;
 }
 
 /*!*BREAKPOINTS*!*/
@@ -1679,23 +1710,13 @@ input:-webkit-autofill:active {
         padding: 20px 10px 0 10px;
     }
 
+    .user-data-block-about {
+        display: block;
+    }
+
     .profile-page-center-container {
         width: 100%;
         padding: 20px;
-    }
-
-    .message-page-container {
-        height: 900px !important;
-        margin-bottom: 50px;
-    }
-
-    .new-message-button {
-        font-size: 1.4rem;
-        left: 5px;
-    }
-
-    .center-gallery-photo-block {
-        width: 200px !important;
     }
 
     .mobile-friends-block, .mobile-gallery-block {
@@ -1711,9 +1732,103 @@ input:-webkit-autofill:active {
         width: 90% !important;
     }
 
-    .user-data-block-about {
+    /*MESSAGES*/
+    .message-page-container {
+        height: 900px !important;
+        margin-bottom: 50px;
+    }
+
+    .new-message-button {
+        font-size: 1.4rem;
+        left: 5px;
+    }
+
+    .center-gallery-photo-block {
+        width: 200px !important;
+    }
+
+    /*EDIT PAGE*/
+    .edit-profile-avatar-part {
+        display: none;
+    }
+
+    .edit-profile-contacts-part {
+        display: none;
+    }
+
+    .edit-profile-page-container {
         display: block;
     }
+
+    .edit-profile-data-part {
+        background-image: none;
+        width: 100%;
+        text-align: center;
+
+    }
+
+    .edit-profile-title {
+        position: static;
+        text-decoration: underline;
+        margin: 22px auto auto auto !important;
+    }
+
+    .edit-profile-mobile-avatar-block {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin: 0 auto;
+    }
+
+    .data-first-block {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        padding: 0 45px 0 45px;
+    }
+
+    .data-name-block {
+        width: 50%;
+    }
+
+    .data-about-block {
+        width: 50%;
+    }
+
+    .edit-profile-input {
+        width: 100%;
+    }
+
+    .data-second-block {
+        margin-top: 20px;
+    }
+
+    .edit-profile-job-description-block {
+        padding-top: 10px !important;
+    }
+
+    .edit-profile-job-description-input {
+        margin-top: 10px;
+    }
+
+    .edit-profile-mobile-contacts-container {
+        display: block;
+    }
+
+    .edit-profile-mobile-contacts-block {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        padding: 0 70px 0 70px;
+    }
+
+    .edit-profile-mobile-contact-input {
+        width: 30%;
+        padding: 5px;
+        border: gray thin solid;
+        margin: 10px;
+    }
+
 
 }
 
@@ -1739,6 +1854,11 @@ input:-webkit-autofill:active {
 
     .gallery-container {
         margin-top: 15px;
+    }
+
+    .settings-page-container {
+        background-size: 300px 300px !important;
+        background-position-x: 200px !important;
     }
 }
 
@@ -1815,7 +1935,7 @@ input:-webkit-autofill:active {
     padding: 15px;
     font-family: SansSerif;
     display: flex;
-    background: url("./components/Settings/settings-bg.png") rgb(255, 255, 255, 0.8);
+    background: url("https://www.freeiconspng.com/uploads/white-gear-png-gear-icon-png-white-gear-icon-30.png") rgb(255, 255, 255, 0.8);
     background-repeat: no-repeat;
     background-position-x: 350px;
     background-position-y: 90px;

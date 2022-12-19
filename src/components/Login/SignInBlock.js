@@ -12,8 +12,8 @@ const SignInBlock = (props) => {
     )
     const formik = useFormik({
         initialValues: {
-            login: 'xenolm252@gmail.com',
-            password: 'devastator252',
+            login: '',
+            password: '',
             rememberMe: false,
             antiBotSymbols: '',
         },

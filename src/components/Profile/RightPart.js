@@ -25,7 +25,7 @@ const RightPart = (props) => {
     return (
         <div className={"profile-page-right-part-container"}>
             <div style={nightMode ? nightModeStyles.profileRightPart : null}  className={"profile-page-right-part-photos-block"}>
-                <p className={"profile-page-right-part-photos-block-label"}><NavLink to={"/photos"}>Latest photos</NavLink></p>
+                <p className={"profile-page-right-part-photos-block-label"}><NavLink to={"/gallery"}>Latest photos</NavLink></p>
                 {defaultPhotos.map((photo, index) => <span>
                     <img onClick={() => toggleOverlay(true, true, index)} key={index}
                          className={"profile-page-right-part-photo"}

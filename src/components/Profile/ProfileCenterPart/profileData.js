@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {useFormik} from "formik";
-import * as Yup from "yup";
 
 const ProfileData = (props) => {
     const {
@@ -9,7 +8,6 @@ const ProfileData = (props) => {
         2: updateProfile,
         3: directEditMode,
     } = props
-    const [applicantEditMode, setApplicantEditMode] = useState(false)
     const [descriptionEditMode, setDescriptionEditMode] = useState(false)
     const [aboutEditMode, setAboutEditMode] = useState(false)
     const formik = useFormik({
@@ -19,10 +17,6 @@ const ProfileData = (props) => {
             about: aboutMe,
         },
 
-        validationSchema: Yup.object({
-            applicantDescription: Yup.string().min(4, 'Info must contain more than 3 characters!').nullable(),
-            about: Yup.string().min(6, `Info must contain more than 6  characters!`).nullable()
-        }),
     })
 
     const {values, errors, handleChange} = formik
@@ -60,10 +54,12 @@ const ProfileData = (props) => {
 
     return (
         <div>
-            <div className={"user-data-block"}>
+            <div style={{"background": values.isApplicant && "linear-gradient(400deg, #6391c7, #d9bb8f, #e4fa31, #3476fa)"}}
+                 onDoubleClick={() => values.isApplicant ? formik.setFieldValue("isApplicant", false) : formik.setFieldValue("isApplicant", true)}
+                 className={"user-data-block"}>
                 {values.isApplicant && isCurrentUser ? "You are looking for a job" : values.isApplicant && !isCurrentUser ? "Looking for a job" : "Not looking for a job"}
             </div>
-            <div
+            {values.isApplicant && <div
                 style={descriptionBlockStyle}
                 className={"user-data-block"}>
                 {descriptionEditMode ?
@@ -71,15 +67,15 @@ const ProfileData = (props) => {
                            onBlur={() => toggleEditMode(descriptionEditMode, setDescriptionEditMode)} autoFocus={true}
                            type="text" value={values.applicantDescription}/> :
                     <p className={"job-description"}
-                       onDoubleClick={() => toggleEditMode(descriptionEditMode, setDescriptionEditMode)}>{values.applicantDescription}</p>}
-            </div>
+                       onDoubleClick={() => toggleEditMode(descriptionEditMode, setDescriptionEditMode)}>{values.description ? values.description : "No info about job/skills"}</p>}
+            </div>}
             {errors.applicantDescription && <p className={"profile-page-input-error"}>{errors.applicantDescription}</p>}
             <div style={aboutBlockStyle} className={"user-data-block-about"}>{aboutEditMode ?
                 <input id={"about"} className={"about-description-input"} onChange={handleChange}
                        onBlur={() => toggleEditMode(aboutEditMode, setAboutEditMode)} autoFocus={true}
                        type="text" value={values.about}/> :
                 <p className={"job-description"}
-                   onDoubleClick={() => toggleEditMode(aboutEditMode, setAboutEditMode)}>{values.about === "" ? "No info" : values.about}</p>}</div>
+                   onDoubleClick={() => toggleEditMode(aboutEditMode, setAboutEditMode)}>{values.about ? values.about : "No info"}</p>}</div>
             {errors.about && <p className={"profile-page-input-error"}>{errors.about}</p>}
         </div>
 
