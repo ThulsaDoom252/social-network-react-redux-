@@ -1145,6 +1145,10 @@ input:-webkit-autofill:active {
     word-wrap: break-word;
 }
 
+.user-data-block-about {
+    display: none;
+}
+
 .job-description-input {
     width: 100%;
     word-wrap: break-word;

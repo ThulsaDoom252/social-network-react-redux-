@@ -20,7 +20,7 @@ const Status = ({0: propStatus, 1: isCurrentUser, 2: updateStatus}) => {
         }
     }
     return (
-        <div className="status-wrapper">
+        <div style={{cursor: isCurrentUser && "pointer"}} className="status-wrapper">
             <p hidden={!lengthError} style={{"color": "red"}}>Status length can't exceed 300 characters!</p>
             <div className="status-container">
                 {editMode ?
@@ -30,7 +30,7 @@ const Status = ({0: propStatus, 1: isCurrentUser, 2: updateStatus}) => {
                            onChange={changeStatus}
                            type={"text"}
                            value={status}/> :
-                    <p className="status" onDoubleClick={toggleEditMode}>{propStatus || "No Status"}</p>}
+                    <p className="status" onClick={toggleEditMode}>{propStatus || "No Status"}</p>}
             </div>
         </div>
     );

@@ -155,7 +155,9 @@ function ProfileAvatarBlock({
         {id: "website", value: values.website, icon: <CgWebsite title={values.website}/>}]
 
 
-    window.em = contactEditMode
+    const pointerCursor = {
+        cursor: directEditMode && isCurrentUser && "pointer"
+    }
 
     return (
         <div className="profile-page-center-avatarBlockContainer">
@@ -168,7 +170,8 @@ function ProfileAvatarBlock({
                          onClick={directEditMode && handleClick}
                          src={largePhoto ? largePhoto : defaultAvatar}
                          alt="large photo"/>
-                    <p onDoubleClick={() => toggleProfileDataEditMode(nameEditMode, setNameEditMode)}
+                    <p style={pointerCursor}
+                       onClick={() => toggleProfileDataEditMode(nameEditMode, setNameEditMode)}
                        className={"profile-page-left-part-name"}>{
                         nameEditMode ?
                             <input style={{"border": errors.name ? "solid red thin" : "solid thin"}} type={"text"}

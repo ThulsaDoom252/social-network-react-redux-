@@ -53,6 +53,9 @@ const LeftPart = (props) => {
     const aboutBlockStyle = {
         "border": errors.about ? "solid red" : aboutEditMode && !errors.about ? "solid thin" : null
     }
+    const pointerCursor = {
+        cursor: directEditMode && isCurrentUser && "pointer"
+    }
 
     return (
         <div style={nightMode ? nightModeStyles.profileLeft : null} className={"profile-page-left-part-container"}>
@@ -62,10 +65,12 @@ const LeftPart = (props) => {
                     <span className={"profile-page-left-part-label"}>Id</span>
                     <p>{userId}</p>
                 </div>
-                <div className={"profile-page-left-part-about-block"}>
+                <div
+                    style={pointerCursor}
+                    className={"profile-page-left-part-about-block"}>
                     <span className={"profile-page-left-part-label"}>About</span>
                     <p style={aboutBlockStyle} className={"profile-page-left-part-about"}
-                       onDoubleClick={() => toggleEditMode(aboutEditMode, setAboutEditMode)}>{aboutEditMode ?
+                       onClick={() => toggleEditMode(aboutEditMode, setAboutEditMode)}>{aboutEditMode ?
                         <input id={"about"} onBlur={() => toggleEditMode(aboutEditMode, setAboutEditMode)}
                                className={"about-input"} onChange={handleChange} type={"text"} value={values.about}
                                autoFocus={true}/> : values.about ? values.about : "no info"}</p>
